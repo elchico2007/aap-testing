@@ -1,0 +1,25 @@
+- name: Get eos Facts
+  arista.eos.eos_facts:
+    gather_subset: interfaces
+  when: ansible_network_os == 'arista.eos.eos'
+
+- name: Get ios Facts
+  cisco.ios.ios_facts:
+    gather_subset: interfaces
+  when: ansible_network_os == 'cisco.ios.ios'
+
+- name: Get junos Facts
+  junipernetworks.junos.junos_facts:
+    gather_subset: interfacesS
+  when: ansible_network_os == 'junipernetworks.junos.junos'
+
+# - name: PUT interfaces
+#   ansible.builtin.uri:
+#     url: http://192.168.15.131:30080/api/v2/hosts/2/variable_data/
+#     user: admin
+#     password: oonpm7suY1EvUENWmXAgKO0eeevMR2FB
+#     method: PUT
+#     body: "{{ ansible_facts['net_interfaces'] }}"
+#     force_basic_auth: yes
+#     status_code: 200
+#     body_format: json

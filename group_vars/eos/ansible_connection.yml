@@ -1,0 +1,2 @@
+ansible_connection: ansible.netcommon.httpapi
+ansible_network_os: arista.eos.eos

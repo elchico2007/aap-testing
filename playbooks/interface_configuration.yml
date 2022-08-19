@@ -1,0 +1,47 @@
+---
+- name: Configure Basic interface configuration
+  hosts: all
+
+  tasks:
+    - name: Configure basic eos interface configuration
+      arista.eos.eos_interfaces:
+        config:
+        - name: "{{ interface }}"
+          description: "{{ description }}"
+          enabled: "{{ enabled }}"
+          speed: "{{ speed }}"
+          mtu: "{{ mtu }}"
+        state: replaced
+      when: ansible_network_os == 'arista.eos.eos'
+      notify:
+        - Upload Interfaces
+    
+    - name: Configure basic ios interface configuration
+      cisco.ios.ios_interfaces:
+        config:
+        - name: "{{ interface }}"
+          description: "{{ description }}"
+          enabled: "{{ enabled }}"
+          speed: "{{ speed }}"
+          mtu: "{{ mtu }}"
+        state: replaced
+      when: ansible_network_os == 'cisco.ios.ios'
+      notify:
+        - Upload Interfaces
+    
+    - name: Configure basic junos interface configuration
+      junipernetworks.junos.junos_interfaces:
+        config:
+        - name: "{{ interface }}"
+          description: "{{ description }}"
+          enabled: "{{ enabled }}"
+          speed: "{{ speed }}"
+          mtu: "{{ mtu }}"
+        state: replaced
+      when: ansible_network_os == 'junipernetworks.junos.junos'
+      notify:
+        - Upload Interfaces
+
+  handlers:
+    - name: Upload Interfaces
+      ansible.builtin.include_tasks: handlers/parse_interfaces.yml

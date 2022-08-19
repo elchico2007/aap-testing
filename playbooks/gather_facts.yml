@@ -1,0 +1,18 @@
+---
+- name: Get Facts
+  hosts: all
+
+  tasks:
+    - name: Get eos Facts
+      arista.eos.eos_facts:
+      when: ansible_network_os == 'arista.eos.eos'
+
+    - name: Get ios Facts
+      cisco.ios.ios_facts:
+      when: ansible_network_os == 'cisco.ios.ios'
+
+    - name: Get junos Facts
+      junipernetworks.junos.junos_facts:S
+      when: ansible_network_os == 'junipernetworks.junos.junos'
+    
+

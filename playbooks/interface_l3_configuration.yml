@@ -1,0 +1,31 @@
+---
+- name: Configure Basic interface configuration
+  hosts: all
+
+  tasks:
+    - name: Configure ipv4 configuration
+      arista.eos.eos_l3_interfaces:
+        config:
+          - name: "{{ interface }}"
+            ipv4:
+              - address: "{{ ipv4_address }}"
+        state: replaced
+      when: ipv4_address != ""
+      notify:
+        - Upload Interfaces
+    
+    - name: Configure ipv6 configuration
+      arista.eos.eos_l3_interfaces:
+        config:
+          - name: "{{ interface }}"
+            ipv6:
+              - address: "{{ ipv6_address }}"
+        state: replaced
+      when: ipv6_address != ""
+      notify:
+        - Upload Interfaces
+
+  handlers:
+    - name: Upload Interfaces
+      ansible.builtin.include_tasks: parse_interfaces.yml
+       
