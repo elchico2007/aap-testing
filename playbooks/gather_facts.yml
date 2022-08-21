@@ -12,7 +12,7 @@
       when: ansible_network_os == 'cisco.ios.ios'
 
     - name: Get junos Facts
-      junipernetworks.junos.junos_facts:S
+      junipernetworks.junos.junos_facts:
       when: ansible_network_os == 'junipernetworks.junos.junos'
     
 
