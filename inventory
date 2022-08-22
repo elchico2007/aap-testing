@@ -18,6 +18,6 @@ ubuntu1.lab.test
 [windows]
 windows1.lab.test
 
-[servers]
+[servers:children]
 windows
 ubuntu
