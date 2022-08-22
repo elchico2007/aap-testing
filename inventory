@@ -12,8 +12,12 @@ junos
 ios
 eos
 
-[linux]
+[ubuntu]
 ubuntu1.lab.test
 
 [windows]
 windows1.lab.test
+
+[servers]
+windows
+ubuntu
