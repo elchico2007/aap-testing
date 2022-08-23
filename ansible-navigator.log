@@ -1,0 +1,430 @@
+220822223448.063 INFO 'ansible_navigator.setup_logger' New ansible-navigator instance, logging initialized
+220822223448.064 INFO 'ansible_navigator.setup_logger' New ansible-runner instance, logging initialized
+220822223448.064 DEBUG 'ansible_navigator.main' Share directory '/home/luvalle/.local/lib/python3.6/share/ansible_navigator' not found (development path)
+220822223448.064 DEBUG 'ansible_navigator.main' Share directory '/home/luvalle/.local/share/ansible_navigator' found (userbase)
+220822223448.064 DEBUG 'ansible_navigator.main' Default collection_doc_cache_path set to: /home/luvalle/.cache/ansible-navigator/collection_doc_cache.db
+220822223448.064 DEBUG 'ansible_navigator.main' EDITOR environment variable not set
+220822223448.064 DEBUG 'ansible_navigator.main' Default editor_command set to: vi +{line_number} {filename}
+220822223448.064 DEBUG 'ansible_navigator.main' No config file set by ANSIBLE_NAVIGATOR_CONFIG
+220822223448.064 DEBUG 'ansible_navigator.main' Looking in /home/luvalle
+220822223448.064 DEBUG 'ansible_navigator.main' Looking for '/home/luvalle/.ansible-navigator.yml', '/home/luvalle/.ansible-navigator.yaml' and '/home/luvalle/.ansible-navigator.json'
+220822223448.064 DEBUG 'ansible_navigator.main' Found 0: 
+220822223448.064 DEBUG 'ansible_navigator.main' Looking in /home/luvalle/aap-testing
+220822223448.064 DEBUG 'ansible_navigator.main' Looking for '/home/luvalle/aap-testing/ansible-navigator.yml', '/home/luvalle/aap-testing/ansible-navigator.yaml' and '/home/luvalle/aap-testing/ansible-navigator.json'
+220822223448.064 DEBUG 'ansible_navigator.main' Found 0: 
+220822223448.064 DEBUG 'ansible_navigator.main' All found 0: 
+220822223448.064 DEBUG 'ansible_navigator.main' Using: None
+220822223448.064 DEBUG 'ansible_navigator.main' No valid settings file found, using all default values for settings.
+220822223448.064 DEBUG 'ansible_navigator.main' Command provided: ''
+220822223448.064 DEBUG 'ansible_navigator.main' Completed post processing for ansible_runner_artifact_dir. (changed=False)
+220822223448.064 DEBUG 'ansible_navigator.main' Completed post processing for ansible_runner_rotate_artifacts_count. (changed=False)
+220822223448.064 DEBUG 'ansible_navigator.main' Completed post processing for ansible_runner_timeout. (changed=False)
+220822223448.064 DEBUG 'ansible_navigator.main' Completed post processing for cmdline. (changed=False)
+220822223448.064 DEBUG 'ansible_navigator.main' Completed post processing for collection_doc_cache_path. (changed=False)
+220822223448.064 DEBUG 'ansible_navigator.main' Completed post processing for container_engine. (changed=False)
+220822223448.064 DEBUG 'ansible_navigator.main' Completed post processing for container_options. (changed=False)
+220822223448.064 DEBUG 'ansible_navigator.main' Completed post processing for display_color. (changed=False)
+220822223448.064 DEBUG 'ansible_navigator.main' Completed post processing for editor_console. (changed=False)
+220822223448.064 DEBUG 'ansible_navigator.main' Completed post processing for execution_environment. (changed=False)
+220822223448.064 DEBUG 'ansible_navigator.main' Completed post processing for execution_environment_image. (changed=False)
+220822223448.064 DEBUG 'ansible_navigator.main' Completed post processing for execution_environment_volume_mounts. (changed=False)
+220822223448.064 DEBUG 'ansible_navigator.main' Completed post processing for help_config. (changed=False)
+220822223448.064 DEBUG 'ansible_navigator.main' Completed post processing for help_doc. (changed=False)
+220822223448.064 DEBUG 'ansible_navigator.main' Completed post processing for help_inventory. (changed=False)
+220822223448.064 DEBUG 'ansible_navigator.main' Completed post processing for help_playbook. (changed=False)
+220822223448.064 DEBUG 'ansible_navigator.main' Completed post processing for inventory. (changed=False)
+220822223448.064 DEBUG 'ansible_navigator.main' Completed post processing for inventory_column. (changed=False)
+220822223448.064 DEBUG 'ansible_navigator.main' Completed post processing for log_append. (changed=False)
+220822223448.064 DEBUG 'ansible_navigator.main' Completed post processing for log_file. (changed=False)
+220822223448.064 DEBUG 'ansible_navigator.main' Completed post processing for mode. (changed=False)
+220822223448.064 DEBUG 'ansible_navigator.main' Completed post processing for osc4. (changed=False)
+220822223448.065 DEBUG 'ansible_navigator.main' Completed post processing for pass_environment_variable. (changed=False)
+220822223448.065 DEBUG 'ansible_navigator.main' Completed post processing for playbook. (changed=False)
+220822223448.065 DEBUG 'ansible_navigator.main' Completed post processing for playbook_artifact_enable. (changed=False)
+220822223448.065 DEBUG 'ansible_navigator.main' Completed post processing for playbook_artifact_replay. (changed=False)
+220822223448.065 DEBUG 'ansible_navigator.main' Completed post processing for plugin_name. (changed=False)
+220822223448.065 DEBUG 'ansible_navigator.main' Completed post processing for set_environment_variable. (changed=False)
+220822223448.065 WARNING 'ansible_navigator.main' Configuration errors encountered, rolling back to previous configuration.
+220822223448.065 DEBUG 'ansible_navigator.main' Prior to rollback: ansible_runner_artifact_dir = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.065 DEBUG 'ansible_navigator.main' Prior to rollback: ansible_runner_rotate_artifacts_count = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.065 DEBUG 'ansible_navigator.main' Prior to rollback: ansible_runner_timeout = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.065 DEBUG 'ansible_navigator.main' Prior to rollback: app = 'welcome' (str/default configuration value)
+220822223448.065 DEBUG 'ansible_navigator.main' Prior to rollback: cmdline = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.065 DEBUG 'ansible_navigator.main' Prior to rollback: collection_doc_cache_path = '/home/luvalle/.cache/ansible-navigator/collection_doc_cache.db' (str/default configuration value)
+220822223448.065 DEBUG 'ansible_navigator.main' Prior to rollback: config = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.065 DEBUG 'ansible_navigator.main' Prior to rollback: container_engine = 'auto' (str/default configuration value)
+220822223448.065 DEBUG 'ansible_navigator.main' Prior to rollback: container_options = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.065 DEBUG 'ansible_navigator.main' Prior to rollback: display_color = 'True' (bool/default configuration value)
+220822223448.065 DEBUG 'ansible_navigator.main' Prior to rollback: editor_command = 'vi +{line_number} {filename}' (str/default configuration value)
+220822223448.065 DEBUG 'ansible_navigator.main' Prior to rollback: editor_console = 'True' (bool/default configuration value)
+220822223448.065 DEBUG 'ansible_navigator.main' Prior to rollback: execution_environment = 'True' (bool/default configuration value)
+220822223448.065 DEBUG 'ansible_navigator.main' Prior to rollback: execution_environment_image = 'quay.io/ansible/ansible-navigator-demo-ee:0.6.0' (str/default configuration value)
+220822223448.065 DEBUG 'ansible_navigator.main' Prior to rollback: execution_environment_volume_mounts = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.065 DEBUG 'ansible_navigator.main' Prior to rollback: help_config = 'False' (bool/default configuration value)
+220822223448.065 DEBUG 'ansible_navigator.main' Prior to rollback: help_doc = 'False' (bool/default configuration value)
+220822223448.065 DEBUG 'ansible_navigator.main' Prior to rollback: help_inventory = 'False' (bool/default configuration value)
+220822223448.065 DEBUG 'ansible_navigator.main' Prior to rollback: help_playbook = 'False' (bool/default configuration value)
+220822223448.065 DEBUG 'ansible_navigator.main' Prior to rollback: inventory = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.065 DEBUG 'ansible_navigator.main' Prior to rollback: inventory_column = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.065 DEBUG 'ansible_navigator.main' Prior to rollback: log_append = 'True' (bool/default configuration value)
+220822223448.065 DEBUG 'ansible_navigator.main' Prior to rollback: log_file = '/home/luvalle/aap-testing/ansible-navigator.log' (str/default configuration value)
+220822223448.065 DEBUG 'ansible_navigator.main' Prior to rollback: log_level = 'warning' (str/default configuration value)
+220822223448.065 DEBUG 'ansible_navigator.main' Prior to rollback: mode = 'interactive' (str/default configuration value)
+220822223448.065 DEBUG 'ansible_navigator.main' Prior to rollback: osc4 = 'True' (bool/default configuration value)
+220822223448.065 DEBUG 'ansible_navigator.main' Prior to rollback: pass_environment_variable = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.065 DEBUG 'ansible_navigator.main' Prior to rollback: playbook = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.065 DEBUG 'ansible_navigator.main' Prior to rollback: playbook_artifact_enable = 'True' (bool/default configuration value)
+220822223448.065 DEBUG 'ansible_navigator.main' Prior to rollback: playbook_artifact_replay = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.065 DEBUG 'ansible_navigator.main' Prior to rollback: playbook_artifact_save_as = '{playbook_dir}/{playbook_name}-artifact-{ts_utc}.json' (str/default configuration value)
+220822223448.065 DEBUG 'ansible_navigator.main' Prior to rollback: plugin_name = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.065 DEBUG 'ansible_navigator.main' Prior to rollback: plugin_type = 'module' (str/default configuration value)
+220822223448.065 DEBUG 'ansible_navigator.main' Prior to rollback: pull_policy = 'tag' (str/default configuration value)
+220822223448.065 DEBUG 'ansible_navigator.main' Prior to rollback: set_environment_variable = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.066 DEBUG 'ansible_navigator.main' After rollback: ansible_runner_artifact_dir = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.066 DEBUG 'ansible_navigator.main' After rollback: ansible_runner_rotate_artifacts_count = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.066 DEBUG 'ansible_navigator.main' After rollback: ansible_runner_timeout = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.066 DEBUG 'ansible_navigator.main' After rollback: app = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.066 DEBUG 'ansible_navigator.main' After rollback: cmdline = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.066 DEBUG 'ansible_navigator.main' After rollback: collection_doc_cache_path = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.066 DEBUG 'ansible_navigator.main' After rollback: config = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.066 DEBUG 'ansible_navigator.main' After rollback: container_engine = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.066 DEBUG 'ansible_navigator.main' After rollback: container_options = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.066 DEBUG 'ansible_navigator.main' After rollback: display_color = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.066 DEBUG 'ansible_navigator.main' After rollback: editor_command = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.066 DEBUG 'ansible_navigator.main' After rollback: editor_console = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.066 DEBUG 'ansible_navigator.main' After rollback: execution_environment = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.066 DEBUG 'ansible_navigator.main' After rollback: execution_environment_image = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.066 DEBUG 'ansible_navigator.main' After rollback: execution_environment_volume_mounts = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.066 DEBUG 'ansible_navigator.main' After rollback: help_config = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.066 DEBUG 'ansible_navigator.main' After rollback: help_doc = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.066 DEBUG 'ansible_navigator.main' After rollback: help_inventory = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.066 DEBUG 'ansible_navigator.main' After rollback: help_playbook = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.066 DEBUG 'ansible_navigator.main' After rollback: inventory = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.066 DEBUG 'ansible_navigator.main' After rollback: inventory_column = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.066 DEBUG 'ansible_navigator.main' After rollback: log_append = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.066 DEBUG 'ansible_navigator.main' After rollback: log_file = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.066 DEBUG 'ansible_navigator.main' After rollback: log_level = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.066 DEBUG 'ansible_navigator.main' After rollback: mode = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.066 DEBUG 'ansible_navigator.main' After rollback: osc4 = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.066 DEBUG 'ansible_navigator.main' After rollback: pass_environment_variable = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.066 DEBUG 'ansible_navigator.main' After rollback: playbook = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.066 DEBUG 'ansible_navigator.main' After rollback: playbook_artifact_enable = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.066 DEBUG 'ansible_navigator.main' After rollback: playbook_artifact_replay = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.066 DEBUG 'ansible_navigator.main' After rollback: playbook_artifact_save_as = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.066 DEBUG 'ansible_navigator.main' After rollback: plugin_name = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.066 DEBUG 'ansible_navigator.main' After rollback: plugin_type = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.066 DEBUG 'ansible_navigator.main' After rollback: pull_policy = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.066 DEBUG 'ansible_navigator.main' After rollback: set_environment_variable = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223448.066 DEBUG 'ansible_navigator.main' Configuration rollback complete.
+220822223448.066 ERROR 'ansible_navigator.main' Command provided: ''
+220822223448.066 ERROR 'ansible_navigator.main' No container engine could be found: 'auto', set by 'default configuration value'
+220822223448.066 INFO 'ansible_navigator.main' Try installing 'podman' or 'docker'
+220822223448.066 ERROR 'ansible_navigator.main' Configuration failed, using default log file location: /home/luvalle/aap-testing/ansible-navigator.log. Log level set to debug
+220822223448.066 INFO 'ansible_navigator.main' Review the hints and log file to see what went wrong: /home/luvalle/aap-testing/ansible-navigator.log
+220822223509.292 INFO 'ansible_navigator.setup_logger' New ansible-navigator instance, logging initialized
+220822223509.292 INFO 'ansible_navigator.setup_logger' New ansible-runner instance, logging initialized
+220822223509.292 DEBUG 'ansible_navigator.main' Share directory '/home/luvalle/.local/lib/python3.6/share/ansible_navigator' not found (development path)
+220822223509.292 DEBUG 'ansible_navigator.main' Share directory '/home/luvalle/.local/share/ansible_navigator' found (userbase)
+220822223509.292 DEBUG 'ansible_navigator.main' Default collection_doc_cache_path set to: /home/luvalle/.cache/ansible-navigator/collection_doc_cache.db
+220822223509.292 DEBUG 'ansible_navigator.main' EDITOR environment variable not set
+220822223509.292 DEBUG 'ansible_navigator.main' Default editor_command set to: vi +{line_number} {filename}
+220822223509.292 DEBUG 'ansible_navigator.main' No config file set by ANSIBLE_NAVIGATOR_CONFIG
+220822223509.292 DEBUG 'ansible_navigator.main' Looking in /home/luvalle
+220822223509.292 DEBUG 'ansible_navigator.main' Looking for '/home/luvalle/.ansible-navigator.yml', '/home/luvalle/.ansible-navigator.yaml' and '/home/luvalle/.ansible-navigator.json'
+220822223509.292 DEBUG 'ansible_navigator.main' Found 0: 
+220822223509.292 DEBUG 'ansible_navigator.main' Looking in /home/luvalle/aap-testing
+220822223509.292 DEBUG 'ansible_navigator.main' Looking for '/home/luvalle/aap-testing/ansible-navigator.yml', '/home/luvalle/aap-testing/ansible-navigator.yaml' and '/home/luvalle/aap-testing/ansible-navigator.json'
+220822223509.292 DEBUG 'ansible_navigator.main' Found 0: 
+220822223509.292 DEBUG 'ansible_navigator.main' All found 0: 
+220822223509.292 DEBUG 'ansible_navigator.main' Using: None
+220822223509.292 DEBUG 'ansible_navigator.main' No valid settings file found, using all default values for settings.
+220822223509.292 DEBUG 'ansible_navigator.main' Command provided: 'run playbooks/gather_facts_networking.yml -i inventory'
+220822223509.293 DEBUG 'ansible_navigator.main' Completed post processing for ansible_runner_artifact_dir. (changed=False)
+220822223509.293 DEBUG 'ansible_navigator.main' Completed post processing for ansible_runner_rotate_artifacts_count. (changed=False)
+220822223509.293 DEBUG 'ansible_navigator.main' Completed post processing for ansible_runner_timeout. (changed=False)
+220822223509.293 DEBUG 'ansible_navigator.main' Completed post processing for cmdline. (changed=False)
+220822223509.293 DEBUG 'ansible_navigator.main' Completed post processing for collection_doc_cache_path. (changed=False)
+220822223509.293 DEBUG 'ansible_navigator.main' Completed post processing for container_engine. (changed=False)
+220822223509.293 DEBUG 'ansible_navigator.main' Completed post processing for container_options. (changed=False)
+220822223509.293 DEBUG 'ansible_navigator.main' Completed post processing for display_color. (changed=False)
+220822223509.293 DEBUG 'ansible_navigator.main' Completed post processing for editor_console. (changed=False)
+220822223509.293 DEBUG 'ansible_navigator.main' Completed post processing for execution_environment. (changed=False)
+220822223509.293 DEBUG 'ansible_navigator.main' Completed post processing for execution_environment_image. (changed=False)
+220822223509.293 DEBUG 'ansible_navigator.main' Completed post processing for execution_environment_volume_mounts. (changed=False)
+220822223509.293 DEBUG 'ansible_navigator.main' Completed post processing for help_config. (changed=False)
+220822223509.293 DEBUG 'ansible_navigator.main' Completed post processing for help_doc. (changed=False)
+220822223509.293 DEBUG 'ansible_navigator.main' Completed post processing for help_inventory. (changed=False)
+220822223509.293 DEBUG 'ansible_navigator.main' Completed post processing for help_playbook. (changed=False)
+220822223509.293 DEBUG 'ansible_navigator.main' Completed post processing for inventory. (changed=True)
+220822223509.293 DEBUG 'ansible_navigator.main'  before: '[['inventory']]'
+220822223509.293 DEBUG 'ansible_navigator.main'  after: '['/home/luvalle/aap-testing/inventory']'
+220822223509.293 DEBUG 'ansible_navigator.main' Completed post processing for inventory_column. (changed=False)
+220822223509.293 DEBUG 'ansible_navigator.main' Completed post processing for log_append. (changed=False)
+220822223509.293 DEBUG 'ansible_navigator.main' Completed post processing for log_file. (changed=False)
+220822223509.293 DEBUG 'ansible_navigator.main' Completed post processing for mode. (changed=False)
+220822223509.293 DEBUG 'ansible_navigator.main' Completed post processing for osc4. (changed=False)
+220822223509.293 DEBUG 'ansible_navigator.main' Completed post processing for pass_environment_variable. (changed=False)
+220822223509.293 DEBUG 'ansible_navigator.main' Completed post processing for playbook. (changed=True)
+220822223509.293 DEBUG 'ansible_navigator.main'  before: 'playbooks/gather_facts_networking.yml'
+220822223509.293 DEBUG 'ansible_navigator.main'  after: '/home/luvalle/aap-testing/playbooks/gather_facts_networking.yml'
+220822223509.293 DEBUG 'ansible_navigator.main' Completed post processing for playbook_artifact_enable. (changed=False)
+220822223509.293 DEBUG 'ansible_navigator.main' Completed post processing for playbook_artifact_replay. (changed=False)
+220822223509.293 DEBUG 'ansible_navigator.main' Completed post processing for plugin_name. (changed=False)
+220822223509.293 DEBUG 'ansible_navigator.main' Completed post processing for set_environment_variable. (changed=False)
+220822223509.293 WARNING 'ansible_navigator.main' Configuration errors encountered, rolling back to previous configuration.
+220822223509.293 DEBUG 'ansible_navigator.main' Prior to rollback: ansible_runner_artifact_dir = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.293 DEBUG 'ansible_navigator.main' Prior to rollback: ansible_runner_rotate_artifacts_count = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.293 DEBUG 'ansible_navigator.main' Prior to rollback: ansible_runner_timeout = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.293 DEBUG 'ansible_navigator.main' Prior to rollback: app = 'run' (str/cli parameters)
+220822223509.293 DEBUG 'ansible_navigator.main' Prior to rollback: cmdline = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.293 DEBUG 'ansible_navigator.main' Prior to rollback: collection_doc_cache_path = '/home/luvalle/.cache/ansible-navigator/collection_doc_cache.db' (str/default configuration value)
+220822223509.294 DEBUG 'ansible_navigator.main' Prior to rollback: config = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.294 DEBUG 'ansible_navigator.main' Prior to rollback: container_engine = 'auto' (str/default configuration value)
+220822223509.294 DEBUG 'ansible_navigator.main' Prior to rollback: container_options = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.294 DEBUG 'ansible_navigator.main' Prior to rollback: display_color = 'True' (bool/default configuration value)
+220822223509.294 DEBUG 'ansible_navigator.main' Prior to rollback: editor_command = 'vi +{line_number} {filename}' (str/default configuration value)
+220822223509.294 DEBUG 'ansible_navigator.main' Prior to rollback: editor_console = 'True' (bool/default configuration value)
+220822223509.294 DEBUG 'ansible_navigator.main' Prior to rollback: execution_environment = 'True' (bool/default configuration value)
+220822223509.294 DEBUG 'ansible_navigator.main' Prior to rollback: execution_environment_image = 'quay.io/ansible/ansible-navigator-demo-ee:0.6.0' (str/default configuration value)
+220822223509.294 DEBUG 'ansible_navigator.main' Prior to rollback: execution_environment_volume_mounts = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.294 DEBUG 'ansible_navigator.main' Prior to rollback: help_config = 'False' (bool/default configuration value)
+220822223509.294 DEBUG 'ansible_navigator.main' Prior to rollback: help_doc = 'False' (bool/default configuration value)
+220822223509.294 DEBUG 'ansible_navigator.main' Prior to rollback: help_inventory = 'False' (bool/default configuration value)
+220822223509.294 DEBUG 'ansible_navigator.main' Prior to rollback: help_playbook = 'False' (bool/default configuration value)
+220822223509.294 DEBUG 'ansible_navigator.main' Prior to rollback: inventory = '['/home/luvalle/aap-testing/inventory']' (list/cli parameters)
+220822223509.294 DEBUG 'ansible_navigator.main' Prior to rollback: inventory_column = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.294 DEBUG 'ansible_navigator.main' Prior to rollback: log_append = 'True' (bool/default configuration value)
+220822223509.294 DEBUG 'ansible_navigator.main' Prior to rollback: log_file = '/home/luvalle/aap-testing/ansible-navigator.log' (str/default configuration value)
+220822223509.294 DEBUG 'ansible_navigator.main' Prior to rollback: log_level = 'warning' (str/default configuration value)
+220822223509.294 DEBUG 'ansible_navigator.main' Prior to rollback: mode = 'interactive' (str/default configuration value)
+220822223509.294 DEBUG 'ansible_navigator.main' Prior to rollback: osc4 = 'True' (bool/default configuration value)
+220822223509.294 DEBUG 'ansible_navigator.main' Prior to rollback: pass_environment_variable = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.294 DEBUG 'ansible_navigator.main' Prior to rollback: playbook = '/home/luvalle/aap-testing/playbooks/gather_facts_networking.yml' (str/cli parameters)
+220822223509.294 DEBUG 'ansible_navigator.main' Prior to rollback: playbook_artifact_enable = 'True' (bool/default configuration value)
+220822223509.294 DEBUG 'ansible_navigator.main' Prior to rollback: playbook_artifact_replay = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.294 DEBUG 'ansible_navigator.main' Prior to rollback: playbook_artifact_save_as = '{playbook_dir}/{playbook_name}-artifact-{ts_utc}.json' (str/default configuration value)
+220822223509.294 DEBUG 'ansible_navigator.main' Prior to rollback: plugin_name = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.294 DEBUG 'ansible_navigator.main' Prior to rollback: plugin_type = 'module' (str/default configuration value)
+220822223509.294 DEBUG 'ansible_navigator.main' Prior to rollback: pull_policy = 'tag' (str/default configuration value)
+220822223509.294 DEBUG 'ansible_navigator.main' Prior to rollback: set_environment_variable = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.294 DEBUG 'ansible_navigator.main' After rollback: ansible_runner_artifact_dir = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.294 DEBUG 'ansible_navigator.main' After rollback: ansible_runner_rotate_artifacts_count = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.294 DEBUG 'ansible_navigator.main' After rollback: ansible_runner_timeout = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.294 DEBUG 'ansible_navigator.main' After rollback: app = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.294 DEBUG 'ansible_navigator.main' After rollback: cmdline = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.294 DEBUG 'ansible_navigator.main' After rollback: collection_doc_cache_path = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.294 DEBUG 'ansible_navigator.main' After rollback: config = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.294 DEBUG 'ansible_navigator.main' After rollback: container_engine = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.294 DEBUG 'ansible_navigator.main' After rollback: container_options = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.294 DEBUG 'ansible_navigator.main' After rollback: display_color = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.294 DEBUG 'ansible_navigator.main' After rollback: editor_command = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.295 DEBUG 'ansible_navigator.main' After rollback: editor_console = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.295 DEBUG 'ansible_navigator.main' After rollback: execution_environment = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.295 DEBUG 'ansible_navigator.main' After rollback: execution_environment_image = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.295 DEBUG 'ansible_navigator.main' After rollback: execution_environment_volume_mounts = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.295 DEBUG 'ansible_navigator.main' After rollback: help_config = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.295 DEBUG 'ansible_navigator.main' After rollback: help_doc = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.295 DEBUG 'ansible_navigator.main' After rollback: help_inventory = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.295 DEBUG 'ansible_navigator.main' After rollback: help_playbook = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.295 DEBUG 'ansible_navigator.main' After rollback: inventory = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.295 DEBUG 'ansible_navigator.main' After rollback: inventory_column = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.295 DEBUG 'ansible_navigator.main' After rollback: log_append = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.295 DEBUG 'ansible_navigator.main' After rollback: log_file = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.295 DEBUG 'ansible_navigator.main' After rollback: log_level = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.295 DEBUG 'ansible_navigator.main' After rollback: mode = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.295 DEBUG 'ansible_navigator.main' After rollback: osc4 = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.295 DEBUG 'ansible_navigator.main' After rollback: pass_environment_variable = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.295 DEBUG 'ansible_navigator.main' After rollback: playbook = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.295 DEBUG 'ansible_navigator.main' After rollback: playbook_artifact_enable = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.295 DEBUG 'ansible_navigator.main' After rollback: playbook_artifact_replay = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.295 DEBUG 'ansible_navigator.main' After rollback: playbook_artifact_save_as = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.295 DEBUG 'ansible_navigator.main' After rollback: plugin_name = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.295 DEBUG 'ansible_navigator.main' After rollback: plugin_type = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.295 DEBUG 'ansible_navigator.main' After rollback: pull_policy = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.295 DEBUG 'ansible_navigator.main' After rollback: set_environment_variable = 'Constants.NOT_SET' (Constants/value has not been set)
+220822223509.295 DEBUG 'ansible_navigator.main' Configuration rollback complete.
+220822223509.295 ERROR 'ansible_navigator.main' Command provided: 'run playbooks/gather_facts_networking.yml -i inventory'
+220822223509.295 ERROR 'ansible_navigator.main' No container engine could be found: 'auto', set by 'default configuration value'
+220822223509.295 INFO 'ansible_navigator.main' Try installing 'podman' or 'docker'
+220822223509.295 ERROR 'ansible_navigator.main' Configuration failed, using default log file location: /home/luvalle/aap-testing/ansible-navigator.log. Log level set to debug
+220822223509.295 INFO 'ansible_navigator.main' Review the hints and log file to see what went wrong: /home/luvalle/aap-testing/ansible-navigator.log
+220823040514.314 WARNING 'ansible_navigator.image_manager.puller._log_message' Image inspection failed, image assumed to be corrupted or missing
+220823045316.354 INFO 'ansible_navigator.setup_logger' New ansible-navigator instance, logging initialized
+220823045316.354 INFO 'ansible_navigator.setup_logger' New ansible-runner instance, logging initialized
+220823045316.354 DEBUG 'ansible_navigator.main' Share directory '/home/luvalle/.local/lib/python3.6/share/ansible_navigator' not found (development path)
+220823045316.354 DEBUG 'ansible_navigator.main' Share directory '/home/luvalle/.local/share/ansible_navigator' found (userbase)
+220823045316.354 DEBUG 'ansible_navigator.main' Default collection_doc_cache_path set to: /home/luvalle/.cache/ansible-navigator/collection_doc_cache.db
+220823045316.354 DEBUG 'ansible_navigator.main' EDITOR environment variable not set
+220823045316.354 DEBUG 'ansible_navigator.main' Default editor_command set to: vi +{line_number} {filename}
+220823045316.354 DEBUG 'ansible_navigator.main' No config file set by ANSIBLE_NAVIGATOR_CONFIG
+220823045316.354 DEBUG 'ansible_navigator.main' Looking in /home/luvalle
+220823045316.354 DEBUG 'ansible_navigator.main' Looking for '/home/luvalle/.ansible-navigator.yml', '/home/luvalle/.ansible-navigator.yaml' and '/home/luvalle/.ansible-navigator.json'
+220823045316.354 DEBUG 'ansible_navigator.main' Found 0: 
+220823045316.354 DEBUG 'ansible_navigator.main' Looking in /home/luvalle/aap-testing
+220823045316.354 DEBUG 'ansible_navigator.main' Looking for '/home/luvalle/aap-testing/ansible-navigator.yml', '/home/luvalle/aap-testing/ansible-navigator.yaml' and '/home/luvalle/aap-testing/ansible-navigator.json'
+220823045316.354 DEBUG 'ansible_navigator.main' Found 0: 
+220823045316.354 DEBUG 'ansible_navigator.main' All found 0: 
+220823045316.354 DEBUG 'ansible_navigator.main' Using: None
+220823045316.354 DEBUG 'ansible_navigator.main' No valid settings file found, using all default values for settings.
+220823045316.355 DEBUG 'ansible_navigator.main' Command provided: 'run'
+220823045316.355 DEBUG 'ansible_navigator.main' Completed post processing for ansible_runner_artifact_dir. (changed=False)
+220823045316.355 DEBUG 'ansible_navigator.main' Completed post processing for ansible_runner_rotate_artifacts_count. (changed=False)
+220823045316.355 DEBUG 'ansible_navigator.main' Completed post processing for ansible_runner_timeout. (changed=False)
+220823045316.355 DEBUG 'ansible_navigator.main' Completed post processing for cmdline. (changed=False)
+220823045316.355 DEBUG 'ansible_navigator.main' Completed post processing for collection_doc_cache_path. (changed=False)
+220823045316.355 DEBUG 'ansible_navigator.main' Completed post processing for container_engine. (changed=True)
+220823045316.355 DEBUG 'ansible_navigator.main'  before: 'auto'
+220823045316.355 DEBUG 'ansible_navigator.main'  after: 'podman'
+220823045316.355 DEBUG 'ansible_navigator.main' Completed post processing for container_options. (changed=False)
+220823045316.355 DEBUG 'ansible_navigator.main' Completed post processing for display_color. (changed=False)
+220823045316.355 DEBUG 'ansible_navigator.main' Completed post processing for editor_console. (changed=False)
+220823045316.355 DEBUG 'ansible_navigator.main' Completed post processing for execution_environment. (changed=False)
+220823045316.355 DEBUG 'ansible_navigator.main' Completed post processing for execution_environment_image. (changed=False)
+220823045316.355 DEBUG 'ansible_navigator.main' Completed post processing for execution_environment_volume_mounts. (changed=False)
+220823045316.355 DEBUG 'ansible_navigator.main' Completed post processing for help_config. (changed=False)
+220823045316.355 DEBUG 'ansible_navigator.main' Completed post processing for help_doc. (changed=False)
+220823045316.355 DEBUG 'ansible_navigator.main' Completed post processing for help_inventory. (changed=False)
+220823045316.355 DEBUG 'ansible_navigator.main' Completed post processing for help_playbook. (changed=False)
+220823045316.355 DEBUG 'ansible_navigator.main' Completed post processing for inventory. (changed=False)
+220823045316.355 DEBUG 'ansible_navigator.main' Completed post processing for inventory_column. (changed=False)
+220823045316.355 DEBUG 'ansible_navigator.main' Completed post processing for log_append. (changed=False)
+220823045316.355 DEBUG 'ansible_navigator.main' Completed post processing for log_file. (changed=False)
+220823045316.355 DEBUG 'ansible_navigator.main' Completed post processing for mode. (changed=False)
+220823045316.355 DEBUG 'ansible_navigator.main' Completed post processing for osc4. (changed=False)
+220823045316.355 DEBUG 'ansible_navigator.main' Completed post processing for pass_environment_variable. (changed=False)
+220823045316.355 DEBUG 'ansible_navigator.main' Completed post processing for playbook. (changed=False)
+220823045316.355 DEBUG 'ansible_navigator.main' Completed post processing for playbook_artifact_enable. (changed=False)
+220823045316.355 DEBUG 'ansible_navigator.main' Completed post processing for playbook_artifact_replay. (changed=False)
+220823045316.355 DEBUG 'ansible_navigator.main' Completed post processing for plugin_name. (changed=False)
+220823045316.356 DEBUG 'ansible_navigator.main' Completed post processing for set_environment_variable. (changed=False)
+220823045316.356 WARNING 'ansible_navigator.main' Configuration errors encountered, rolling back to previous configuration.
+220823045316.356 DEBUG 'ansible_navigator.main' Prior to rollback: ansible_runner_artifact_dir = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.356 DEBUG 'ansible_navigator.main' Prior to rollback: ansible_runner_rotate_artifacts_count = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.356 DEBUG 'ansible_navigator.main' Prior to rollback: ansible_runner_timeout = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.356 DEBUG 'ansible_navigator.main' Prior to rollback: app = 'run' (str/cli parameters)
+220823045316.356 DEBUG 'ansible_navigator.main' Prior to rollback: cmdline = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.356 DEBUG 'ansible_navigator.main' Prior to rollback: collection_doc_cache_path = '/home/luvalle/.cache/ansible-navigator/collection_doc_cache.db' (str/default configuration value)
+220823045316.356 DEBUG 'ansible_navigator.main' Prior to rollback: config = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.356 DEBUG 'ansible_navigator.main' Prior to rollback: container_engine = 'podman' (str/default configuration value)
+220823045316.356 DEBUG 'ansible_navigator.main' Prior to rollback: container_options = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.356 DEBUG 'ansible_navigator.main' Prior to rollback: display_color = 'True' (bool/default configuration value)
+220823045316.356 DEBUG 'ansible_navigator.main' Prior to rollback: editor_command = 'vi +{line_number} {filename}' (str/default configuration value)
+220823045316.356 DEBUG 'ansible_navigator.main' Prior to rollback: editor_console = 'True' (bool/default configuration value)
+220823045316.356 DEBUG 'ansible_navigator.main' Prior to rollback: execution_environment = 'True' (bool/default configuration value)
+220823045316.356 DEBUG 'ansible_navigator.main' Prior to rollback: execution_environment_image = 'quay.io/ansible/ansible-navigator-demo-ee:0.6.0' (str/default configuration value)
+220823045316.356 DEBUG 'ansible_navigator.main' Prior to rollback: execution_environment_volume_mounts = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.356 DEBUG 'ansible_navigator.main' Prior to rollback: help_config = 'False' (bool/default configuration value)
+220823045316.356 DEBUG 'ansible_navigator.main' Prior to rollback: help_doc = 'False' (bool/default configuration value)
+220823045316.356 DEBUG 'ansible_navigator.main' Prior to rollback: help_inventory = 'False' (bool/default configuration value)
+220823045316.356 DEBUG 'ansible_navigator.main' Prior to rollback: help_playbook = 'False' (bool/default configuration value)
+220823045316.356 DEBUG 'ansible_navigator.main' Prior to rollback: inventory = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.356 DEBUG 'ansible_navigator.main' Prior to rollback: inventory_column = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.356 DEBUG 'ansible_navigator.main' Prior to rollback: log_append = 'True' (bool/default configuration value)
+220823045316.356 DEBUG 'ansible_navigator.main' Prior to rollback: log_file = '/home/luvalle/aap-testing/ansible-navigator.log' (str/default configuration value)
+220823045316.356 DEBUG 'ansible_navigator.main' Prior to rollback: log_level = 'warning' (str/default configuration value)
+220823045316.356 DEBUG 'ansible_navigator.main' Prior to rollback: mode = 'interactive' (str/default configuration value)
+220823045316.356 DEBUG 'ansible_navigator.main' Prior to rollback: osc4 = 'True' (bool/default configuration value)
+220823045316.356 DEBUG 'ansible_navigator.main' Prior to rollback: pass_environment_variable = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.356 DEBUG 'ansible_navigator.main' Prior to rollback: playbook = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.356 DEBUG 'ansible_navigator.main' Prior to rollback: playbook_artifact_enable = 'True' (bool/default configuration value)
+220823045316.357 DEBUG 'ansible_navigator.main' Prior to rollback: playbook_artifact_replay = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.357 DEBUG 'ansible_navigator.main' Prior to rollback: playbook_artifact_save_as = '{playbook_dir}/{playbook_name}-artifact-{ts_utc}.json' (str/default configuration value)
+220823045316.357 DEBUG 'ansible_navigator.main' Prior to rollback: plugin_name = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.357 DEBUG 'ansible_navigator.main' Prior to rollback: plugin_type = 'module' (str/default configuration value)
+220823045316.357 DEBUG 'ansible_navigator.main' Prior to rollback: pull_policy = 'tag' (str/default configuration value)
+220823045316.357 DEBUG 'ansible_navigator.main' Prior to rollback: set_environment_variable = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.357 DEBUG 'ansible_navigator.main' After rollback: ansible_runner_artifact_dir = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.357 DEBUG 'ansible_navigator.main' After rollback: ansible_runner_rotate_artifacts_count = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.357 DEBUG 'ansible_navigator.main' After rollback: ansible_runner_timeout = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.357 DEBUG 'ansible_navigator.main' After rollback: app = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.357 DEBUG 'ansible_navigator.main' After rollback: cmdline = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.357 DEBUG 'ansible_navigator.main' After rollback: collection_doc_cache_path = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.357 DEBUG 'ansible_navigator.main' After rollback: config = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.357 DEBUG 'ansible_navigator.main' After rollback: container_engine = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.357 DEBUG 'ansible_navigator.main' After rollback: container_options = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.357 DEBUG 'ansible_navigator.main' After rollback: display_color = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.357 DEBUG 'ansible_navigator.main' After rollback: editor_command = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.357 DEBUG 'ansible_navigator.main' After rollback: editor_console = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.357 DEBUG 'ansible_navigator.main' After rollback: execution_environment = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.357 DEBUG 'ansible_navigator.main' After rollback: execution_environment_image = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.357 DEBUG 'ansible_navigator.main' After rollback: execution_environment_volume_mounts = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.357 DEBUG 'ansible_navigator.main' After rollback: help_config = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.357 DEBUG 'ansible_navigator.main' After rollback: help_doc = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.357 DEBUG 'ansible_navigator.main' After rollback: help_inventory = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.357 DEBUG 'ansible_navigator.main' After rollback: help_playbook = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.357 DEBUG 'ansible_navigator.main' After rollback: inventory = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.357 DEBUG 'ansible_navigator.main' After rollback: inventory_column = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.357 DEBUG 'ansible_navigator.main' After rollback: log_append = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.357 DEBUG 'ansible_navigator.main' After rollback: log_file = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.357 DEBUG 'ansible_navigator.main' After rollback: log_level = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.358 DEBUG 'ansible_navigator.main' After rollback: mode = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.358 DEBUG 'ansible_navigator.main' After rollback: osc4 = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.358 DEBUG 'ansible_navigator.main' After rollback: pass_environment_variable = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.358 DEBUG 'ansible_navigator.main' After rollback: playbook = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.358 DEBUG 'ansible_navigator.main' After rollback: playbook_artifact_enable = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.358 DEBUG 'ansible_navigator.main' After rollback: playbook_artifact_replay = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.358 DEBUG 'ansible_navigator.main' After rollback: playbook_artifact_save_as = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.358 DEBUG 'ansible_navigator.main' After rollback: plugin_name = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.358 DEBUG 'ansible_navigator.main' After rollback: plugin_type = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.358 DEBUG 'ansible_navigator.main' After rollback: pull_policy = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.358 DEBUG 'ansible_navigator.main' After rollback: set_environment_variable = 'Constants.NOT_SET' (Constants/value has not been set)
+220823045316.358 DEBUG 'ansible_navigator.main' Configuration rollback complete.
+220823045316.358 ERROR 'ansible_navigator.main' Command provided: 'run'
+220823045316.358 ERROR 'ansible_navigator.main' A playbook is required when using the run subcommand
+220823045316.358 INFO 'ansible_navigator.main' Try again with 'run <playbook name>'
+220823045316.358 ERROR 'ansible_navigator.main' Configuration failed, using default log file location: /home/luvalle/aap-testing/ansible-navigator.log. Log level set to debug
+220823045316.358 INFO 'ansible_navigator.main' Review the hints and log file to see what went wrong: /home/luvalle/aap-testing/ansible-navigator.log
+220823045347.546 ERROR 'ansible_navigator.actions.collections._parse' /usr/share/ansible/collections/ansible_collections/ovirt/ovirt/plugins/test/ovirt_proxied_check.py AttributeError (get_docstring): 'AnsibleUnicode' object has no attribute 'get'
+220823050339.836 ERROR 'ansible_navigator.image_manager.puller._log_message' Execution environment pull failed
+220823050408.088 ERROR 'ansible_navigator.image_manager.puller._log_message' Execution environment pull failed
+220823050504.561 WARNING 'ansible_navigator.image_manager.puller._log_message' Image inspection failed, image assumed to be corrupted or missing
+220823050626.555 WARNING 'ansible_navigator.run' Dirty exit, killing the pid
+220823050700.765 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050701.612 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050701.944 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050702.183 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050702.481 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050702.770 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050703.119 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050703.475 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050703.791 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050704.102 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050704.418 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050704.918 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050704.949 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050704.983 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050705.010 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050705.053 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050705.081 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050705.109 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050705.131 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050705.158 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050705.186 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050705.231 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050705.259 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050705.281 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050705.308 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050705.336 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050705.367 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050705.398 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050705.428 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050705.459 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050705.492 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050705.527 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050705.556 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050705.601 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050705.617 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050705.644 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050705.671 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050705.700 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050705.730 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050705.874 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050706.109 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050706.356 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050706.702 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050706.948 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050707.195 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050707.441 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050707.682 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050707.913 ERROR 'ansible_navigator.actions.run_8095.run' Can not step back while playbook in progress, :q! to exit
+220823050708.808 WARNING 'ansible_navigator.run' Dirty exit, killing the pid
