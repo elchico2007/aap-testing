@@ -1,0 +1,10 @@
+---
+- name: test
+  hosts: networking
+  gather_facts: false
+  roles:
+    - { role: ../roles/networking-dns }
+
+  # tasks:
+  #   - debug:
+  #       var: group_names.0

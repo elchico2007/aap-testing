@@ -1,0 +1,19 @@
+- name: Configure ipv4 configuration
+  arista.eos.eos_command:
+    commands:
+      - "show ip name-server | json"
+      - "show dns domain | json"
+  register: dns_commands
+
+- name: Set fact
+  set_fact:
+    dns_commands: "{{ dns_commands }}"
+  
+- name: Debug v4NameServers
+  ansible.builtin.debug:
+    var: dns_commands['stdout'][0]['v4NameServers']
+
+- name: Debug domainName
+  ansible.builtin.debug:
+    var: dns_commands['stdout'][1]['domainName']
+  

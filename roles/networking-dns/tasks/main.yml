@@ -1,4 +1,7 @@
 ---
 # tasks file for roles/networking-dns
-- name: Pull DNS domain
-  include_task: "{{ ansible_network_os | split('.') | 2 }}"
+- name: Pull DNS config
+  ansible.builtin.include_tasks: "{{ group_names.0 }}/gather_dns.yml"
+
+- name: Implementation
+  ansible.builtin.include_tasks: "{{ group_names.0 }}/implement_dns.yml"
