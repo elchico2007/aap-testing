@@ -1,0 +1,92 @@
+---
+- name: Ansible apt update all packages on RHEL
+  hosts: all
+  tasks:
+    - name: Get packages that can be upgraded
+      become: yes
+      ansible.builtin.dnf:
+        list: upgrades
+        state: latest
+        update_cache: yes
+      register: reg_dnf_output_all
+      when: ev_security_only == "no"
+    
+    - name: List packages that can be upgraded
+      ansible.builtin.debug: 
+        msg: "{{ reg_dnf_output_all.results | map(attribute='name') | list }}"
+      when: ev_security_only == "no"
+    
+    
+    - name: Get packages that can be patched with security fixes
+      become: yes
+      ansible.builtin.dnf:
+        security: yes
+        list: updates
+        state: latest
+        update_cache: yes
+      register: reg_dnf_output_secu
+      when: ev_security_only == "yes"
+    
+    - name: List packages that can be patched with security fixes
+      ansible.builtin.debug: 
+        msg: "{{ reg_dnf_output_secu.results | map(attribute='name') | list }}"
+      when: ev_security_only == "yes"
+    
+    
+    - name: Request user confirmation
+      ansible.builtin.pause:
+        prompt: | 
+          The packages listed above will be upgraded. Do you want to continue ? 
+          -> Press RETURN to continue.
+          -> Press Ctrl+c and then "a" to abort.
+      when: reg_dnf_output_all is defined or reg_dnf_output_secu is defined
+    
+    - name: Upgrade packages
+      become: yes
+      ansible.builtin.dnf:
+        name: '*'
+        state: latest
+        update_cache: yes
+        update_only: no
+      register: reg_upgrade_ok
+      when: ev_security_only == "no" and reg_dnf_output_all is defined
+    
+    - name: Patch packages
+      become: yes
+      ansible.builtin.dnf:
+        name: '*'
+        security: yes
+        state: latest
+        update_cache: yes
+        update_only: no
+      register: reg_upgrade_ok
+      when: ev_security_only == "yes" and reg_dnf_output_secu is defined
+    
+    - name: Print errors if upgrade failed
+      ansible.builtin.debug:
+        msg: "Packages upgrade failed"
+      when: reg_upgrade_ok is not defined
+    
+    - name: Install dnf-utils
+      become: yes
+      ansible.builtin.dnf:
+        name: 'dnf-utils'
+        state: latest
+        update_cache: yes
+    
+    - name: Check if a reboot is required
+      become: yes
+      command: needs-restarting -r
+      register: reg_reboot_required
+      ignore_errors: yes
+      failed_when: false
+      changed_when: reg_reboot_required.rc != 0
+      notify:
+        - Reboot server 
+  
+  handlers:
+    - name : Reboot server
+      ansible.builtin.reboot:
+        msg: "Reboot initiated by Ansible after OS update"
+        reboot_timeout: 3600
+        test_command: uptime
