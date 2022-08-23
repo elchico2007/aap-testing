@@ -11,7 +11,6 @@
     - name: Upgrade all packages on servers
       ansible.builtin.apt: 
         upgrade: dist
-        force_apt_get: yes
 
     - name: Check if a reboot is needed on all servers
       ansible.builtin.stat: 
