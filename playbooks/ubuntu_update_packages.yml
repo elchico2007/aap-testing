@@ -16,7 +16,6 @@
       ansible.builtin.apt:
         name: nginx
         state: latest
-        default_release: squeeze-backports
         update_cache: yes
 
     - name: Check if a reboot is needed on all servers
