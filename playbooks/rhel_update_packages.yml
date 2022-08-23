@@ -1,5 +1,5 @@
 ---
-- name: Ansible apt update all packages on RHEL
+- name: Ansible update all packages on RHEL
   hosts: all
   tasks:
     - name: Get packages that can be upgraded
@@ -16,7 +16,6 @@
         msg: "{{ reg_dnf_output_all.results | map(attribute='name') | list }}"
       when: ev_security_only == "no"
     
-    
     - name: Get packages that can be patched with security fixes
       become: yes
       ansible.builtin.dnf:
@@ -31,15 +30,6 @@
       ansible.builtin.debug: 
         msg: "{{ reg_dnf_output_secu.results | map(attribute='name') | list }}"
       when: ev_security_only == "yes"
-    
-    
-    - name: Request user confirmation
-      ansible.builtin.pause:
-        prompt: | 
-          The packages listed above will be upgraded. Do you want to continue ? 
-          -> Press RETURN to continue.
-          -> Press Ctrl+c and then "a" to abort.
-      when: reg_dnf_output_all is defined or reg_dnf_output_secu is defined
     
     - name: Upgrade packages
       become: yes
