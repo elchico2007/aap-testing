@@ -9,7 +9,7 @@
         cache_valid_time: 3600
 
     - name: Upgrade all packages on servers
-      ansible.builtin.aptapt: 
+      ansible.builtin.apt: 
         upgrade: dist
         force_apt_get: yes
 
