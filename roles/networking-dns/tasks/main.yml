@@ -1,0 +1,4 @@
+---
+# tasks file for roles/networking-dns
+- name: Pull DNS domain
+  include_task: "{{ ansible_network_os | split('.') | 2 }}"
