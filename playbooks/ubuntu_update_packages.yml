@@ -8,9 +8,18 @@
         force_apt_get: yes
         cache_valid_time: 3600
     
+    - name: Update all packages to their latest version
+      ansible.builtin.apt:
+        name: "*"
+        state: latest
+    
     - name: Remove useless packages from the cache
       ansible.builtin.apt:
         autoclean: yes
+
+    - name: Remove dependencies that are no longer required
+      ansible.builtin.apt:
+        autoremove: yes
 
     - name: Update the repository cache and update package "nginx" to latest version using default release squeeze-backport
       ansible.builtin.apt:
