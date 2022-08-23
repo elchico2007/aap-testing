@@ -18,6 +18,10 @@ ubuntu1.lab.test
 [windows]
 windows1.lab.test
 
+[rhel]
+rhel-9-server.lab.test
+
 [servers:children]
 windows
 ubuntu
+rhel
