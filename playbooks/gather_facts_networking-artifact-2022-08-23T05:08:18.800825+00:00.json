@@ -1,0 +1,993 @@
+{
+    "version": "1.0.0",
+    "plays": [
+        {
+            "playbook": "/home/luvalle/aap-testing/playbooks/gather_facts_networking.yml",
+            "playbook_uuid": "8dee0124-da10-49c4-b96d-4923e0debaf6",
+            "play": "Get Facts",
+            "play_uuid": "8650ed1b-be3a-da18-402d-00000000000a",
+            "play_pattern": "all",
+            "name": "Get Facts",
+            "pattern": "all",
+            "uuid": "8650ed1b-be3a-da18-402d-00000000000a",
+            "__play_name": "Get Facts",
+            "tasks": [
+                {
+                    "playbook": "/home/luvalle/aap-testing/playbooks/gather_facts_networking.yml",
+                    "playbook_uuid": "8dee0124-da10-49c4-b96d-4923e0debaf6",
+                    "play": "Get Facts",
+                    "play_uuid": "8650ed1b-be3a-da18-402d-00000000000a",
+                    "play_pattern": "all",
+                    "task": "Gathering Facts",
+                    "task_uuid": "8650ed1b-be3a-da18-402d-000000000012",
+                    "task_action": "gather_facts",
+                    "resolved_action": null,
+                    "task_args": "",
+                    "task_path": "/home/luvalle/aap-testing/playbooks/gather_facts_networking.yml:2",
+                    "host": "juniper1.lab.test",
+                    "uuid": "03c7dfa8-ed4d-45c8-9649-72a963a81533",
+                    "__host": "juniper1.lab.test",
+                    "__result": "OK",
+                    "__changed": false,
+                    "__duration": "4s",
+                    "__number": 0,
+                    "__task": "Gathering Facts",
+                    "__task_action": "gather_facts",
+                    "remote_addr": "juniper1.lab.test",
+                    "res": {
+                        "ansible_facts": {
+                            "ansible_network_resources": {},
+                            "ansible_net_gather_network_resources": [],
+                            "ansible_net_gather_subset": [
+                                "config",
+                                "interfaces",
+                                "hardware",
+                                "default"
+                            ],
+                            "ansible_net_config": "## Last changed: 2022-08-22 12:54:54 UTC\nversion 22.2R1.9;\nsystem {\n    host-name juniper1;\n    root-authentication {\n        encrypted-password \"$6$kpoS8Wr.$oEvm65T8mi5l6Tf1atJJudETo60125pP/KofjEjEkSHI05jpBh1agiNkowmTxG.uDsGp/T5ReDJ71txWEOw4x/\";\n    }\n    login {\n        user admin {\n            uid 2000;\n            class super-user;\n            authentication {\n                encrypted-password \"$6$IOkLqthJ$u4R.MJZ.FwpDmUq04ytIAdBe2a78EMlko1G8j5OR/EqmhW7dfSmsXCp1VVghvViIZ0nut7vmdczmmB0AHT6Gq/\";\n            }\n        }\n    }\n    services {\n        ssh;\n        netconf {\n            ssh;\n        }\n        rest {\n            http;\n            enable-explorer;\n        }\n        web-management {\n            http {\n                interface fxp0.0;\n            }\n            https {\n                system-generated-certificate;\n                interface fxp0.0;\n            }\n        }\n    }\n    domain-name lab.test;\n    syslog {\n        file interactive-commands {\n            interactive-commands any;\n        }\n        file messages {\n            any any;\n            authorization info;\n        }\n    }\n    license {\n        autoupdate {\n            url https://ae1.juniper.net/junos/key_retrieval;\n        }\n    }\n}\nsecurity {\n    screen {\n        ids-option untrust-screen {\n            icmp {\n                ping-death;\n            }\n            ip {\n                source-route-option;\n                tear-drop;\n            }\n            tcp {\n                syn-flood {\n                    alarm-threshold 1024;\n                    attack-threshold 200;\n                    source-threshold 1024;\n                    destination-threshold 2048;\n                    queue-size 2000;\n                    timeout 20;\n                }\n                land;\n            }\n        }\n    }\n    policies {\n        from-zone trust to-zone trust {\n            policy default-permit {\n                match {\n                    source-address any;\n                    destination-address any;\n                    application any;\n                }\n                then {\n                    permit;\n                }\n            }\n        }\n        from-zone trust to-zone untrust {\n            policy default-permit {\n                match {\n                    source-address any;\n                    destination-address any;\n                    application any;\n                }\n                then {\n                    permit;\n                }\n            }\n        }\n        pre-id-default-policy {\n            then {\n                log {\n                    session-close;\n                }\n            }\n        }\n    }\n    zones {\n        security-zone trust {\n            tcp-rst;\n        }\n        security-zone untrust {\n            screen untrust-screen;\n        }\n    }\n}\ninterfaces {\n    fxp0 {\n        unit 0 {\n            family inet {\n                address 192.168.0.55/24;\n            }\n        }\n    }\n}\nrouting-options {\n    static {\n        route 0.0.0.0/0 next-hop 192.168.0.1;\n    }\n}",
+                            "ansible_net_interfaces": {
+                                "ge-0/0/0": {
+                                    "oper-status": "up",
+                                    "admin-status": "up",
+                                    "speed": "10Gbps",
+                                    "macaddress": "00:0c:29:47:dd:c9",
+                                    "mtu": "1514",
+                                    "type": null
+                                },
+                                "gr-0/0/0": {
+                                    "oper-status": "up",
+                                    "admin-status": "up",
+                                    "speed": "800mbps",
+                                    "macaddress": null,
+                                    "mtu": "Unlimited",
+                                    "type": "GRE"
+                                },
+                                "ip-0/0/0": {
+                                    "oper-status": "up",
+                                    "admin-status": "up",
+                                    "speed": "800mbps",
+                                    "macaddress": null,
+                                    "mtu": "Unlimited",
+                                    "type": "IPIP"
+                                },
+                                "lsq-0/0/0": {
+                                    "oper-status": "up",
+                                    "admin-status": "up",
+                                    "speed": null,
+                                    "macaddress": null,
+                                    "mtu": "1504",
+                                    "type": null
+                                },
+                                "lt-0/0/0": {
+                                    "oper-status": "up",
+                                    "admin-status": "up",
+                                    "speed": "800mbps",
+                                    "macaddress": "02:96:14:dd:bf:b3",
+                                    "mtu": "Unlimited",
+                                    "type": "Logical-tunnel"
+                                },
+                                "mt-0/0/0": {
+                                    "oper-status": "up",
+                                    "admin-status": "up",
+                                    "speed": "800mbps",
+                                    "macaddress": null,
+                                    "mtu": "Unlimited",
+                                    "type": "Multicast-GRE"
+                                },
+                                "sp-0/0/0": {
+                                    "oper-status": "up",
+                                    "admin-status": "up",
+                                    "speed": "800mbps",
+                                    "macaddress": "Unspecified",
+                                    "mtu": "9192",
+                                    "type": "Adaptive-Services"
+                                },
+                                "ge-0/0/1": {
+                                    "oper-status": "up",
+                                    "admin-status": "up",
+                                    "speed": "10Gbps",
+                                    "macaddress": "00:0c:29:47:dd:d3",
+                                    "mtu": "1514",
+                                    "type": null
+                                },
+                                ".local.": {
+                                    "oper-status": "up",
+                                    "admin-status": "up",
+                                    "speed": "Unlimited",
+                                    "macaddress": "Unspecified",
+                                    "mtu": "Unlimited",
+                                    "type": "Loopback"
+                                },
+                                "dsc": {
+                                    "oper-status": "up",
+                                    "admin-status": "up",
+                                    "speed": "Unspecified",
+                                    "macaddress": "Unspecified",
+                                    "mtu": "Unlimited",
+                                    "type": "Software-Pseudo"
+                                },
+                                "fti0": {
+                                    "oper-status": "up",
+                                    "admin-status": "up",
+                                    "speed": "Unlimited",
+                                    "macaddress": "Unspecified",
+                                    "mtu": "Unlimited",
+                                    "type": "FTI"
+                                },
+                                "fxp0": {
+                                    "oper-status": "up",
+                                    "admin-status": "up",
+                                    "speed": "10Gbps",
+                                    "macaddress": "00:0c:29:47:dd:bf",
+                                    "mtu": "1514",
+                                    "type": "Ethernet"
+                                },
+                                "gre": {
+                                    "oper-status": "up",
+                                    "admin-status": "up",
+                                    "speed": "Unlimited",
+                                    "macaddress": null,
+                                    "mtu": "Unlimited",
+                                    "type": "GRE"
+                                },
+                                "ipip": {
+                                    "oper-status": "up",
+                                    "admin-status": "up",
+                                    "speed": "Unlimited",
+                                    "macaddress": null,
+                                    "mtu": "Unlimited",
+                                    "type": "IPIP"
+                                },
+                                "irb": {
+                                    "oper-status": "up",
+                                    "admin-status": "up",
+                                    "speed": "Unspecified",
+                                    "macaddress": "4c:96:14:dd:bf:b0",
+                                    "mtu": "1514",
+                                    "type": "Ethernet"
+                                },
+                                "lo0": {
+                                    "oper-status": "up",
+                                    "admin-status": "up",
+                                    "speed": "Unspecified",
+                                    "macaddress": "Unspecified",
+                                    "mtu": "Unlimited",
+                                    "type": "Loopback"
+                                },
+                                "lsi": {
+                                    "oper-status": "up",
+                                    "admin-status": "up",
+                                    "speed": "Unlimited",
+                                    "macaddress": "Unspecified",
+                                    "mtu": "Unlimited",
+                                    "type": "Software-Pseudo"
+                                },
+                                "mtun": {
+                                    "oper-status": "up",
+                                    "admin-status": "up",
+                                    "speed": "Unlimited",
+                                    "macaddress": null,
+                                    "mtu": "Unlimited",
+                                    "type": "Multicast-GRE"
+                                },
+                                "pimd": {
+                                    "oper-status": "up",
+                                    "admin-status": "up",
+                                    "speed": "Unlimited",
+                                    "macaddress": null,
+                                    "mtu": "Unlimited",
+                                    "type": "PIMD"
+                                },
+                                "pime": {
+                                    "oper-status": "up",
+                                    "admin-status": "up",
+                                    "speed": "Unlimited",
+                                    "macaddress": null,
+                                    "mtu": "Unlimited",
+                                    "type": "PIME"
+                                },
+                                "pp0": {
+                                    "oper-status": "up",
+                                    "admin-status": "up",
+                                    "speed": "Unspecified",
+                                    "macaddress": "Unspecified",
+                                    "mtu": "1532",
+                                    "type": "PPPoE"
+                                },
+                                "ppd0": {
+                                    "oper-status": "up",
+                                    "admin-status": "up",
+                                    "speed": "800mbps",
+                                    "macaddress": null,
+                                    "mtu": "Unlimited",
+                                    "type": "PIMD"
+                                },
+                                "ppe0": {
+                                    "oper-status": "up",
+                                    "admin-status": "up",
+                                    "speed": "800mbps",
+                                    "macaddress": null,
+                                    "mtu": "Unlimited",
+                                    "type": "PIME"
+                                },
+                                "st0": {
+                                    "oper-status": "up",
+                                    "admin-status": "up",
+                                    "speed": "Unspecified",
+                                    "macaddress": null,
+                                    "mtu": "9192",
+                                    "type": "Secure-Tunnel"
+                                },
+                                "tap": {
+                                    "oper-status": "up",
+                                    "admin-status": "up",
+                                    "speed": "Unlimited",
+                                    "macaddress": "Unspecified",
+                                    "mtu": "Unlimited",
+                                    "type": "Software-Pseudo"
+                                },
+                                "vlan": {
+                                    "oper-status": "down",
+                                    "admin-status": "up",
+                                    "speed": "1000mbps",
+                                    "macaddress": "00:00:00:00:00:00",
+                                    "mtu": "1518",
+                                    "type": "VLAN"
+                                }
+                            },
+                            "ansible_net_memfree_mb": 89444,
+                            "ansible_net_memtotal_mb": 4139500,
+                            "ansible_net_filesystems": [
+                                "/dev/gpt/junos",
+                                "tmpfs",
+                                "tmpfs"
+                            ],
+                            "ansible_net_routing_engines": {
+                                "null": {
+                                    "slot": null,
+                                    "status": "Testing",
+                                    "memory_system_total": "4042",
+                                    "memory_system_total_used": "1940",
+                                    "memory_system_total_util": "48",
+                                    "memory_control_plane": "1738",
+                                    "memory_control_plane_used": "487",
+                                    "memory_control_plane_util": "28",
+                                    "memory_data_plane": "2304",
+                                    "memory_data_plane_used": "1452",
+                                    "memory_data_plane_util": "63",
+                                    "cpu_user": "0",
+                                    "cpu_background": "0",
+                                    "cpu_system": "0",
+                                    "cpu_interrupt": "0",
+                                    "cpu_idle": "100",
+                                    "model": "VSRX RE",
+                                    "start_time": "2022-08-22 12:54:06 UTC",
+                                    "up_time": "9 hours, 13 minutes, 58 seconds",
+                                    "last_reboot_reason": "Router rebooted after a normal shutdown.",
+                                    "load_average_one": "1.22",
+                                    "load_average_five": "1.42",
+                                    "load_average_fifteen": "1.41"
+                                }
+                            },
+                            "ansible_net_has_2RE": false,
+                            "ansible_net_modules": [
+                                {
+                                    "name": "Midplane"
+                                },
+                                {
+                                    "name": "System IO"
+                                },
+                                {
+                                    "name": "Routing Engine",
+                                    "description": "VSRX-2CPU-4G memory"
+                                },
+                                {
+                                    "name": "FPC 0",
+                                    "part_number": "BUILTIN",
+                                    "serial_number": "BUILTIN",
+                                    "description": "FPC",
+                                    "chassis_sub_module": null
+                                },
+                                {
+                                    "name": "Power Supply 0"
+                                }
+                            ],
+                            "ansible_net_system": "junos",
+                            "ansible_net_model": "vSRX",
+                            "ansible_net_version": "22.2R1.9",
+                            "ansible_net_hostname": "juniper1",
+                            "ansible_net_api": "netconf",
+                            "ansible_net_python_version": "3.8.13",
+                            "ansible_net_serialnum": "7f5e4d47ddbf"
+                        },
+                        "warnings": [],
+                        "deprecations": [],
+                        "_ansible_verbose_override": true,
+                        "_ansible_no_log": false,
+                        "changed": false
+                    },
+                    "start": "2022-08-23T05:08:07.597926",
+                    "end": "2022-08-23T05:08:12.168781",
+                    "duration": 4.570855,
+                    "event_loop": null
+                },
+                {
+                    "playbook": "/home/luvalle/aap-testing/playbooks/gather_facts_networking.yml",
+                    "playbook_uuid": "8dee0124-da10-49c4-b96d-4923e0debaf6",
+                    "play": "Get Facts",
+                    "play_uuid": "8650ed1b-be3a-da18-402d-00000000000a",
+                    "play_pattern": "all",
+                    "task": "Gathering Facts",
+                    "task_uuid": "8650ed1b-be3a-da18-402d-000000000012",
+                    "task_action": "gather_facts",
+                    "resolved_action": null,
+                    "task_args": "",
+                    "task_path": "/home/luvalle/aap-testing/playbooks/gather_facts_networking.yml:2",
+                    "host": "cisco1.lab.test",
+                    "uuid": "46c532f4-cd21-4b91-aa84-252f5bbe793d",
+                    "__host": "cisco1.lab.test",
+                    "__result": "OK",
+                    "__changed": false,
+                    "__duration": "7s",
+                    "__number": 1,
+                    "__task": "Gathering Facts",
+                    "__task_action": "gather_facts",
+                    "remote_addr": "cisco1.lab.test",
+                    "res": {
+                        "ansible_facts": {
+                            "ansible_network_resources": {},
+                            "ansible_net_gather_network_resources": [],
+                            "ansible_net_gather_subset": [
+                                "hardware",
+                                "config",
+                                "interfaces",
+                                "default"
+                            ],
+                            "ansible_net_filesystems": [
+                                "bootflash:"
+                            ],
+                            "ansible_net_filesystems_info": {
+                                "bootflash:": {
+                                    "spacetotal_kb": 7651972.0,
+                                    "spacefree_kb": 5712836.0
+                                }
+                            },
+                            "ansible_net_memtotal_mb": 2067190.015625,
+                            "ansible_net_memfree_mb": 1756714.3828125,
+                            "ansible_net_config": "Building configuration...\n\nCurrent configuration : 1252 bytes\n!\nversion 15.5\nservice timestamps debug datetime msec\nservice timestamps log datetime msec\nno platform punt-keepalive disable-kernel-core\nplatform console auto\n!\nhostname cisco1\n!\nboot-start-marker\nboot-end-marker\n!\n!\nenable secret 5 $1$cGwy$MGtVbP//62/kDDQuWJYlY/\n!\nno aaa new-model\n!\n!\n!\n!\n!\n!\n!\n!\n!\n\n\nip domain name lab.test\n\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\nsubscriber templating\n!\nmultilink bundle-name authenticated\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\nlicense udi pid CSR1000V sn 92TJ3PF9A6Y\nlicense boot level ax\nspanning-tree extend system-id\n!\nusername admin privilege 15 secret 5 $1$Cjlo$izeaR2PuuZRhRr.D2EARe.\n!\nredundancy\n!\n!\n!\n!\n!\n!\nip ssh version 2\n! \n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n! \n! \n!\n!\ninterface GigabitEthernet1\n ip address 192.168.0.53 255.255.255.0\n negotiation auto\n!\ninterface GigabitEthernet2\n no ip address\n shutdown\n negotiation auto\n!\ninterface GigabitEthernet3\n no ip address\n shutdown\n negotiation auto\n!\n!\nvirtual-service csr_mgmt\n ip shared host-interface GigabitEthernet1\n activate\n!\nip forward-protocol nd\n!\nno ip http server\nip http secure-server\nip route 0.0.0.0 0.0.0.0 192.168.0.1\n!\n!\n!\n!\ncontrol-plane\n!\n !\n !\n !\n !\n!\n!\n!\n!\n!\nline con 0\nline vty 0 4\n login local\n transport input ssh\nline vty 5 15\n login local\n transport input ssh\n!\n!\nend",
+                            "ansible_net_all_ipv4_addresses": [
+                                "192.168.0.53"
+                            ],
+                            "ansible_net_all_ipv6_addresses": [],
+                            "ansible_net_neighbors": {},
+                            "ansible_net_interfaces": {
+                                "GigabitEthernet1": {
+                                    "description": null,
+                                    "macaddress": "000c.2939.d6e3",
+                                    "mtu": 1500,
+                                    "bandwidth": 1000000,
+                                    "mediatype": "RJ45",
+                                    "duplex": "Full",
+                                    "lineprotocol": "up",
+                                    "operstatus": "up",
+                                    "type": "CSR vNIC",
+                                    "ipv4": [
+                                        {
+                                            "address": "192.168.0.53",
+                                            "subnet": "24"
+                                        }
+                                    ]
+                                },
+                                "GigabitEthernet2": {
+                                    "description": null,
+                                    "macaddress": "000c.2939.d6ed",
+                                    "mtu": 1500,
+                                    "bandwidth": 1000000,
+                                    "mediatype": "RJ45",
+                                    "duplex": "Full",
+                                    "lineprotocol": "down",
+                                    "operstatus": "administratively down",
+                                    "type": "CSR vNIC",
+                                    "ipv4": []
+                                },
+                                "GigabitEthernet3": {
+                                    "description": null,
+                                    "macaddress": "000c.2939.d6f7",
+                                    "mtu": 1500,
+                                    "bandwidth": 1000000,
+                                    "mediatype": "RJ45",
+                                    "duplex": "Full",
+                                    "lineprotocol": "down",
+                                    "operstatus": "administratively down",
+                                    "type": "CSR vNIC",
+                                    "ipv4": []
+                                }
+                            },
+                            "ansible_net_system": "ios",
+                            "ansible_net_model": "CSR1000V",
+                            "ansible_net_image": "bootflash:packages.conf",
+                            "ansible_net_version": "03.15.00.S",
+                            "ansible_net_hostname": "cisco1",
+                            "ansible_net_api": "cliconf",
+                            "ansible_net_python_version": "3.8.13",
+                            "ansible_net_iostype": "IOS-XE",
+                            "ansible_net_serialnum": "92TJ3PF9A6Y"
+                        },
+                        "warnings": [],
+                        "deprecations": [],
+                        "_ansible_verbose_override": true,
+                        "_ansible_no_log": false,
+                        "changed": false
+                    },
+                    "start": "2022-08-23T05:08:07.604358",
+                    "end": "2022-08-23T05:08:14.893656",
+                    "duration": 7.289298,
+                    "event_loop": null
+                },
+                {
+                    "playbook": "/home/luvalle/aap-testing/playbooks/gather_facts_networking.yml",
+                    "playbook_uuid": "8dee0124-da10-49c4-b96d-4923e0debaf6",
+                    "play": "Get Facts",
+                    "play_uuid": "8650ed1b-be3a-da18-402d-00000000000a",
+                    "play_pattern": "all",
+                    "task": "Gathering Facts",
+                    "task_uuid": "8650ed1b-be3a-da18-402d-000000000012",
+                    "task_action": "gather_facts",
+                    "resolved_action": null,
+                    "task_args": "",
+                    "task_path": "/home/luvalle/aap-testing/playbooks/gather_facts_networking.yml:2",
+                    "host": "arista1.lab.test",
+                    "uuid": "81a8b5ae-ba79-4e6a-b22a-a6bd63695acc",
+                    "__host": "arista1.lab.test",
+                    "__result": "OK",
+                    "__changed": false,
+                    "__duration": "4s",
+                    "__number": 2,
+                    "__task": "Gathering Facts",
+                    "__task_action": "gather_facts",
+                    "remote_addr": "arista1.lab.test",
+                    "res": {
+                        "ansible_facts": {
+                            "ansible_network_resources": {},
+                            "ansible_net_gather_network_resources": [],
+                            "ansible_net_gather_subset": [
+                                "default",
+                                "config",
+                                "hardware",
+                                "interfaces"
+                            ],
+                            "ansible_net_serialnum": "35B34CD35FBFCAA8E5C58A53B5976A36",
+                            "ansible_net_fqdn": "arista1.lab.test",
+                            "ansible_net_hostname": "arista1",
+                            "ansible_net_system": "eos",
+                            "ansible_net_model": "vEOS-lab",
+                            "ansible_net_version": "4.28.1F",
+                            "ansible_net_api": "cliconf",
+                            "ansible_net_python_version": "3.8.13",
+                            "ansible_net_config": "show running-config\r\n% Invalid input (privileged mode required)\r\narista1>",
+                            "ansible_net_filesystems": [],
+                            "ansible_net_memfree_mb": 1181.1484375,
+                            "ansible_net_memtotal_mb": 1951.875,
+                            "ansible_net_all_ipv4_addresses": [
+                                "192.168.0.54"
+                            ],
+                            "ansible_net_all_ipv6_addresses": [],
+                            "ansible_net_interfaces": {
+                                "Management1": {
+                                    "description": "",
+                                    "macaddress": "00:0c:29:fb:54:96",
+                                    "mtu": 1500,
+                                    "bandwidth": 1000000000,
+                                    "duplex": "duplexFull",
+                                    "lineprotocol": "up",
+                                    "operstatus": "connected",
+                                    "type": "routed",
+                                    "ipv4": {
+                                        "address": "192.168.0.54",
+                                        "masklen": 24
+                                    }
+                                },
+                                "Ethernet2": {
+                                    "description": "Testing Description",
+                                    "macaddress": "00:0c:29:fb:54:aa",
+                                    "mtu": 9214,
+                                    "bandwidth": 1000000000,
+                                    "duplex": "duplexFull",
+                                    "lineprotocol": "up",
+                                    "operstatus": "connected",
+                                    "type": "bridged",
+                                    "ipv4": {}
+                                },
+                                "Ethernet3": {
+                                    "description": "",
+                                    "macaddress": "00:0c:29:fb:54:b4",
+                                    "mtu": 9214,
+                                    "bandwidth": 1000000000,
+                                    "duplex": "duplexFull",
+                                    "lineprotocol": "up",
+                                    "operstatus": "connected",
+                                    "type": "bridged",
+                                    "ipv4": {}
+                                },
+                                "Ethernet1": {
+                                    "description": "Testing Description54",
+                                    "macaddress": "00:0c:29:fb:54:a0",
+                                    "mtu": 9214,
+                                    "bandwidth": 1000000000,
+                                    "duplex": "duplexFull",
+                                    "lineprotocol": "up",
+                                    "operstatus": "connected",
+                                    "type": "bridged",
+                                    "ipv4": {}
+                                }
+                            },
+                            "ansible_net_neighbors": {
+                                "Ethernet1": [
+                                    {
+                                        "host": "arista1.lab.test",
+                                        "port": "Ethernet2"
+                                    },
+                                    {
+                                        "host": "arista1.lab.test",
+                                        "port": "Management1"
+                                    },
+                                    {
+                                        "host": "arista1.lab.test",
+                                        "port": "Ethernet3"
+                                    }
+                                ],
+                                "Ethernet2": [
+                                    {
+                                        "host": "arista1.lab.test",
+                                        "port": "Management1"
+                                    },
+                                    {
+                                        "host": "arista1.lab.test",
+                                        "port": "Ethernet3"
+                                    },
+                                    {
+                                        "host": "arista1.lab.test",
+                                        "port": "Ethernet1"
+                                    }
+                                ],
+                                "Ethernet3": [
+                                    {
+                                        "host": "arista1.lab.test",
+                                        "port": "Ethernet2"
+                                    },
+                                    {
+                                        "host": "arista1.lab.test",
+                                        "port": "Management1"
+                                    },
+                                    {
+                                        "host": "arista1.lab.test",
+                                        "port": "Ethernet1"
+                                    }
+                                ],
+                                "Management1": [
+                                    {
+                                        "host": "arista1.lab.test",
+                                        "port": "Ethernet2"
+                                    },
+                                    {
+                                        "host": "arista1.lab.test",
+                                        "port": "Ethernet3"
+                                    },
+                                    {
+                                        "host": "arista1.lab.test",
+                                        "port": "Ethernet1"
+                                    }
+                                ]
+                            }
+                        },
+                        "warnings": [],
+                        "deprecations": [],
+                        "_ansible_verbose_override": true,
+                        "_ansible_no_log": false,
+                        "changed": false
+                    },
+                    "start": "2022-08-23T05:08:07.611105",
+                    "end": "2022-08-23T05:08:11.739883",
+                    "duration": 4.128778,
+                    "event_loop": null
+                },
+                {
+                    "playbook": "/home/luvalle/aap-testing/playbooks/gather_facts_networking.yml",
+                    "playbook_uuid": "8dee0124-da10-49c4-b96d-4923e0debaf6",
+                    "play": "Get Facts",
+                    "play_uuid": "8650ed1b-be3a-da18-402d-00000000000a",
+                    "play_pattern": "all",
+                    "task": "Get eos Facts",
+                    "task_uuid": "8650ed1b-be3a-da18-402d-00000000000c",
+                    "task_action": "arista.eos.eos_facts",
+                    "resolved_action": "arista.eos.eos_facts",
+                    "task_args": "",
+                    "task_path": "/home/luvalle/aap-testing/playbooks/gather_facts_networking.yml:6",
+                    "host": "juniper1.lab.test",
+                    "uuid": "fa7e64cc-9fe3-4dcd-be8d-dbc154ecf0fa",
+                    "__host": "juniper1.lab.test",
+                    "__result": "SKIPPED",
+                    "__changed": false,
+                    "__duration": "0s",
+                    "__number": 3,
+                    "__task": "Get eos Facts",
+                    "__task_action": "arista.eos.eos_facts",
+                    "remote_addr": "juniper1.lab.test",
+                    "start": "2022-08-23T05:08:14.904444",
+                    "end": "2022-08-23T05:08:14.924058",
+                    "duration": 0.019614,
+                    "event_loop": null
+                },
+                {
+                    "playbook": "/home/luvalle/aap-testing/playbooks/gather_facts_networking.yml",
+                    "playbook_uuid": "8dee0124-da10-49c4-b96d-4923e0debaf6",
+                    "play": "Get Facts",
+                    "play_uuid": "8650ed1b-be3a-da18-402d-00000000000a",
+                    "play_pattern": "all",
+                    "task": "Get eos Facts",
+                    "task_uuid": "8650ed1b-be3a-da18-402d-00000000000c",
+                    "task_action": "arista.eos.eos_facts",
+                    "resolved_action": "arista.eos.eos_facts",
+                    "task_args": "",
+                    "task_path": "/home/luvalle/aap-testing/playbooks/gather_facts_networking.yml:6",
+                    "host": "cisco1.lab.test",
+                    "uuid": "15429b8a-144d-43ed-8541-f1e9e567bd6c",
+                    "__host": "cisco1.lab.test",
+                    "__result": "SKIPPED",
+                    "__changed": false,
+                    "__duration": "0s",
+                    "__number": 4,
+                    "__task": "Get eos Facts",
+                    "__task_action": "arista.eos.eos_facts",
+                    "remote_addr": "cisco1.lab.test",
+                    "start": "2022-08-23T05:08:14.912242",
+                    "end": "2022-08-23T05:08:14.925444",
+                    "duration": 0.013202,
+                    "event_loop": null
+                },
+                {
+                    "playbook": "/home/luvalle/aap-testing/playbooks/gather_facts_networking.yml",
+                    "playbook_uuid": "8dee0124-da10-49c4-b96d-4923e0debaf6",
+                    "play": "Get Facts",
+                    "play_uuid": "8650ed1b-be3a-da18-402d-00000000000a",
+                    "play_pattern": "all",
+                    "task": "Get eos Facts",
+                    "task_uuid": "8650ed1b-be3a-da18-402d-00000000000c",
+                    "task_action": "arista.eos.eos_facts",
+                    "resolved_action": "arista.eos.eos_facts",
+                    "task_args": "",
+                    "task_path": "/home/luvalle/aap-testing/playbooks/gather_facts_networking.yml:6",
+                    "host": "arista1.lab.test",
+                    "uuid": "0265cadd-15ab-4c6a-b6c2-694289459eef",
+                    "__host": "arista1.lab.test",
+                    "__result": "OK",
+                    "__changed": false,
+                    "__duration": "0s",
+                    "__number": 5,
+                    "__task": "Get eos Facts",
+                    "__task_action": "arista.eos.eos_facts",
+                    "remote_addr": "arista1.lab.test",
+                    "res": {
+                        "ansible_facts": {
+                            "ansible_network_resources": {},
+                            "ansible_net_gather_network_resources": [],
+                            "ansible_net_gather_subset": [
+                                "default"
+                            ],
+                            "ansible_net_serialnum": "35B34CD35FBFCAA8E5C58A53B5976A36",
+                            "ansible_net_fqdn": "arista1.lab.test",
+                            "ansible_net_hostname": "arista1",
+                            "ansible_net_system": "eos",
+                            "ansible_net_model": "vEOS-lab",
+                            "ansible_net_version": "4.28.1F",
+                            "ansible_net_api": "cliconf",
+                            "ansible_net_python_version": "3.8.13"
+                        },
+                        "invocation": {
+                            "module_args": {
+                                "gather_subset": [
+                                    "min"
+                                ],
+                                "available_network_resources": false,
+                                "gather_network_resources": null,
+                                "provider": null
+                            }
+                        },
+                        "_ansible_no_log": false,
+                        "changed": false
+                    },
+                    "start": "2022-08-23T05:08:14.920915",
+                    "end": "2022-08-23T05:08:15.790344",
+                    "duration": 0.869429,
+                    "event_loop": null
+                },
+                {
+                    "playbook": "/home/luvalle/aap-testing/playbooks/gather_facts_networking.yml",
+                    "playbook_uuid": "8dee0124-da10-49c4-b96d-4923e0debaf6",
+                    "play": "Get Facts",
+                    "play_uuid": "8650ed1b-be3a-da18-402d-00000000000a",
+                    "play_pattern": "all",
+                    "task": "Get ios Facts",
+                    "task_uuid": "8650ed1b-be3a-da18-402d-00000000000d",
+                    "task_action": "cisco.ios.ios_facts",
+                    "resolved_action": "cisco.ios.ios",
+                    "task_args": "",
+                    "task_path": "/home/luvalle/aap-testing/playbooks/gather_facts_networking.yml:10",
+                    "host": "juniper1.lab.test",
+                    "uuid": "dc89552b-a76e-42b6-a68f-759586831389",
+                    "__host": "juniper1.lab.test",
+                    "__result": "SKIPPED",
+                    "__changed": false,
+                    "__duration": "0s",
+                    "__number": 6,
+                    "__task": "Get ios Facts",
+                    "__task_action": "cisco.ios.ios_facts",
+                    "remote_addr": "juniper1.lab.test",
+                    "start": "2022-08-23T05:08:15.815873",
+                    "end": "2022-08-23T05:08:15.840943",
+                    "duration": 0.02507,
+                    "event_loop": null
+                },
+                {
+                    "playbook": "/home/luvalle/aap-testing/playbooks/gather_facts_networking.yml",
+                    "playbook_uuid": "8dee0124-da10-49c4-b96d-4923e0debaf6",
+                    "play": "Get Facts",
+                    "play_uuid": "8650ed1b-be3a-da18-402d-00000000000a",
+                    "play_pattern": "all",
+                    "task": "Get ios Facts",
+                    "task_uuid": "8650ed1b-be3a-da18-402d-00000000000d",
+                    "task_action": "cisco.ios.ios_facts",
+                    "resolved_action": "cisco.ios.ios",
+                    "task_args": "",
+                    "task_path": "/home/luvalle/aap-testing/playbooks/gather_facts_networking.yml:10",
+                    "host": "cisco1.lab.test",
+                    "uuid": "e3e98fa8-e60c-4c05-b7e2-10f38e8e978d",
+                    "__host": "cisco1.lab.test",
+                    "__result": "OK",
+                    "__changed": false,
+                    "__duration": "1s",
+                    "__number": 7,
+                    "__task": "Get ios Facts",
+                    "__task_action": "cisco.ios.ios_facts",
+                    "remote_addr": "cisco1.lab.test",
+                    "res": {
+                        "ansible_facts": {
+                            "ansible_network_resources": {},
+                            "ansible_net_gather_network_resources": [],
+                            "ansible_net_gather_subset": [
+                                "default"
+                            ],
+                            "ansible_net_system": "ios",
+                            "ansible_net_model": "CSR1000V",
+                            "ansible_net_image": "bootflash:packages.conf",
+                            "ansible_net_version": "03.15.00.S",
+                            "ansible_net_hostname": "cisco1",
+                            "ansible_net_api": "cliconf",
+                            "ansible_net_python_version": "3.8.13",
+                            "ansible_net_iostype": "IOS-XE",
+                            "ansible_net_serialnum": "92TJ3PF9A6Y"
+                        },
+                        "invocation": {
+                            "module_args": {
+                                "gather_subset": [
+                                    "min"
+                                ],
+                                "available_network_resources": false,
+                                "gather_network_resources": null,
+                                "provider": null
+                            }
+                        },
+                        "_ansible_no_log": false,
+                        "changed": false
+                    },
+                    "start": "2022-08-23T05:08:15.826177",
+                    "end": "2022-08-23T05:08:17.287203",
+                    "duration": 1.461026,
+                    "event_loop": null
+                },
+                {
+                    "playbook": "/home/luvalle/aap-testing/playbooks/gather_facts_networking.yml",
+                    "playbook_uuid": "8dee0124-da10-49c4-b96d-4923e0debaf6",
+                    "play": "Get Facts",
+                    "play_uuid": "8650ed1b-be3a-da18-402d-00000000000a",
+                    "play_pattern": "all",
+                    "task": "Get ios Facts",
+                    "task_uuid": "8650ed1b-be3a-da18-402d-00000000000d",
+                    "task_action": "cisco.ios.ios_facts",
+                    "resolved_action": "cisco.ios.ios",
+                    "task_args": "",
+                    "task_path": "/home/luvalle/aap-testing/playbooks/gather_facts_networking.yml:10",
+                    "host": "arista1.lab.test",
+                    "uuid": "5202f2a7-874c-442d-8694-fe36eff6d533",
+                    "__host": "arista1.lab.test",
+                    "__result": "SKIPPED",
+                    "__changed": false,
+                    "__duration": "0s",
+                    "__number": 8,
+                    "__task": "Get ios Facts",
+                    "__task_action": "cisco.ios.ios_facts",
+                    "remote_addr": "arista1.lab.test",
+                    "start": "2022-08-23T05:08:15.837086",
+                    "end": "2022-08-23T05:08:15.849558",
+                    "duration": 0.012472,
+                    "event_loop": null
+                },
+                {
+                    "playbook": "/home/luvalle/aap-testing/playbooks/gather_facts_networking.yml",
+                    "playbook_uuid": "8dee0124-da10-49c4-b96d-4923e0debaf6",
+                    "play": "Get Facts",
+                    "play_uuid": "8650ed1b-be3a-da18-402d-00000000000a",
+                    "play_pattern": "all",
+                    "task": "Get junos Facts",
+                    "task_uuid": "8650ed1b-be3a-da18-402d-00000000000e",
+                    "task_action": "junipernetworks.junos.junos_facts",
+                    "resolved_action": "junipernetworks.junos.junos",
+                    "task_args": "",
+                    "task_path": "/home/luvalle/aap-testing/playbooks/gather_facts_networking.yml:14",
+                    "host": "juniper1.lab.test",
+                    "uuid": "82679bcd-caae-4e06-99df-0caf390ebc41",
+                    "__host": "juniper1.lab.test",
+                    "__result": "OK",
+                    "__changed": false,
+                    "__duration": "0s",
+                    "__number": 9,
+                    "__task": "Get junos Facts",
+                    "__task_action": "junipernetworks.junos.junos_facts",
+                    "remote_addr": "juniper1.lab.test",
+                    "res": {
+                        "ansible_facts": {
+                            "ansible_network_resources": {},
+                            "ansible_net_gather_network_resources": [],
+                            "ansible_net_gather_subset": [
+                                "default"
+                            ],
+                            "ansible_net_system": "junos",
+                            "ansible_net_model": "vSRX",
+                            "ansible_net_version": "22.2R1.9",
+                            "ansible_net_hostname": "juniper1",
+                            "ansible_net_api": "netconf",
+                            "ansible_net_python_version": "3.8.13",
+                            "ansible_net_serialnum": "7f5e4d47ddbf"
+                        },
+                        "invocation": {
+                            "module_args": {
+                                "gather_subset": [
+                                    "min"
+                                ],
+                                "config_format": "text",
+                                "available_network_resources": false,
+                                "gather_network_resources": null,
+                                "provider": null
+                            }
+                        },
+                        "_ansible_no_log": false,
+                        "changed": false
+                    },
+                    "start": "2022-08-23T05:08:17.309620",
+                    "end": "2022-08-23T05:08:18.257898",
+                    "duration": 0.948278,
+                    "event_loop": null
+                },
+                {
+                    "playbook": "/home/luvalle/aap-testing/playbooks/gather_facts_networking.yml",
+                    "playbook_uuid": "8dee0124-da10-49c4-b96d-4923e0debaf6",
+                    "play": "Get Facts",
+                    "play_uuid": "8650ed1b-be3a-da18-402d-00000000000a",
+                    "play_pattern": "all",
+                    "task": "Get junos Facts",
+                    "task_uuid": "8650ed1b-be3a-da18-402d-00000000000e",
+                    "task_action": "junipernetworks.junos.junos_facts",
+                    "resolved_action": "junipernetworks.junos.junos",
+                    "task_args": "",
+                    "task_path": "/home/luvalle/aap-testing/playbooks/gather_facts_networking.yml:14",
+                    "host": "cisco1.lab.test",
+                    "uuid": "d0a086f9-51a2-4931-a2d4-8948bfeabd1b",
+                    "__host": "cisco1.lab.test",
+                    "__result": "SKIPPED",
+                    "__changed": false,
+                    "__duration": "0s",
+                    "__number": 10,
+                    "__task": "Get junos Facts",
+                    "__task_action": "junipernetworks.junos.junos_facts",
+                    "remote_addr": "cisco1.lab.test",
+                    "start": "2022-08-23T05:08:17.316801",
+                    "end": "2022-08-23T05:08:17.328502",
+                    "duration": 0.011701,
+                    "event_loop": null
+                },
+                {
+                    "playbook": "/home/luvalle/aap-testing/playbooks/gather_facts_networking.yml",
+                    "playbook_uuid": "8dee0124-da10-49c4-b96d-4923e0debaf6",
+                    "play": "Get Facts",
+                    "play_uuid": "8650ed1b-be3a-da18-402d-00000000000a",
+                    "play_pattern": "all",
+                    "task": "Get junos Facts",
+                    "task_uuid": "8650ed1b-be3a-da18-402d-00000000000e",
+                    "task_action": "junipernetworks.junos.junos_facts",
+                    "resolved_action": "junipernetworks.junos.junos",
+                    "task_args": "",
+                    "task_path": "/home/luvalle/aap-testing/playbooks/gather_facts_networking.yml:14",
+                    "host": "arista1.lab.test",
+                    "uuid": "e17a7530-76f9-44c7-9de7-1ba4511eca68",
+                    "__host": "arista1.lab.test",
+                    "__result": "SKIPPED",
+                    "__changed": false,
+                    "__duration": "0s",
+                    "__number": 11,
+                    "__task": "Get junos Facts",
+                    "__task_action": "junipernetworks.junos.junos_facts",
+                    "remote_addr": "arista1.lab.test",
+                    "start": "2022-08-23T05:08:17.324420",
+                    "end": "2022-08-23T05:08:17.334440",
+                    "duration": 0.01002,
+                    "event_loop": null
+                }
+            ],
+            "__ok": 6,
+            "__skipped": 6,
+            "__failed": 0,
+            "__unreachable": 0,
+            "__ignored": 0,
+            "__in_progress": 0,
+            "__changed": 0,
+            "__task_count": 12,
+            "__progress": "COMPLETE",
+            "___progress": "83%",
+            "__pcomplete": 100
+        }
+    ],
+    "stdout": [
+        "",
+        "PLAY [Get Facts] ***************************************************************",
+        "",
+        "TASK [Gathering Facts] *********************************************************",
+        "\u001b[1;35m[WARNING]: Ignoring timeout(10) for junipernetworks.junos.junos_facts\u001b[0m",
+        "\u001b[1;35m[WARNING]: Ignoring timeout(10) for cisco.ios.ios_facts\u001b[0m",
+        "\u001b[1;35m[WARNING]: Ignoring timeout(10) for arista.eos.eos_facts\u001b[0m",
+        "\u001b[0;32mok: [arista1.lab.test]\u001b[0m",
+        "\u001b[0;32mok: [juniper1.lab.test]\u001b[0m",
+        "\u001b[0;32mok: [cisco1.lab.test]\u001b[0m",
+        "",
+        "TASK [Get eos Facts] ***********************************************************",
+        "\u001b[0;36mskipping: [juniper1.lab.test]\u001b[0m",
+        "\u001b[0;36mskipping: [cisco1.lab.test]\u001b[0m",
+        "\u001b[0;32mok: [arista1.lab.test]\u001b[0m",
+        "",
+        "TASK [Get ios Facts] ***********************************************************",
+        "\u001b[0;36mskipping: [juniper1.lab.test]\u001b[0m",
+        "\u001b[0;36mskipping: [arista1.lab.test]\u001b[0m",
+        "\u001b[0;32mok: [cisco1.lab.test]\u001b[0m",
+        "",
+        "TASK [Get junos Facts] *********************************************************",
+        "\u001b[0;36mskipping: [cisco1.lab.test]\u001b[0m",
+        "\u001b[0;36mskipping: [arista1.lab.test]\u001b[0m",
+        "\u001b[0;32mok: [juniper1.lab.test]\u001b[0m",
+        "",
+        "PLAY RECAP *********************************************************************",
+        "\u001b[0;32marista1.lab.test\u001b[0m           : \u001b[0;32mok=2   \u001b[0m changed=0    unreachable=0    failed=0    \u001b[0;36mskipped=2   \u001b[0m rescued=0    ignored=0   ",
+        "\u001b[0;32mcisco1.lab.test\u001b[0m            : \u001b[0;32mok=2   \u001b[0m changed=0    unreachable=0    failed=0    \u001b[0;36mskipped=2   \u001b[0m rescued=0    ignored=0   ",
+        "\u001b[0;32mjuniper1.lab.test\u001b[0m          : \u001b[0;32mok=2   \u001b[0m changed=0    unreachable=0    failed=0    \u001b[0;36mskipped=2   \u001b[0m rescued=0    ignored=0   "
+    ],
+    "status": "successful",
+    "status_color": 10
+}

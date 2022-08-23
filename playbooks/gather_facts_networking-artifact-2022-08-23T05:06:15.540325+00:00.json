@@ -1,0 +1,202 @@
+{
+    "version": "1.0.0",
+    "plays": [
+        {
+            "playbook": "/home/luvalle/aap-testing/playbooks/gather_facts_networking.yml",
+            "playbook_uuid": "e96d43f1-6b72-43e5-ae83-f9c03e309b03",
+            "play": "Get Facts",
+            "play_uuid": "9eb4ca0b-626e-5f43-58bb-00000000000a",
+            "play_pattern": "all",
+            "name": "Get Facts",
+            "pattern": "all",
+            "uuid": "9eb4ca0b-626e-5f43-58bb-00000000000a",
+            "__play_name": "Get Facts",
+            "tasks": [
+                {
+                    "playbook": "/home/luvalle/aap-testing/playbooks/gather_facts_networking.yml",
+                    "playbook_uuid": "e96d43f1-6b72-43e5-ae83-f9c03e309b03",
+                    "play": "Get Facts",
+                    "play_uuid": "9eb4ca0b-626e-5f43-58bb-00000000000a",
+                    "play_pattern": "all",
+                    "task": "Gathering Facts",
+                    "task_uuid": "9eb4ca0b-626e-5f43-58bb-000000000012",
+                    "task_action": "gather_facts",
+                    "resolved_action": null,
+                    "task_args": "",
+                    "task_path": "/home/luvalle/aap-testing/playbooks/gather_facts_networking.yml:2",
+                    "host": "juniper1.lab.test",
+                    "uuid": "4fffae67-0b71-4a59-a522-ae154f0f9142",
+                    "__host": "juniper1.lab.test",
+                    "__result": "FAILED",
+                    "__changed": false,
+                    "__duration": "1s",
+                    "__number": 0,
+                    "__task": "Gathering Facts",
+                    "__task_action": "gather_facts",
+                    "remote_addr": "juniper1.lab.test",
+                    "res": {
+                        "ansible_facts": {},
+                        "msg": "The following modules failed to execute: junipernetworks.junos.junos_facts\n",
+                        "failed_modules": {
+                            "junipernetworks.junos.junos_facts": {
+                                "failed": true,
+                                "msg": "No authentication methods available",
+                                "invocation": {
+                                    "module_args": {
+                                        "gather_subset": [
+                                            "all"
+                                        ],
+                                        "config_format": "text",
+                                        "available_network_resources": false,
+                                        "gather_network_resources": null,
+                                        "provider": null
+                                    }
+                                }
+                            }
+                        },
+                        "_ansible_verbose_override": true,
+                        "_ansible_no_log": false,
+                        "changed": false
+                    },
+                    "start": "2022-08-23T05:06:12.958933",
+                    "end": "2022-08-23T05:06:14.291345",
+                    "duration": 1.332412,
+                    "ignore_errors": null,
+                    "event_loop": null
+                },
+                {
+                    "playbook": "/home/luvalle/aap-testing/playbooks/gather_facts_networking.yml",
+                    "playbook_uuid": "e96d43f1-6b72-43e5-ae83-f9c03e309b03",
+                    "play": "Get Facts",
+                    "play_uuid": "9eb4ca0b-626e-5f43-58bb-00000000000a",
+                    "play_pattern": "all",
+                    "task": "Gathering Facts",
+                    "task_uuid": "9eb4ca0b-626e-5f43-58bb-000000000012",
+                    "task_action": "gather_facts",
+                    "resolved_action": null,
+                    "task_args": "",
+                    "task_path": "/home/luvalle/aap-testing/playbooks/gather_facts_networking.yml:2",
+                    "host": "cisco1.lab.test",
+                    "uuid": "f7e27016-9ed7-4902-b97e-aa394374a9d2",
+                    "__host": "cisco1.lab.test",
+                    "__result": "FAILED",
+                    "__changed": false,
+                    "__duration": "1s",
+                    "__number": 1,
+                    "__task": "Gathering Facts",
+                    "__task_action": "gather_facts",
+                    "remote_addr": "cisco1.lab.test",
+                    "res": {
+                        "ansible_facts": {},
+                        "msg": "The following modules failed to execute: cisco.ios.ios_facts\n",
+                        "failed_modules": {
+                            "cisco.ios.ios_facts": {
+                                "failed": true,
+                                "msg": "ssh connection failed: Failed to authenticate public key: Access denied for 'none'. Authentication that can continue: publickey,keyboard-interactive,password",
+                                "invocation": {
+                                    "module_args": {
+                                        "gather_subset": [
+                                            "all"
+                                        ],
+                                        "available_network_resources": false,
+                                        "gather_network_resources": null,
+                                        "provider": null
+                                    }
+                                }
+                            }
+                        },
+                        "_ansible_verbose_override": true,
+                        "_ansible_no_log": false,
+                        "changed": false
+                    },
+                    "start": "2022-08-23T05:06:12.965117",
+                    "end": "2022-08-23T05:06:14.790735",
+                    "duration": 1.825618,
+                    "ignore_errors": null,
+                    "event_loop": null
+                },
+                {
+                    "playbook": "/home/luvalle/aap-testing/playbooks/gather_facts_networking.yml",
+                    "playbook_uuid": "e96d43f1-6b72-43e5-ae83-f9c03e309b03",
+                    "play": "Get Facts",
+                    "play_uuid": "9eb4ca0b-626e-5f43-58bb-00000000000a",
+                    "play_pattern": "all",
+                    "task": "Gathering Facts",
+                    "task_uuid": "9eb4ca0b-626e-5f43-58bb-000000000012",
+                    "task_action": "gather_facts",
+                    "resolved_action": null,
+                    "task_args": "",
+                    "task_path": "/home/luvalle/aap-testing/playbooks/gather_facts_networking.yml:2",
+                    "host": "arista1.lab.test",
+                    "uuid": "8ac1f125-3641-48c3-ba2b-d63bb55e0511",
+                    "__host": "arista1.lab.test",
+                    "__result": "FAILED",
+                    "__changed": false,
+                    "__duration": "2s",
+                    "__number": 2,
+                    "__task": "Gathering Facts",
+                    "__task_action": "gather_facts",
+                    "remote_addr": "arista1.lab.test",
+                    "res": {
+                        "ansible_facts": {},
+                        "msg": "The following modules failed to execute: arista.eos.eos_facts\n",
+                        "failed_modules": {
+                            "arista.eos.eos_facts": {
+                                "failed": true,
+                                "msg": "ssh connection failed: Failed to authenticate public key: Access denied for 'none'. Authentication that can continue: publickey,keyboard-interactive",
+                                "invocation": {
+                                    "module_args": {
+                                        "gather_subset": [
+                                            "all"
+                                        ],
+                                        "available_network_resources": false,
+                                        "gather_network_resources": null,
+                                        "provider": null
+                                    }
+                                }
+                            }
+                        },
+                        "_ansible_verbose_override": true,
+                        "_ansible_no_log": false,
+                        "changed": false
+                    },
+                    "start": "2022-08-23T05:06:12.971731",
+                    "end": "2022-08-23T05:06:15.177319",
+                    "duration": 2.205588,
+                    "ignore_errors": null,
+                    "event_loop": null
+                }
+            ],
+            "__ok": 0,
+            "__skipped": 0,
+            "__failed": 3,
+            "__unreachable": 0,
+            "__ignored": 0,
+            "__in_progress": 0,
+            "__changed": 0,
+            "__task_count": 3,
+            "__progress": "COMPLETE",
+            "___progress": "66%",
+            "__pcomplete": 100
+        }
+    ],
+    "stdout": [
+        "",
+        "PLAY [Get Facts] ***************************************************************",
+        "",
+        "TASK [Gathering Facts] *********************************************************",
+        "\u001b[1;35m[WARNING]: Ignoring timeout(10) for junipernetworks.junos.junos_facts\u001b[0m",
+        "\u001b[1;35m[WARNING]: Ignoring timeout(10) for cisco.ios.ios_facts\u001b[0m",
+        "\u001b[1;35m[WARNING]: Ignoring timeout(10) for arista.eos.eos_facts\u001b[0m",
+        "\u001b[0;31mfatal: [juniper1.lab.test]: FAILED! => {\"ansible_facts\": {}, \"changed\": false, \"failed_modules\": {\"junipernetworks.junos.junos_facts\": {\"failed\": true, \"invocation\": {\"module_args\": {\"available_network_resources\": false, \"config_format\": \"text\", \"gather_network_resources\": null, \"gather_subset\": [\"all\"], \"provider\": null}}, \"msg\": \"No authentication methods available\"}}, \"msg\": \"The following modules failed to execute: junipernetworks.junos.junos_facts\\n\"}\u001b[0m",
+        "\u001b[0;31mfatal: [cisco1.lab.test]: FAILED! => {\"ansible_facts\": {}, \"changed\": false, \"failed_modules\": {\"cisco.ios.ios_facts\": {\"failed\": true, \"invocation\": {\"module_args\": {\"available_network_resources\": false, \"gather_network_resources\": null, \"gather_subset\": [\"all\"], \"provider\": null}}, \"msg\": \"ssh connection failed: Failed to authenticate public key: Access denied for 'none'. Authentication that can continue: publickey,keyboard-interactive,password\"}}, \"msg\": \"The following modules failed to execute: cisco.ios.ios_facts\\n\"}\u001b[0m",
+        "\u001b[0;31mfatal: [arista1.lab.test]: FAILED! => {\"ansible_facts\": {}, \"changed\": false, \"failed_modules\": {\"arista.eos.eos_facts\": {\"failed\": true, \"invocation\": {\"module_args\": {\"available_network_resources\": false, \"gather_network_resources\": null, \"gather_subset\": [\"all\"], \"provider\": null}}, \"msg\": \"ssh connection failed: Failed to authenticate public key: Access denied for 'none'. Authentication that can continue: publickey,keyboard-interactive\"}}, \"msg\": \"The following modules failed to execute: arista.eos.eos_facts\\n\"}\u001b[0m",
+        "",
+        "PLAY RECAP *********************************************************************",
+        "\u001b[0;31marista1.lab.test\u001b[0m           : ok=0    changed=0    unreachable=0    \u001b[0;31mfailed=1   \u001b[0m skipped=0    rescued=0    ignored=0   ",
+        "\u001b[0;31mcisco1.lab.test\u001b[0m            : ok=0    changed=0    unreachable=0    \u001b[0;31mfailed=1   \u001b[0m skipped=0    rescued=0    ignored=0   ",
+        "\u001b[0;31mjuniper1.lab.test\u001b[0m          : ok=0    changed=0    unreachable=0    \u001b[0;31mfailed=1   \u001b[0m skipped=0    rescued=0    ignored=0   "
+    ],
+    "status": "failed",
+    "status_color": 9
+}
