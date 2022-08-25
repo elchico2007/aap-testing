@@ -1,5 +1,0 @@
----
-collections:
-  - name: cisco.ios
-  - name: junipernetworks.junos
-  - name: arista.eos
