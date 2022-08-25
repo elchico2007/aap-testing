@@ -1,0 +1,10 @@
+---
+# Build image using ansible-builder
+# push image to remote repo 'podman push <image name> rhel-9-server.lab.test/<image name>:<tag>'
+version: 1
+build_arg_defaults:
+  EE_BASE_IMAGE: 'quay.io/ansible/ansible-runner:latest'
+dependencies:
+  galaxy: galaxy/requirements.yml
+  python: python/requirements.txt
+  system: system/bindep.txt
