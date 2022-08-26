@@ -1,0 +1,19 @@
+- name: Pull DNS config
+  cisco.ios.ios_command:
+    commands:
+      - "show ip name-server"
+      - "show ip domain"
+  register: dns_commands
+
+- name: Set fact
+  ansible.builtin.set_fact:
+    dns_commands: "{{ dns_commands }}"
+  
+- name: Debug NameServers
+  ansible.builtin.debug:
+    var: dns_commands['stdout_lines'][0]
+
+- name: Debug domainName
+  ansible.builtin.debug:
+    var: dns_commands['stdout'][1]
+  

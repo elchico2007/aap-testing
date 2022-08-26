@@ -1,30 +1,30 @@
 - name: Set servers to remove
   ansible.builtin.set_fact:
     servers_to_remove: "{{ servers_to_remove | default([]) + [ item ] }}"
-  loop: "{{ dns_commands['stdout'][0]['v4NameServers'] }}"
+  loop: "{{ dns_commands['stdout_lines'][0] }}"
   when: item not in dns_servers
 
 - name: Set servers to add
   ansible.builtin.set_fact:
     servers_to_add: "{{ servers_to_add | default([]) + [ item ] }}"
   loop: "{{ dns_servers }}"
-  when: item not in dns_commands['stdout'][0]['v4NameServers'] | default([])
+  when: item not in dns_commands['stdout_lines'][0] | default([])
 
 - name: Remove non-compliant servers
-  arista.eos.eos_config:
+  cisco.ios.ios_config:
     lines:
       - "no ip name-server {{ item }}"
   loop: "{{ servers_to_remove }}"
   when: servers_to_remove | default([]) | length >= 1
 
 - name: Add compliant servers
-  arista.eos.eos_config:
+  cisco.ios.ios_config:
     lines:
       - "ip name-server {{ item }}"
   loop: "{{ servers_to_add }}"
   when: servers_to_add | default([]) | length >= 1
 
 - name: Set dns domain
-  arista.eos.eos_config:
+  cisco.ios.ios_config:
     lines:
-      - "dns domain {{ dns_domain }}"
+      - "ip domain-name {{ dns_domain }}"
