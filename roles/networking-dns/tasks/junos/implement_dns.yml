@@ -22,6 +22,7 @@
     lines:
       - "set system name-server {{ item }}"
     update: replace
+    replace: yes
   loop: "{{ dns_servers }}"
 
 - name: Set dns domain
