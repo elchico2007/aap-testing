@@ -21,8 +21,7 @@
   junipernetworks.junos.junos_config:
     lines:
       - "set system name-server {{ item }}"
-    update: replace
-    replace: yes
+    update: merge
   loop: "{{ dns_servers }}"
 
 - name: Set dns domain
