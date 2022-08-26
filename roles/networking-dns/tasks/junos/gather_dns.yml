@@ -1,11 +1,2 @@
-- name: Pull DNS config
-  junipernetworks.junos.junos_command:
-    commands:
-      - "show configuration"
-    display: json
-  register: dns_commands
-
-- name: Set fact
-  ansible.builtin.set_fact:
-    dns_domain_name: "{{ dns_commands['stdout'][0]['configuration']['system']['domain-name'] }}"
-    dns_domain_servers: "{{ dns_commands['stdout'][0]['configuration']['system']['name-server'] }}"
+---
+# Empty

@@ -1,0 +1,8 @@
+system {
+    replace: domain-name {{ dns_domain | default("local") }};
+    replace: name-server {
+{%- for server in dns_servers | default(['8.8.8.8']) -%}
+        {{ server }};
+{%- endfor -%}
+    }
+}

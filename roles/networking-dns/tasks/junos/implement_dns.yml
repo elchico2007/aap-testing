@@ -1,30 +1,5 @@
-# - name: Set servers to remove
-#   ansible.builtin.set_fact:
-#     servers_to_remove: "{{ servers_to_remove | default([]) + [ item ] }}"
-#   loop: "{{ dns_domain_servers }}"
-#   when: item.name not in dns_servers
-
-# - name: Set servers to add
-#   ansible.builtin.set_fact:
-#     servers_to_add: "{{ servers_to_add | default([]) + [ item ] }}"
-#   loop: "{{ dns_servers }}"
-#   when: item not in dns_domain_servers.values() | list | default([])
-
-# - name: Remove non-compliant servers
-#   junipernetworks.junos.junos_config:
-#     lines:
-#       - "no ip name-server {{ item }}"
-#   loop: "{{ servers_to_remove }}"
-#   when: servers_to_remove | default([]) | length >= 1
-
-- name: Add compliant servers
+- name: Add compliant servers and domain name
   junipernetworks.junos.junos_config:
-    lines:
-      - "set system name-server {{ item }}"
-    update: update
-  loop: "{{ dns_servers }}"
-
-- name: Set dns domain
-  junipernetworks.junos.junos_config:
-    lines:
-      - "set system domain-name {{ dns_domain }}"
+    src: ../templates/junos_dns.j2
+    update: replace
+    src_format: text
