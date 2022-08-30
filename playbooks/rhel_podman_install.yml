@@ -12,7 +12,7 @@
 
     - name: Pull an image
       containers.podman.podman_image:
-        name: httpd
+        name: 'docker.io/library/httpd:latest'
 
     - name: Copying file into home
       ansible.builtin.copy:
