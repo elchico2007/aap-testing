@@ -16,7 +16,7 @@ eos
 ubuntu1.lab.test
 
 [windows]
-windows1.lab.test
+windows-server-2022.lab.test
 
 [rhel]
 rhel-9-server.lab.test
