@@ -28,7 +28,7 @@
         exposed_ports:
           - "{{ exposed_port }}"
         ports:
-          - 4444:"{{ exposed_port }}"
+          - 4444:{{ exposed_port }}
         volumes: /home/:/usr/local/apache2/htdocs/
 
   handlers:
