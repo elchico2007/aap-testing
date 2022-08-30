@@ -24,7 +24,7 @@
       loop: "{{ iis_sites }}"
 
     - name: Create IIS site
-      ansible.windows.win_iis_website:
+      win_iis_website:
         name: "{{ item.name }}"
         state: started
         port: "{{ item.port }}"
@@ -33,7 +33,7 @@
       notify: restart iis service
 
     - name: Open port for site on the firewall
-      ansible.windows.win_firewall_rule:
+      community.windows.win_firewall_rule:
         name: "iisport{{ item.port }}"
         enable: yes
         state: present
@@ -50,7 +50,7 @@
       loop: "{{ iis_sites }}"
 
     - name: Show website addresses
-      debug:
+      ansible.builtin.debug:
         msg: "{{ item }}"
       loop:
         - http://{{ ansible_host }}:8080
