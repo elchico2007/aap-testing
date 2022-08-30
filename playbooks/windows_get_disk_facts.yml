@@ -2,14 +2,14 @@
   hosts: all
   tasks: 
   - name: Get disk facts
-    win_disk_facts:
+    community.windows.win_disk_facts:
 
   - name: Output first disk size
-    debug:
+    ansible.builtin.debug:
       var: ansible_facts.disks[0].size
 
   - name: Convert first system disk into various formats
-    debug:
+    ansible.builtin.debug:
       msg: '{{ disksize_gib }} vs {{ disksize_gib_human }}'
     vars:
       # Get first system disk
