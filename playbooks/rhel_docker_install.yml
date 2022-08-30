@@ -15,7 +15,7 @@
       ansible.builtin.yum_repository:
         name: docker
         description: docker repository
-        baseurl: "https://download.docker.com/linux/{{ mydistribution }}/$releasever/$basearch/stable"
+        baseurl: "https://download.docker.com/linux/centos/8/x86_64/stable/repodata/repomd.xml"
         enabled: true
         gpgcheck: true
         gpgkey: "https://download.docker.com/linux/{{ mydistribution }}/gpg"
