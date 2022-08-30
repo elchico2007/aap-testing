@@ -20,6 +20,7 @@ windows1.lab.test
 
 [rhel]
 rhel-9-server.lab.test
+rhel-9.lab.test
 
 [servers:children]
 windows
