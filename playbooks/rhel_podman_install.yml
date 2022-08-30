@@ -1,0 +1,39 @@
+---
+- name: install Docker
+  hosts: all
+  vars:
+    exposed_port: ""
+  tasks:
+
+    - name: installing podman
+      package:
+        name: "podman"
+        state: present
+
+    - name: Pull an image
+      containers.podman.podman_image:
+        name: httpd
+
+    - name: Copying file into home
+      copy:
+        src: /root/ws1/index.html
+        dest: /home
+
+    - name: Re-create a redis container
+      containers.podman.podman_container:
+        name: sarthak
+        image: httpd
+        state: started
+        detach: true
+        exposed_ports:
+          - "{{ exposed_port }}"
+        ports:
+          - 4444:"{{ exposed_port }}"
+        volumes: /home/:/usr/local/apache2/htdocs/
+
+  handlers:
+      - name: Start Podman
+        ansible.builtin.service:
+          name: "podman"
+          enabled: true
+          state: started
