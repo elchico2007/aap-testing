@@ -6,7 +6,7 @@
   tasks:
 
     - name: installing podman
-      package:
+      ansible.builtin.package:
         name: "podman"
         state: present
 
@@ -15,7 +15,7 @@
         name: httpd
 
     - name: Copying file into home
-      copy:
+      ansible.builtin.copy:
         src: /root/ws1/index.html
         dest: /home
 
