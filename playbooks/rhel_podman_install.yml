@@ -21,14 +21,14 @@
 
     - name: Re-create a redis container
       containers.podman.podman_container:
-        name: sarthak
+        name: webserver
         image: httpd
         state: started
         detach: true
-        exposed_ports:
+        expose:
           - "{{ exposed_port }}"
         ports:
-          - 4444:{{ exposed_port }}
+          - 8080:{{ exposed_port }}
         volumes: /home/:/usr/local/apache2/htdocs/
 
   handlers:
