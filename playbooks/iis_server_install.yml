@@ -53,8 +53,8 @@
       ansible.builtin.debug:
         msg: "{{ item }}"
       loop:
-        - http://{{ ansible_host }}:8080
-        - http://{{ ansible_host }}:8081
+        - http://{{ inventory_hostname }}:8080
+        - http://{{ inventory_hostname }}:8081
 
   handlers:
     - name: restart iis service
