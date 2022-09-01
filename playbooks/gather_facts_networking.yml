@@ -1,5 +1,6 @@
 ---
 - name: Get Facts
+  gather_facts: false
   hosts: all
 
   tasks:
@@ -15,4 +16,6 @@
       junipernetworks.junos.junos_facts:
       when: ansible_network_os == 'junipernetworks.junos.junos'
     
-
+    - name: Print out version for each device
+      debug:
+        var: ansible_facts['ansible_net_version']
