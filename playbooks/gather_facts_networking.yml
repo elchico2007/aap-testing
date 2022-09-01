@@ -18,4 +18,4 @@
     
     - name: Print out version for each device
       debug:
-        var: ansible_facts
+        var: ansible_facts['net_version']
