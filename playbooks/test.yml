@@ -6,3 +6,4 @@
         var: infoblox_username
     - debug:
         var: infoblox_password
+    - command: env
