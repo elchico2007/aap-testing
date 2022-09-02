@@ -16,7 +16,7 @@
 
     - name: Get next available network from parent
       ansible.builtin.set_fact:
-        networkaddr: "{{ lookup('community.general.nios_next_network', parent_network, cidr=cidr, provider=provider) }}"
+        networkaddr: "{{ lookup('infoblox.nios_modules.nios_next_network', parent_network, cidr=cidr, provider=provider) }}"
 
     - name: Register next available network
       ansible.builtin.uri:
