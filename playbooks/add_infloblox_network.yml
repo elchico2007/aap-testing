@@ -1,0 +1,70 @@
+---
+- name: Add ipv4 network to NIOS
+  hosts: all
+  gather_facts: false
+
+  vars:
+    parent_network: 10.1.0.0/16
+    cidr: 24
+    region: North America
+    country: USA
+    state: CA
+    start_dhcp_range: 100
+    end_dhcp_range: 200
+    infoblox_username: admin
+    infoblox_password: infoblox
+    
+  tasks:
+
+    - name: RETURN NEXT AVAILABLE NETWORK
+      ansible.builtin.set_fact:
+        networkaddr: "{{ lookup('infoblox.nios_modules.nios_next_network', parent_network, cidr=cidr, provider=provider) }}"
+
+    - name: CREATE JSON FILE FOR NEW NETWORK
+      ansible.builtin.template:
+        src: templates/new_network.j2
+        dest: new_network.json
+
+    - name: CREATE NETWORK OBJECT AND ASSIGN GRID MEMBER
+      ansible.builtin.uri:
+        url: https://{{ inventory_hostname }}/wapi/v2.11.1/network
+        method: POST
+        user: "{{ infoblox_username }}"
+        password: "{{ infoblox_password }}"
+        body: "{{ lookup('file','new_network.json') }}"
+        body_format: json
+        status_code: 201
+        validate_certs: false
+
+    - name: CREATE JSON FILE FOR NEW DCHP RANGE
+      ansible.builtin.template:
+        src: templates/new_lan_range.j2
+        dest: new_lan_range.json
+
+    - name: CREATE DHCP RANGE FOR NEW NETWORK
+      ansible.builtin.uri:
+        url: https://{{ inventory_hostname }}/wapi/v2.11.1/range
+        method: POST
+        user: "{{ infoblox_username }}"
+        password: "{{ infoblox_password }}"
+        body: "{{ lookup('file','new_lan_range.json') }}"
+        body_format: json
+        status_code: 201
+        validate_certs: false
+
+    - name: UPDATE NEW NETWORK
+      infoblox.nios_modules.nios_network:
+        network: "{{ item }}"
+        comment: Added from Automation Controller
+        extattrs:
+          Region: "{{ region }}"
+          Country: "{{ country }}"
+          State: "{{ state }}"
+        options:
+          - name: domain-name
+            value: example.com
+          - name: routers
+            value: "{{ item | ipaddr('1') | ipaddr('address') }}"
+        state: present
+        provider: "{{ provider }}"
+      loop: "{{ networkaddr }}"

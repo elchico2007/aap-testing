@@ -1,0 +1,11 @@
+{
+     "start_addr": "{{ networkaddr[0] | ipaddr(start_dhcp_range) | ipaddr('address') }}",
+     "end_addr": "{{ networkaddr[0] | ipaddr(end_dhcp_range) | ipaddr('address') }}",
+     "server_association_type": "MEMBER" ,
+     "member": 
+        {
+           "_struct": "dhcpmember",
+           "ipv4addr" : "192.168.0.75"
+        }
+     
+  }

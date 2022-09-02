@@ -1,8 +1,8 @@
 ---
 provider:
-  host: "{{ nios_grid_url }}"
-  username: "{{ nios_grid_username }}"
-  password: "{{ nios_grid_password }}"
+  host: "{{ inventory_hostname }}"
+  username: "{{ infoblox_username }}"
+  password: "{{ infoblox_password }}"
 
 filters:
   extattrs: {}
