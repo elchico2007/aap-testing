@@ -9,62 +9,24 @@
     region: North America
     country: USA
     state: CA
-    start_dhcp_range: 100
-    end_dhcp_range: 200
     infoblox_username: admin
-    infoblox_password: infoblox
+    infoblox_password: infoblox 
     
   tasks:
 
-    - name: RETURN NEXT AVAILABLE NETWORK
+    - name: Get next available network from parent
       ansible.builtin.set_fact:
-        networkaddr: "{{ lookup('infoblox.nios_modules.nios_next_network', parent_network, cidr=cidr, provider=provider) }}"
+        networkaddr: "{{ lookup('community.general.nios_next_network', parent_network, cidr=cidr, provider=provider) }}"
 
-    - name: CREATE JSON FILE FOR NEW NETWORK
-      ansible.builtin.template:
-        src: templates/new_network.j2
-        dest: new_network.json
-
-    - name: CREATE NETWORK OBJECT AND ASSIGN GRID MEMBER
+    - name: Register next available network
       ansible.builtin.uri:
-        url: https://{{ inventory_hostname }}/wapi/v2.11.1/network
-        method: POST
+        url: https://{{ inventory_hostname }}/wapi/v2.1/network?_return_fields%2B=network&_return_as_object=1
         user: "{{ infoblox_username }}"
         password: "{{ infoblox_password }}"
-        body: "{{ lookup('file','new_network.json') }}"
-        body_format: json
-        status_code: 201
-        validate_certs: false
-
-    - name: CREATE JSON FILE FOR NEW DCHP RANGE
-      ansible.builtin.template:
-        src: templates/new_lan_range.j2
-        dest: new_lan_range.json
-
-    - name: CREATE DHCP RANGE FOR NEW NETWORK
-      ansible.builtin.uri:
-        url: https://{{ inventory_hostname }}/wapi/v2.11.1/range
         method: POST
-        user: "{{ infoblox_username }}"
-        password: "{{ infoblox_password }}"
-        body: "{{ lookup('file','new_lan_range.json') }}"
-        body_format: json
+        body: "{{ lookup('ansible.builtin.template','../templates/new_network.j2') }}"
+        force_basic_auth: yes
         status_code: 201
+        body_format: json
         validate_certs: false
-
-    - name: UPDATE NEW NETWORK
-      infoblox.nios_modules.nios_network:
-        network: "{{ item }}"
-        comment: Added from Automation Controller
-        extattrs:
-          Region: "{{ region }}"
-          Country: "{{ country }}"
-          State: "{{ state }}"
-        options:
-          - name: domain-name
-            value: example.com
-          - name: routers
-            value: "{{ item | ipaddr('1') | ipaddr('address') }}"
-        state: present
-        provider: "{{ provider }}"
-      loop: "{{ networkaddr }}"
+      connection: local
