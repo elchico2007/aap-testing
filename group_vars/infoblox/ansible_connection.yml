@@ -1,0 +1,9 @@
+---
+provider:
+  host: "{{ nios_grid_url }}"
+  username: "{{ nios_grid_username }}"
+  password: "{{ nios_grid_password }}"
+
+filters:
+  extattrs: {}
+  view: null

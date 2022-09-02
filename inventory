@@ -22,7 +22,11 @@ windows-server-2022.lab.test
 rhel-9-server.lab.test
 rhel-9.lab.test
 
+[infoblox]
+infoblox-db.lab.test
+
 [servers:children]
 windows
 ubuntu
 rhel
+infoblox
