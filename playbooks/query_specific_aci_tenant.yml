@@ -16,3 +16,8 @@
       validate_certs: false
       state: query
       tenant: "{{ tenant }}"
+    register: query_result
+  
+  - name: Show Query Output
+    ansible.builtin.debug:
+      var: query_result
