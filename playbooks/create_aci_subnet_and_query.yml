@@ -14,7 +14,7 @@
   tasks:
     - name: Create a subnet with options
       cisco.aci.aci_bd_subnet:
-        host: apic
+        host: "{{ inventory_hostname }}"
         username: "{{ lookup('ansible.builtin.env', 'ACI_USERNAME') }}"
         password: "{{ lookup('ansible.builtin.env', 'ACI_PASSWORD') }}"
         tenant: "{{ tenant }}"
@@ -31,7 +31,7 @@
   
     - name: Get specific subnet
       cisco.aci.aci_bd_subnet:
-        host: apic
+        host: "{{ inventory_hostname }}"
         username: "{{ lookup('ansible.builtin.env', 'ACI_USERNAME') }}"
         password: "{{ lookup('ansible.builtin.env', 'ACI_PASSWORD') }}"
         tenant: "{{ tenant }}"
