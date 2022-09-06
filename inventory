@@ -25,6 +25,9 @@ rhel-9.lab.test
 [infoblox]
 infoblox-db.lab.test
 
+[aci]
+sandboxapicdc.cisco.com
+
 [servers:children]
 windows
 ubuntu
