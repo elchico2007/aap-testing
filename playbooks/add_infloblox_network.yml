@@ -9,8 +9,6 @@
     region: North America
     country: USA
     state: CA
-    infoblox_username: admin
-    infoblox_password: infoblox 
     
   tasks:
 
