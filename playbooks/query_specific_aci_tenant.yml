@@ -1,0 +1,15 @@
+---
+- name: ACI Query Automation Controller
+  hosts: all
+  connection: local
+  gather_facts: false
+
+  tasks:
+  - name: Query Tenant
+    cisco.aci.aci_tenant:
+      hostname: "{{ inventory_hostname }}"
+      username: "{{ lookup('ansible.builtin.env', 'ACI_USERNAME') }}"
+      password: "{{ lookup('ansible.builtin.env', 'ACI_PASSWORD') }}"
+      validate_certs: false
+      state: query
+      tenant: "Automation_Controller_test"

@@ -25,6 +25,9 @@ rhel-9.lab.test
 [infoblox]
 infoblox-db.lab.test
 
+[aci]
+sandboxapicdc.cisco.com plugin=zjpeterson.aci.aci_inventory validate_certs=false
+
 [servers:children]
 windows
 ubuntu
