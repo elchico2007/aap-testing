@@ -1,7 +1,6 @@
 ---
 - name: ACI Create Subnet then Query it
   hosts: all
-  connection: local
   gather_facts: false
 
   vars:
@@ -17,6 +16,7 @@
         host: "{{ inventory_hostname }}"
         username: "{{ lookup('ansible.builtin.env', 'ACI_USERNAME') }}"
         password: "{{ lookup('ansible.builtin.env', 'ACI_PASSWORD') }}"
+        validate_certs: false
         tenant: "{{ tenant }}"
         bd: database
         subnet_name: "{{ subnet_name }}"
@@ -34,6 +34,7 @@
         host: "{{ inventory_hostname }}"
         username: "{{ lookup('ansible.builtin.env', 'ACI_USERNAME') }}"
         password: "{{ lookup('ansible.builtin.env', 'ACI_PASSWORD') }}"
+        validate_certs: false
         tenant: "{{ tenant }}"
         bd: database
         gateway: "{{ subnet_gateway }}"
