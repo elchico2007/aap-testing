@@ -1,0 +1,4 @@
+---
+plugin: zjpeterson.aci.aci_inventory
+host: sandboxapicdc.cisco.com
+validate_certs: no
