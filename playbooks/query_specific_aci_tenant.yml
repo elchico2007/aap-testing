@@ -16,6 +16,7 @@
       validate_certs: false
       state: query
       tenant: "{{ tenant }}"
+      output_level: debug
     register: query_result
   
   - name: Show Query Output
