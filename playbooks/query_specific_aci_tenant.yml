@@ -4,6 +4,9 @@
   connection: local
   gather_facts: false
 
+  vars:
+    tenant: ""
+
   tasks:
   - name: Query Tenant
     cisco.aci.aci_tenant:
@@ -12,4 +15,4 @@
       password: "{{ lookup('ansible.builtin.env', 'ACI_PASSWORD') }}"
       validate_certs: false
       state: query
-      tenant: "Automation_Controller_test"
+      tenant: "{{ tenant }}"

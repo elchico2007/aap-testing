@@ -1,0 +1,47 @@
+---
+- name: ACI Create Subnet then Query it
+  hosts: all
+  connection: local
+  gather_facts: false
+
+  vars:
+    subnet_desc: ""
+    cidr: ""
+    subnet_gateway: ""
+    subnet_name: ""
+    tenant: ""
+
+  tasks:
+    - name: Create a subnet with options
+      cisco.aci.aci_bd_subnet:
+        host: apic
+        username: "{{ lookup('ansible.builtin.env', 'ACI_USERNAME') }}"
+        password: "{{ lookup('ansible.builtin.env', 'ACI_PASSWORD') }}"
+        tenant: "{{ tenant }}"
+        bd: database
+        subnet_name: "{{ subnet_name }}"
+        gateway: "{{ subnet_gateway }}"
+        mask: "{{ cidr }}"
+        description: "{{ subnet_desc }}"
+        scope: public
+        route_profile_l3_out: corp
+        route_profile: corp_route_profile
+        state: present
+      delegate_to: localhost
+  
+    - name: Get specific subnet
+      cisco.aci.aci_bd_subnet:
+        host: apic
+        username: "{{ lookup('ansible.builtin.env', 'ACI_USERNAME') }}"
+        password: "{{ lookup('ansible.builtin.env', 'ACI_PASSWORD') }}"
+        tenant: "{{ tenant }}"
+        bd: database
+        gateway: "{{ subnet_gateway }}"
+        mask: "{{ cidr }}"
+        state: query
+      delegate_to: localhost
+      register: query_result
+    
+    - name: Show Subnet output
+      ansible.builtin.debug:
+        var: query_result
