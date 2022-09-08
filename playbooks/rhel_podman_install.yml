@@ -19,7 +19,8 @@
     - name: Copying file into home
       ansible.builtin.copy:
         src: ../templates/index.j2
-        dest: /home
+        dest: /home/luvalle/index.html
+        mode: 0777
 
     - name: Re-create a redis container
       containers.podman.podman_container:
@@ -31,7 +32,7 @@
           - "{{ exposed_port }}"
         ports:
           - "{{ exposed_port }}:80"
-        volumes: /home/:/usr/local/apache2/htdocs/:exec
+        volumes: /home/luvalle/:/usr/local/apache2/htdocs/:exec
 
   handlers:
       - name: Start Podman
