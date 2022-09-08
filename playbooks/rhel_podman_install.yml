@@ -36,8 +36,7 @@
           - "{{ exposed_port }}"
         ports:
           - "{{ exposed_port }}:80"
-        volumes: /tmp/:/usr/local/apache2/htdocs/:exec
-      become: false
+        # volumes: /tmp/:/usr/local/apache2/htdocs/:exec
 
   handlers:
       - name: Start Podman
