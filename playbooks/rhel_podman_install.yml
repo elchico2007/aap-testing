@@ -21,7 +21,7 @@
         src: ../templates/index.j2
         dest: /home/luvalle/index.html
         mode: 0777
-        user: luvalle
+        owner: luvalle
         group: luvalle
 
     - name: Re-create a redis container
