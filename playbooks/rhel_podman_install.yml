@@ -19,7 +19,7 @@
       become: true
 
     - name: Copying file into home
-      ansible.builtin.copy:
+      ansible.builtin.template:
         src: ../templates/index.j2
         dest: /tmp/index.html
         mode: 0777
@@ -37,6 +37,7 @@
         ports:
           - "{{ exposed_port }}:80"
         volumes: /tmp/:/usr/local/apache2/htdocs/:exec
+      become: false
 
   handlers:
       - name: Start Podman
