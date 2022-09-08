@@ -19,7 +19,7 @@
     - name: Copying file into home
       ansible.builtin.copy:
         src: ../templates/index.j2
-        dest: /home/luvalle/index.html
+        dest: /tmp
         mode: 0777
         owner: luvalle
         group: luvalle
@@ -34,7 +34,7 @@
           - "{{ exposed_port }}"
         ports:
           - "{{ exposed_port }}:80"
-        volumes: /home/luvalle/:/usr/local/apache2/htdocs/:exec
+        volumes: /home/tmp/:/usr/local/apache2/htdocs/:exec
 
   handlers:
       - name: Start Podman
