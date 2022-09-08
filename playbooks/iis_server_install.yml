@@ -45,7 +45,7 @@
 
     - name: Template simple web site to iis_site_path as index.html
       ansible.windows.win_template:
-        src: '../templates/windows_index.j2'
+        src: '../templates/index.j2'
         dest: '{{ item.path }}\index.html'
       loop: "{{ iis_sites }}"
 

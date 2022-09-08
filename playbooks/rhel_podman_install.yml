@@ -16,7 +16,7 @@
 
     - name: Copying file into home
       ansible.builtin.copy:
-        src: ../templates/windows_index.j2
+        src: ../templates/index.j2
         dest: /home
 
     - name: Re-create a redis container
