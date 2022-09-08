@@ -28,7 +28,7 @@
         expose:
           - "{{ exposed_port }}"
         ports:
-          - 8080:{{ exposed_port }}
+          - 80:{{ exposed_port }}
         volumes: /home/:/usr/local/apache2/htdocs/
 
   handlers:
