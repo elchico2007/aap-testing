@@ -25,7 +25,7 @@
       containers.podman.podman_container:
         name: webserver
         image: httpd
-        state: restarted
+        state: started
         detach: true
         expose:
           - "{{ exposed_port }}"
