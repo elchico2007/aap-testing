@@ -13,7 +13,7 @@
 
     - name: Pull image
       containers.podman.podman_image:
-        name: httpd
+        name: 'docker.io/library/nginx'
         pull: true
         tag: latest
       become: true
@@ -29,14 +29,14 @@
     - name: Re-create a redis container
       containers.podman.podman_container:
         name: webserver
-        image: httpd
+        image: 'docker.io/library/nginx'
         state: started
         detach: true
         expose:
           - "{{ exposed_port }}"
         ports:
           - "{{ exposed_port }}:80"
-        # volumes: /tmp/:/usr/local/apache2/htdocs/:exec
+        volumes: /tmp/:/usr/share/nginx/html/
 
   handlers:
       - name: Start Podman
