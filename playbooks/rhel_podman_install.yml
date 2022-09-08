@@ -9,12 +9,14 @@
       ansible.builtin.package:
         name: "podman"
         state: latest
+      become: true
 
     - name: Pull image
       containers.podman.podman_image:
         name: httpd
         pull: true
         tag: latest
+      become: true
 
     - name: Copying file into home
       ansible.builtin.copy:
