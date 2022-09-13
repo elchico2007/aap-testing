@@ -36,7 +36,7 @@
           - "{{ exposed_port }}"
         ports:
           - "{{ exposed_port }}:80"
-        #volumes: /tmp/:/usr/share/nginx/html/
+        volumes: /tmp/:/usr/share/nginx/html/
 
   handlers:
       - name: Start Podman
