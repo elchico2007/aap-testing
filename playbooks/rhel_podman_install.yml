@@ -23,8 +23,8 @@
         src: ../templates/index.j2
         dest: /tmp/index.html
         mode: 0777
-        owner: luvalle
-        group: luvalle
+        owner: root
+        group: root
 
     - name: Re-create a redis container
       containers.podman.podman_container:
