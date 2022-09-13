@@ -3,8 +3,8 @@
   hosts: all
   gather_facts: false
   vars:
-    exposed_port: "8085"
-    webserver_msg: "I lova my wife Anh"
+    exposed_port: ""
+    webserver_msg: ""
   tasks:
     - name: installing podman
       ansible.builtin.package:
