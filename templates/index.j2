@@ -2,7 +2,7 @@
 <body>
 
   <p align=center><img src='http://docs.ansible.com/images/logo.png' align=center>
-  <h1 align=center>{{ ansible_hostname }} --- {{ iis_test_message | default("Welcome to the Webserver") }}</h1>
+  <h1 align=center>{{ inventory_hostname }} --- {{ webserver_msg | default("Welcome to the Webserver") }}</h1>
 
 </body>
 </html>

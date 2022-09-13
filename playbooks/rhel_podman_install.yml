@@ -1,10 +1,11 @@
 ---
 - name: Install Podman and run http container
   hosts: all
+  gather_facts: false
   vars:
     exposed_port: ""
+    webserver_msg: ""
   tasks:
-
     - name: installing podman
       ansible.builtin.package:
         name: "podman"
@@ -18,13 +19,11 @@
         tag: latest
       become: true
 
-    - name: Copying file into home
+    - name: Copying file into tmp
       ansible.builtin.template:
         src: ../templates/index.j2
         dest: /tmp/index.html
         mode: 0777
-        owner: luvalle
-        group: luvalle
 
     - name: Re-create a redis container
       containers.podman.podman_container:
@@ -36,7 +35,9 @@
           - "{{ exposed_port }}"
         ports:
           - "{{ exposed_port }}:80"
-        #volumes: /tmp/:/usr/share/nginx/html/
+    
+    - name: Sending html file
+      ansible.builtin.command: 'podman cp /tmp/index.html webserver:/usr/share/nginx/html'
 
   handlers:
       - name: Start Podman
