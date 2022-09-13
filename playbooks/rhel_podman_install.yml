@@ -5,14 +5,14 @@
     exposed_port: ""
   tasks:
 
-    - name: installing podman
+    - name: installing docker
       ansible.builtin.package:
-        name: "podman"
+        name: "docker"
         state: latest
       become: true
 
     - name: Pull image
-      containers.podman.podman_image:
+      community.docker.docker_image:
         name: 'docker.io/library/nginx'
         pull: true
         tag: latest
@@ -25,9 +25,10 @@
         mode: 0777
         owner: root
         group: root
+      become: true
 
     - name: Re-create a redis container
-      containers.podman.podman_container:
+      community.docker.docker_container:
         name: webserver
         image: 'docker.io/library/nginx'
         state: started
