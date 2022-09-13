@@ -3,8 +3,8 @@
   hosts: all
   gather_facts: false
   vars:
-    exposed_port: ""
-    webserver_msg: ""
+    exposed_port: "8085"
+    webserver_msg: "I lova my wife Anh"
   tasks:
     - name: installing podman
       ansible.builtin.package:
@@ -13,7 +13,7 @@
       become: true
 
     - name: Pull image
-      community.docker.docker_image:
+      containers.podman.podman_image:
         name: 'docker.io/library/nginx'
         pull: true
         tag: latest
@@ -26,7 +26,7 @@
         mode: 0777
 
     - name: Re-create a redis container
-      community.docker.docker_container:
+      containers.podman.podman_container:
         name: webserver
         image: 'docker.io/library/nginx'
         state: started
