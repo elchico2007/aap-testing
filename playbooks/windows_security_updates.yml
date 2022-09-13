@@ -9,3 +9,4 @@
       ansible.windows.win_updates:
         category_names:
           - SecurityUpdates
+        reboot: true
