@@ -17,11 +17,6 @@
         device_failures: "{{ device_failures }}"
       delegate_to: localhost
 
-- name: Get Firmware Facts
-  hosts: localhost
-  gather_facts: false
-
-  tasks:
     - name: Send Slack Notification
       ansible.builtin.uri:
         url: https://hooks.slack.com/services/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
