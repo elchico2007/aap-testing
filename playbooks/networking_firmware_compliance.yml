@@ -18,4 +18,5 @@
         method: POST
         body: '{"text": "{{ device_failures | to_nice_yaml }}" }'
         body_format: json
+      run_once: true
 
