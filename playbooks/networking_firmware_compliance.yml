@@ -19,6 +19,7 @@
 
 - name: Get Firmware Facts
   hosts: localhost
+  gather_facts: false
 
   tasks:
     - name: Send Slack Notification
