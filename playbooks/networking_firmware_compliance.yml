@@ -15,6 +15,7 @@
     - name: Set fact
       ansible.builtin.set_fact:
         device_failures: "{{ device_failures }}"
+      delegate_to: localhost
 
 - name: Get Firmware Facts
   hosts: localhost
