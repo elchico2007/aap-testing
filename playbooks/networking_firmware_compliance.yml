@@ -1,6 +1,6 @@
 ---
 - name: Get Firmware Facts
-  hosts: networking
+  hosts: all
 
   tasks:
     - name: Ensure Firmware is in compliance
@@ -18,4 +18,5 @@
         method: POST
         body: '{"text": "{{ device_failures | to_nice_yaml }}" }'
         body_format: json
+      delegate_to: localhost
 
