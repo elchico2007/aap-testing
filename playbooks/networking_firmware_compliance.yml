@@ -1,6 +1,6 @@
 ---
 - name: Get Firmware Facts
-  hosts: all
+  hosts: networking
 
   tasks:
     - name: Ensure Firmware is in compliance
@@ -12,6 +12,14 @@
       register: device_failures
       ignore_errors: true
     
+    - name: Set fact
+      ansible.builtin.set_fact:
+        device_failures: "{{ device_failures }}"
+
+- name: Get Firmware Facts
+  hosts: localhost
+
+  tasks:
     - name: Send Slack Notification
       ansible.builtin.uri:
         url: https://hooks.slack.com/services/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
