@@ -38,6 +38,10 @@
     
     - name: Sending html file
       ansible.builtin.command: 'podman cp /tmp/index.html webserver:/usr/share/nginx/html'
+    
+    - name: Display url
+      ansible.builtin.debug:
+        msg: "http://{{inventory_hostname}}:{{exposed_port}}"
 
   handlers:
       - name: Start Podman
