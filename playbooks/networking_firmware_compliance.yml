@@ -1,6 +1,6 @@
 ---
 - name: Get Firmware Facts
-  hosts: all
+  hosts: networking
 
   tasks:
     - name: Ensure Firmware is in compliance
