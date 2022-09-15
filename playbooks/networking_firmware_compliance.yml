@@ -9,3 +9,14 @@
           - ansible_facts['net_version'] == firmware_version
         fail_msg: "Device is not in compliance for its OS version, version found '{{ansible_facts['net_version']}}' "
         success_msg: "Device is in compliance."
+        register: device_failures
+        ignore_errors: true
+    
+    - name: Send Slack Notification
+      ansible.builtin.uri:
+        url: https://hooks.slack.com/services/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
+        method: POST
+        body: '{"text": "{{ device_failures | to_nice_yaml }}" }'
+        body_format: json
+      run_once: true
+
