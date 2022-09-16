@@ -7,4 +7,4 @@
     - name: Send notification message via Slack
       community.general.slack:
         token: '{{ slack_token }}'
-        msg: '{{ artifact | to_nice_yaml | default("Null") }}'
+        msg: '{{ artifact | default("Null") | to_nice_yaml }}'
