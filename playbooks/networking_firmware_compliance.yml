@@ -3,18 +3,17 @@
   hosts: all
 
   tasks:
-  - block:
-      - name: Ensure Firmware is in compliance
-        ansible.builtin.assert:
-          that:
-            - ansible_facts['net_version'] == firmware_version
-          fail_msg: "Device is not in compliance for its OS version, version found '{{ansible_facts['net_version']}}' "
-          success_msg: "Device is in compliance."
-        register: devices_output
+    - name: Ensure Firmware is in compliance
+      ansible.builtin.assert:
+        that:
+          - ansible_facts['net_version'] == firmware_version
+        fail_msg: "Device is not in compliance for its OS version, version found '{{ansible_facts['net_version']}}' "
+        success_msg: "Device is in compliance."
+      register: devices_output
+      ignore_errors: true
 
-    always:
-      - name: Aggregating packages_installed stat per host
-        ansible.builtin.set_stats:
-          data:
-            artifact_fact: "{{ devices_output }}"
-          per_host: yes
+    - name: Aggregating packages_installed stat per host
+      ansible.builtin.set_stats:
+        data:
+          artifact_fact: "{{ devices_output }}"
+        per_host: yes
