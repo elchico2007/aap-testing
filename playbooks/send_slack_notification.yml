@@ -7,4 +7,4 @@
     - name: Send notification message via Slack
       community.general.slack:
         token: '{{ slack_token }}'
-        msg: '{{ artifact }}'
+        msg: '{{ artifact | default(null) }}'
