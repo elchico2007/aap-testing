@@ -6,5 +6,5 @@
   tasks:
     - name: Send notification message via Slack
       community.general.slack:
-        token: '{{ slack_token  }}'
+        token: '{{ slack_token }}'
         msg: '{{ artifact }}'
