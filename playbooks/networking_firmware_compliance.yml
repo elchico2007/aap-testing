@@ -16,5 +16,5 @@
       - name: Aggregating packages_installed stat per host
         ansible.builtin.set_stats:
           data:
-            artifact: "{{ devices_output }}"
+            artifact_fact: "{{ devices_output }}"
           per_host: yes
