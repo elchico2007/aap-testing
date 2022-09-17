@@ -1,0 +1,11 @@
+---
+- name: Upgrade Networking Firmware
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Include upgrade task if host not in compliance
+      ansible.builtin.include_tasks:
+        file: tasks/upgrade_network_firmware.yml
+      when: item.compliant == False
+      loop: "{{ artifact }}"

@@ -1,0 +1,4 @@
+Device Name, Current Firmware Version, Compliant Firmware Version, Compliant
+{% for host in groups['networking'] %}
+{{ host }}, {{ ansible_facts['net_version'] }}, {{ firmware_version | default('') }}, {{ in_compliance | default("False") }}
+{% endfor %}

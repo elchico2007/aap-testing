@@ -1,0 +1,4 @@
+Device Name, Current Firmware Version, Compliant Firmware Version, Compliant
+juniper1.lab.test, 22.2R1.9, , False
+cisco1.lab.test, 22.2R1.9, , False
+arista1.lab.test, 22.2R1.9, , False
