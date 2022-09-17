@@ -3,23 +3,28 @@
   hosts: all
 
   tasks:
-  - block:
       - name: Gather Network Resource Facts IOS
         cisco.ios.ios_facts:
           gather_network_resources: all
-        when: ansible_network_os == 'cisco.ios.ios'
+        when: 
+         - ansible_network_os == 'cisco.ios.ios'
+         - ansible_facts['net_version'] != firmware_version | default("")
       
       - name: Gather Network Resource Facts EOS
         arista.eos.eos_facts:
           gather_network_resources: all
-        when: ansible_network_os == 'arista.eos.eos'
+        when: 
+          - ansible_network_os == 'arista.eos.eos'
+          - ansible_facts['net_version'] != firmware_version | default("")
       
       - name: Gather Network Resource Facts JUNOS
         junipernetworks.junos.junos_facts:
           gather_network_resources: all
-        when: ansible_network_os == 'junipernetworks.junos.junos'
+        when: 
+         - ansible_network_os == 'junipernetworks.junos.junos'
+         - ansible_facts['net_version'] != firmware_version | default("")
       
       - name: Upgrading Software
         debug:
           msg: "Upgrading Software for Device"
-    when: ansible_facts['net_version'] == firmware_version | default("")
+        when: ansible_facts['net_version'] != firmware_version | default("")
