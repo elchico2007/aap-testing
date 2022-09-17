@@ -1,11 +1,25 @@
 ---
 - name: Upgrade Networking Firmware
   hosts: all
-  gather_facts: false
 
   tasks:
-    - name: Include upgrade task if host not in compliance
-      ansible.builtin.include_tasks:
-        file: tasks/upgrade_network_firmware.yml
-      when: item.compliant == False
-      loop: "{{ artifact }}"
+  - block:
+      - name: Gather Network Resource Facts IOS
+        cisco.ios.ios_facts:
+          gather_network_resources: all
+        when: ansible_network_os == 'cisco.ios.ios'
+      
+      - name: Gather Network Resource Facts EOS
+        arista.eos.eos_facts:
+          gather_network_resources: all
+        when: ansible_network_os == 'arista.eos.eos'
+      
+      - name: Gather Network Resource Facts JUNOS
+        junipernetworks.junos.junos_facts:
+          gather_network_resources: all
+        when: ansible_network_os == 'junipernetworks.junos.junos'
+      
+      - name: Upgrading Software
+        debug:
+          msg: "Upgrading Software for Device"
+    when: ansible_facts['net_version'] == firmware_version | default("")
