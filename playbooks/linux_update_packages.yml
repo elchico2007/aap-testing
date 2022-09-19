@@ -8,6 +8,7 @@
       ansible.builtin.dnf:
         name: "{{item.name}}-{{item.version}}*"
         state: present
-      loop: "{{ compliant_packages }}"
+      when: item.failed
+      loop: "{{ artifact }}"
       become: true
 
