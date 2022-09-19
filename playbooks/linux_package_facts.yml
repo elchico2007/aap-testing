@@ -1,0 +1,26 @@
+---
+- name: Get Package Facts
+  hosts: all
+  gather_facts: false
+
+  tasks:
+  - block:
+      - name: Ensure package is in compliance
+        ansible.builtin.package_facts:
+          strategy: all
+
+      - name: Assert linux packages are in compliance
+        ansible.builtin.assert:
+          that:
+            - packages[item.name][0]['version'] == item.version
+          success_msg: "'{{ item.name }}' is compliant"
+          fail_msg: "Found Package '{{ item.name }}' with non compliant version '{{ packages[item.name][0]['version'] }}'"
+        loop: "{{ compliant_packages }}"
+        register: devices_output
+    
+    always:
+
+      - name: Aggregating packages_installed stat per host
+        ansible.builtin.set_stats:
+          data:
+            artifact: "{{ devices_output['results'] }}"
