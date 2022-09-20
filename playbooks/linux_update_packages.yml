@@ -1,12 +1,13 @@
 ---
 - name: Update packages
-  hosts: all
+  hosts: "{{ artifact.server }}"
   gather_facts: false
 
   tasks:
     - name: Updating packages to compliant version
       ansible.builtin.dnf:
-        name: "{{item.name}}-{{item.version}}*"
+        name: "{{item.package_name}}-{{item.version_needed}}*"
         state: present
-      loop: "{{ compliant_packages }}"
+      loop: "{{ artifact['non_compliant_packages'] }}"
+      when: artifact['server'] == inventory_hostname
       become: true

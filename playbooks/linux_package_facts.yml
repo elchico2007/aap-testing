@@ -18,9 +18,18 @@
         loop: "{{ compliant_packages }}"
         register: devices_output
     
-    always:
+    rescue:
+      - name: Show packages not in compliance
+        ansible.builtin.set_fact:
+          non_compliant_packages: "{{ non_compliant_packages | default([]) + [ {'package_name': item.name, 'non_compliant_version': packages[item.name][0]['version'], 'version_needed': item.version } ] }}"
+        loop: "{{ compliant_packages }}"
+        when: packages[item.name][0]['version'] != item.version
 
+      - name: Gather Data and package into artifact
+        ansible.builtin.set_fact:
+          package_facts: "{{ { 'server': inventory_hostname, 'non_compliant_packages': non_compliant_packages } }}"
+      
       - name: Aggregating packages_installed stat per host
         ansible.builtin.set_stats:
           data:
-            artifact: "{{ devices_output['results'] }}"
+            artifact: "{{ package_facts }}"
