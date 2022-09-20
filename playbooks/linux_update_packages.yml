@@ -6,9 +6,7 @@
   tasks:
     - name: Updating packages to compliant version
       ansible.builtin.dnf:
-        name: "{{item.item.name}}-{{item.item.version}}*"
+        name: "{{item.name}}-{{item.version}}*"
         state: present
-      when: item.failed
-      loop: "{{ artifact }}"
+      loop: "{{ compliant_packages }}"
       become: true
-
