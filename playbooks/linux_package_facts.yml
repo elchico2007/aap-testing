@@ -15,11 +15,11 @@
             - packages[item.name] is defined
             - packages[item.name][0]['version'] == item.version
           success_msg: "'{{ item.name }}' is compliant"
-          fail_msg: "Found Package '{{ item.name }}' with non compliant version '{{ packages[item.name][0]['version'] }}'"
+          fail_msg: "Found Package '{{ item.name }}' with non compliant version '{{ packages[item.name][0]['version'] | default('Not Installed') }}'"
         loop: "{{ compliant_packages }}"
         register: devices_output
     
-    rescue:
+    always:
       - name: Show packages not in compliance
         ansible.builtin.set_fact:
           non_compliant_packages: "{{ non_compliant_packages | default([]) + [ {'package_name': item.name, 'non_compliant_version': packages[item.name][0]['version'], 'version_needed': item.version } ] }}"
@@ -37,8 +37,14 @@
       - name: Gather Data and package into artifact
         ansible.builtin.set_fact:
           package_facts: "{{ { 'server': inventory_hostname, 'non_compliant_packages': non_compliant_packages } }}"
-      
+        when: non_compliant_packages | default([]) | length  >= 1
+
+      - debug:
+          var: package_facts
+        when: non_compliant_packages | default([]) | length  >= 1
+
       - name: Aggregating packages_installed stat per host
         ansible.builtin.set_stats:
           data:
             artifact: "{{ package_facts }}"
+        when: non_compliant_packages | default([]) | length  >= 1
