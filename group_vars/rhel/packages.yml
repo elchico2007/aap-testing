@@ -1,8 +1,0 @@
----
-compliant_packages:
-    - name: python3
-      version: '3.9.10'
-    - name: firewalld
-      version: '1.0.0'
-ansible_password: 2322384
-ansible_become_password: 2322384
