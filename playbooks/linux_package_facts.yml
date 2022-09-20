@@ -12,7 +12,8 @@
       - name: Assert linux packages are in compliance
         ansible.builtin.assert:
           that:
-            - packages[item.name][0]['version'] | default('None') == item.version
+            - packages[item.name] is defined
+            - packages[item.name][0]['version'] == item.version
           success_msg: "'{{ item.name }}' is compliant"
           fail_msg: "Found Package '{{ item.name }}' with non compliant version '{{ packages[item.name][0]['version'] }}'"
         loop: "{{ compliant_packages }}"
@@ -23,7 +24,15 @@
         ansible.builtin.set_fact:
           non_compliant_packages: "{{ non_compliant_packages | default([]) + [ {'package_name': item.name, 'non_compliant_version': packages[item.name][0]['version'], 'version_needed': item.version } ] }}"
         loop: "{{ compliant_packages }}"
-        when: packages[item.name][0]['version'] != item.version
+        when: 
+          - packages[item.name] is defined
+          - packages[item.name][0]['version'] != item.version
+      
+      - name: Add packages not installed
+        ansible.builtin.set_fact:
+          non_compliant_packages: "{{ non_compliant_packages | default([]) + [ {'package_name': item.name, 'version_needed': item.version } ] }}"
+        loop: "{{ compliant_packages }}"
+        when: packages[item.name] is not defined
 
       - name: Gather Data and package into artifact
         ansible.builtin.set_fact:
