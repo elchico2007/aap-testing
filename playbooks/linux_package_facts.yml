@@ -12,7 +12,7 @@
       - name: Assert linux packages are in compliance
         ansible.builtin.assert:
           that:
-            - packages[item.name][0]['version'] == item.version
+            - packages[item.name][0]['version'] | default('None') == item.version
           success_msg: "'{{ item.name }}' is compliant"
           fail_msg: "Found Package '{{ item.name }}' with non compliant version '{{ packages[item.name][0]['version'] }}'"
         loop: "{{ compliant_packages }}"
