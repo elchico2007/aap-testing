@@ -4,11 +4,11 @@
   gather_facts: false
   vars:
     exposed_port: ""
-    webserver_msg: ""
+    nginx_webserver_msg: ""
   tasks:
     - name: installing podman
       ansible.builtin.package:
-        name: "docker"
+        name: "podman"
         state: latest
       become: true
 
@@ -27,7 +27,7 @@
 
     - name: Re-create a redis container
       containers.podman.podman_container:
-        name: webserver
+        name: nginx_webserver
         image: 'docker.io/library/nginx'
         state: started
         detach: true
@@ -37,7 +37,7 @@
           - "{{ exposed_port }}:80"
     
     - name: Sending html file
-      ansible.builtin.command: 'podman cp /tmp/index.html webserver:/usr/share/nginx/html'
+      ansible.builtin.command: 'podman cp /tmp/index.html nginx_webserver:/usr/share/nginx/html'
     
     - name: Display url
       ansible.builtin.debug:
