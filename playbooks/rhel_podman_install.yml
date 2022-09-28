@@ -46,11 +46,12 @@
     - name: Create Artifact
       ansible.builtin.set_fact:
         artifact: "nginx container spun up, please visit 'http://{{inventory_hostname}}:{{exposed_port}}' to access your site."
-    
-    - name: Send Slack notification
-      ansible.builtin.import_playbook: 
-        - send_slack_notification.yml
-
+      
+    - name: Send notification message via Slack
+      community.general.slack:
+        token: '{{ slack_token }}'
+        msg: '{{ artifact | default("Null") | to_nice_yaml }}'
+        
   handlers:
       - name: Start Podman
         ansible.builtin.service:
