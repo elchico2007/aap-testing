@@ -1,20 +1,20 @@
 ---
-- name: Install Podman and run apache container
+- name: Install Podman and run Apache container
   hosts: all
   gather_facts: false
   vars:
     exposed_port: ""
-    apache_webserver_msg: ""
+    webserver_msg: ""
   tasks:
     - name: installing podman
       ansible.builtin.package:
-        name: "podman"
+        name: "docker"
         state: latest
       become: true
 
     - name: Pull image
       containers.podman.podman_image:
-        name: 'quay.io/centos7/httpd-24-centos7'
+        name: 'docker.io/library/nginx'
         pull: true
         tag: latest
       become: true
@@ -27,8 +27,8 @@
 
     - name: Re-create a redis container
       containers.podman.podman_container:
-        name: apache_webserver
-        image: 'quay.io/centos7/httpd-24-centos7'
+        name: webserver
+        image: 'docker.io/library/nginx'
         state: started
         detach: true
         expose:
@@ -37,7 +37,7 @@
           - "{{ exposed_port }}:80"
     
     - name: Sending html file
-      ansible.builtin.command: 'podman cp /tmp/index.html apache_webserver:/var/www/html'
+      ansible.builtin.command: 'podman cp /tmp/index.html webserver:/usr/share/nginx/html'
     
     - name: Display url
       ansible.builtin.debug:
@@ -45,7 +45,7 @@
     
     - name: Create Artifact
       ansible.builtin.set_fact:
-        artifact: "apache container spun up, please visit 'http://{{inventory_hostname}}:{{exposed_port}}' to access your site."
+        artifact: "nginx container spun up, please visit 'http://{{inventory_hostname}}:{{exposed_port}}' to access your site."
       
     - name: Send notification message via Slack
       community.general.slack:
