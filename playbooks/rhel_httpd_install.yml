@@ -45,7 +45,7 @@
     
     - name: Create Artifact
       ansible.builtin.set_fact:
-        artifact: "nginx container spun up, please visit 'http://{{inventory_hostname}}:{{exposed_port}}' to access your site."
+        artifact: "apache container spun up, please visit 'http://{{inventory_hostname}}:{{exposed_port}}' to access your site."
       
     - name: Send notification message via Slack
       community.general.slack:
