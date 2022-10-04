@@ -1,4 +1,3 @@
 ---
 collections:
-  - community.general
-  - zjpeterson.aci
+  - ansible.network
