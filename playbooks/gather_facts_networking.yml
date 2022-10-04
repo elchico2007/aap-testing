@@ -1,6 +1,6 @@
 ---
 - name: Get Facts
-  gather_facts: true
+  gather_facts: false
   hosts: all
 
   tasks:
