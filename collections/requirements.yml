@@ -3,4 +3,6 @@
 # Perform more testing to figure out why certain downloads are happenning
 collections:
   - name: community.general
+    version: 5.7.0
   - name: zjpeterson.aci
+    version: 0.3.1
