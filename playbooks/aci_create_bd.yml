@@ -1,0 +1,20 @@
+---
+- name: ACI Create Bridge Domain (BD)
+  hosts: all
+  gather_facts: false
+
+  vars:
+    tenant: "Automation_Controller_Test"
+    bd: "database"
+
+  tasks:
+    - name: Create a aci bd
+      cisco.aci.aci_bd:
+        host: "{{ inventory_hostname }}"
+        username: "{{ lookup('ansible.builtin.env', 'ACI_USERNAME') }}"
+        password: "{{ lookup('ansible.builtin.env', 'ACI_PASSWORD') }}"
+        validate_certs: no
+        tenant: "{{ tenant }}"
+        bd: "{{ bd }}"
+        state: present
+      delegate_to: localhost
