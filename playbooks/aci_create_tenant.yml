@@ -33,3 +33,8 @@
     - name: Show Query Output
       ansible.builtin.debug:
         var: query_result
+    
+    - name:  Sending slack if failure 
+      ansible.builtin.set_stats:
+        data:
+          artifact: "{{ query_result }}"
