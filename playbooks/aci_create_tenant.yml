@@ -1,5 +1,5 @@
 ---
-- name: ACI Create Subnet then Query it
+- name: ACI Create Tenant and query it
   hosts: all
   gather_facts: false
 
