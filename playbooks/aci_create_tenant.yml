@@ -20,7 +20,7 @@
     
     - name: Query Tenant
       cisco.aci.aci_tenant:
-        hostname: "{{ inventory_hostname }}"
+        host: "{{ inventory_hostname }}"
         username: "{{ lookup('ansible.builtin.env', 'ACI_USERNAME') }}"
         password: "{{ lookup('ansible.builtin.env', 'ACI_PASSWORD') }}"
         validate_certs: false
