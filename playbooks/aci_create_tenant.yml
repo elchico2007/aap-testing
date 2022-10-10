@@ -1,0 +1,34 @@
+---
+- name: ACI Create Subnet then Query it
+  hosts: all
+  gather_facts: false
+
+  vars:
+    tenant: "Automation_Controller_Test"
+
+  tasks:
+    - name: Create a aci tenant
+      cisco.aci.aci_tenant:
+        host: "{{ inventory_hostname }}"
+        username: "{{ lookup('ansible.builtin.env', 'ACI_USERNAME') }}"
+        password: "{{ lookup('ansible.builtin.env', 'ACI_PASSWORD') }}"
+        validate_certs: false
+        tenant: "{{ tenant }}"
+        description: "Test tenant created from Automation Controller"
+        state: present
+      delegate_to: localhost
+    
+    - name: Query Tenant
+      cisco.aci.aci_tenant:
+        hostname: "{{ inventory_hostname }}"
+        username: "{{ lookup('ansible.builtin.env', 'ACI_USERNAME') }}"
+        password: "{{ lookup('ansible.builtin.env', 'ACI_PASSWORD') }}"
+        validate_certs: false
+        state: query
+        tenant: "{{ tenant }}"
+        output_level: debug
+      register: query_result
+  
+    - name: Show Query Output
+      ansible.builtin.debug:
+        var: query_result
