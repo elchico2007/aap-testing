@@ -2,5 +2,9 @@
 # var/lib/awx/venv/awx/lib/python3.9/site-packages/awx/playbooks/project_update.yml
 # Perform more testing to figure out why certain downloads are happenning
 collections:
-  - community.general
-  - zjpeterson.aci
+  - name: community.general
+    version: 5.7.0
+    source: 'https://rhel-9-server.lab.test/api/galaxy/content/community/'
+  - name: zjpeterson.aci
+    version: 0.3.1
+    source: 'https://rhel-9-server.lab.test/api/galaxy/content/community/'
