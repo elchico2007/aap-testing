@@ -6,7 +6,7 @@
       become: yes
       ansible.builtin.dnf:
         list: upgrades
-        state: latest
+        state: present
         update_cache: yes
       register: reg_dnf_output_all
       when: ev_security_only == "no"
@@ -21,7 +21,7 @@
       ansible.builtin.dnf:
         security: yes
         list: updates
-        state: latest
+        state: present
         update_cache: yes
       register: reg_dnf_output_secu
       when: ev_security_only == "yes"
@@ -35,7 +35,7 @@
       become: yes
       ansible.builtin.dnf:
         name: '*'
-        state: latest
+        state: present
         update_cache: yes
         update_only: no
       register: reg_upgrade_ok
@@ -46,7 +46,7 @@
       ansible.builtin.dnf:
         name: '*'
         security: yes
-        state: latest
+        state: present
         update_cache: yes
         update_only: no
       register: reg_upgrade_ok
@@ -61,7 +61,7 @@
       become: yes
       ansible.builtin.dnf:
         name: 'dnf-utils'
-        state: latest
+        state: present
         update_cache: yes
     
     - name: Check if a reboot is required
