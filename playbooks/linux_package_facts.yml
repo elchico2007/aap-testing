@@ -48,3 +48,9 @@
           data:
             artifact: "{{ package_facts }}"
         when: non_compliant_packages | default([]) | length  >= 1
+      
+      - name: Aggregating packages_installed stat per host
+        ansible.builtin.set_stats:
+          data:
+            artifact: "{{ package_facts | default('Packages in compliance') }}"
+        when: non_compliant_packages | default([]) | length  == 0
