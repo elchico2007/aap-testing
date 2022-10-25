@@ -6,6 +6,6 @@
   tasks:
     - name: Send notification message via Slack
       community.general.slack:
-        channel: '#automation-controller-testing'
+        channel: '#controller-notification'
         token: '{{ slack_token }}'
-        msg: '{{ artifact | default("Packages in compliance") | to_nice_yaml }}'
+        msg: '{{ artifact | to_nice_yaml }}'
