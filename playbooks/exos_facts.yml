@@ -1,0 +1,16 @@
+---
+- name: Test EXOS facts
+  hosts: exos
+  gather_facts: false
+  tasks:
+    - name: Gather network resource and legacy facts
+      community.network.exos_facts:
+        #gather_subset: min
+        gather_network_resources: all
+
+    - name: Test debug
+      ansible.builtin.debug:
+        var: "{{ item }}"
+      loop:
+        - ansible_net_version
+        - ansible_net_model

@@ -7,6 +7,9 @@ cisco1.lab.test
 [eos]
 arista1.lab.test
 
+[exos]
+exos.lab.test
+
 [networking:children]
 junos
 ios
