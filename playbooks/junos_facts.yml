@@ -1,0 +1,10 @@
+---
+- name: Test JUNOs facts
+  hosts: junos
+  gather_facts: false
+  tasks:
+    - name: Get JunOS Facts
+      junipernetworks.junos.junos_facts:
+        gather_subset: [ hardware ]
+        #gather_network_resources: [ lacp,lacp_interfaces,lag_interfaces,l2_interfaces,l3_interfaces,interfaces ]
+      register: facts
