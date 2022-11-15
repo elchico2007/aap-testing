@@ -1,0 +1,4 @@
+ansible_connection: arubanetworks.aoscx.aoscx
+ansible_network_os: arubanetworks.aoscx.aoscx
+ansible_aoscx_validate_certs: False
+ansible_acx_no_proxy: True

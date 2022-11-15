@@ -4,6 +4,10 @@
   hosts: all
 
   tasks:
+    - name: Get aoscx Facts
+      arubanetworks.aoscx.aoscx_facts:
+      when: ansible_network_os == 'arubanetworks.aoscx.aoscx'
+      
     - name: Get eos Facts
       arista.eos.eos_facts:
       when: ansible_network_os == 'arista.eos.eos'
@@ -17,5 +21,5 @@
       when: ansible_network_os == 'junipernetworks.junos.junos'
     
     - name: Print out version for each device
-      debug:
+      ansible.builtin.debug:
         var: ansible_facts['net_version']

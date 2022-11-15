@@ -1,3 +1,6 @@
+[aoscx]
+aruba1.lab.test
+
 [junos]
 juniper1.lab.test
 
@@ -14,6 +17,7 @@ exos.lab.test
 junos
 ios
 eos
+aoscx
 
 [ubuntu]
 ubuntu1.lab.test
