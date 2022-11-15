@@ -1,4 +1,5 @@
 junos-eznc
+xmltodict
 paramiko
 requests
 pyaoscx>=2.3.1
