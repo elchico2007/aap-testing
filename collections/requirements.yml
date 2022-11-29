@@ -9,3 +9,5 @@ collections:
     version: 0.3.1
     source: 'https://rhel-9-server.lab.test/api/galaxy/content/community/'
   - name: chocolatey.chocolatey
+    version: 1.0.2
+    source: 'https://rhel-9-server.lab.test/api/galaxy/content/rh-certified/'
