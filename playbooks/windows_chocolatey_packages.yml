@@ -1,0 +1,12 @@
+---
+- hosts: all
+  name: Installing Packages using chocolatey
+
+  tasks:
+    - name: Install multiple packages
+      chocolatey.chocolatey.win_chocolatey:
+        name:
+        - procexp
+        - putty
+        - windirstat
+        state: present

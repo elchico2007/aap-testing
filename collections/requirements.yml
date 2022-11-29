@@ -8,3 +8,4 @@ collections:
   - name: zjpeterson.aci
     version: 0.3.1
     source: 'https://rhel-9-server.lab.test/api/galaxy/content/community/'
+  - chocolatey.chocolatey
