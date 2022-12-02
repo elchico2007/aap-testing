@@ -1,0 +1,29 @@
+---
+- name: Check Windows Security updates
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Search-only, return list of found updates (if any), log to C:\ansible_wu.txt
+      ansible.windows.win_updates:
+        category_names: SecurityUpdates
+        state: searched
+        log_path: C:\ansible_wu.txt
+      register: securityUpdates
+
+    - name: Search to find any security updates needed
+      ansible.builtin.set_fact:
+        updates_needed: true
+      when: (securityUpdates.filtered_updates.keys() | length | int >= 1) or (found_update_count >= 1)
+
+    - name: Set artifact
+      ansible.builtin.set_stats:
+        data:
+          artifact: "{{ securityUpdates.filtered_updates }}"
+
+    - name: Fail playbook if updates are required
+      ansible.builtin.assert:
+        that:
+          - updates_needed != true
+        fail_msg: "Updates found, failing playbook"
+        success_msg: "No systems were found with pending security updates"
