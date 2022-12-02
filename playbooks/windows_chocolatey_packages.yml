@@ -5,8 +5,5 @@
   tasks:
     - name: Install multiple packages
       chocolatey.chocolatey.win_chocolatey:
-        name:
-        - procexp
-        - putty
-        - windirstat
+        name: "{{ windows_packages }}"
         state: present
