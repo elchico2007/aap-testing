@@ -19,7 +19,7 @@
     - name: Set artifact
       ansible.builtin.set_stats:
         data:
-          artifact: "{{ securityUpdates.filtered_updates }}"
+          artifact: "{{ {inventory_hostname: securityUpdates.filtered_updates} }}"
 
     - name: Fail playbook if updates are required
       ansible.builtin.assert:

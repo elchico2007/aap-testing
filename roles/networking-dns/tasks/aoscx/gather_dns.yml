@@ -1,0 +1,18 @@
+- name: Configure ipv4 configuration
+  arubanetworks.aoscx.aoscx_command:
+    commands:
+      - "show ip dns"
+  register: dns_commands
+
+# - name: Set fact
+#   ansible.builtin.set_fact:
+#     dns_commands: "{{ dns_commands }}"
+  
+# - name: Debug v4NameServers
+#   ansible.builtin.debug:
+#     var: dns_commands['stdout'][0]['v4NameServers']
+
+# - name: Debug domainName
+#   ansible.builtin.debug:
+#     var: dns_commands['stdout'][1]['domainName']
+  

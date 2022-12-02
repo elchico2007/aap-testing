@@ -1,5 +1,5 @@
 [aoscx]
-aruba1.lab.test
+aruba1.lab.test ansible_host=192.168.0.79
 
 [junos]
 juniper1.lab.test
@@ -42,3 +42,7 @@ windows
 ubuntu
 rhel
 infoblox
+
+[all:vars]
+ansible_user = Administrator
+ansible_password = Luis093096@
