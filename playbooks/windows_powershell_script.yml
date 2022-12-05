@@ -1,0 +1,20 @@
+---
+- name: Using Powershell Script inside Ansible
+  hosts: all
+
+  tasks:
+    - name: Run multi-lined shell commands
+      ansible.windows.win_shell: |
+        $value = Test-Path -Path C:\test
+        if ($value) {
+            Remove-Item -Path C:\test -Force
+        }
+        New-Item -Path C:\test -ItemType Directory
+    
+    - name: Copy ps1 file to server
+      ansible.windows.win_copy:
+        src: ../templates/install_iis.ps1
+        dest: C:\temp\install_iis.ps1
+    
+    - name: Execute a command in the remote shell, stdout goes to the specified file on the remote
+      ansible.windows.win_shell: C:\temp\install_iis.ps1
