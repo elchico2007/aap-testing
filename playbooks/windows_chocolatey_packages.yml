@@ -7,3 +7,9 @@
       chocolatey.chocolatey.win_chocolatey:
         name: "{{ windows_packages }}"
         state: present
+    - name: install and pin Notepad++ at 7.6.3
+      chocolatey.chocolatey.win_chocolatey:
+        name: notepadplusplus
+        version: 7.6.3
+        pinned: yes
+        state: present
