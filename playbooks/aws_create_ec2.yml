@@ -1,6 +1,6 @@
 --- 
 - name: Create a Simple EC2 Instance
-  hosts: all
+  hosts: localhost
 
   tasks:
     - name: start an instance with a public IP address
