@@ -1,0 +1,17 @@
+--- 
+- name: Create a Simple EC2 Instance
+  hosts: all
+
+  tasks:
+    - name: start an instance with a public IP address
+      amazon.aws.ec2_instance:
+        name: "testAAP"
+        key_name: "aap-ssh-key"
+        vpc_subnet_id: default
+        instance_type: t2.micro
+        security_group: default
+        network:
+          assign_public_ip: true
+        image_id: ami-0a1a70369f0fce06a #Ubuntu 20.04 64-bit
+        tags:
+          Environment: Testing
