@@ -10,6 +10,7 @@
         key_name: "aap-ssh-key"
         instance_type: t2.micro
         security_group: default
+        state: 'stopped'
         network:
           assign_public_ip: true
         image_id: ami-0a1a70369f0fce06a #Ubuntu 20.04 64-bit
