@@ -6,6 +6,7 @@
     - name: start an instance with a public IP address
       amazon.aws.ec2_instance:
         name: "testAAP"
+        region: "us-west-1"
         key_name: "aap-ssh-key"
         vpc_subnet_id: default
         instance_type: t2.micro
