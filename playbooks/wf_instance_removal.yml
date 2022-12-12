@@ -1,5 +1,6 @@
 - name: Remove EC2 instance if failure
   hosts: "{{ survey_name }}"
+  gather_facts: false
 
   tasks:
     - name: restart a particular instance by its ID

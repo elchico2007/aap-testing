@@ -8,10 +8,11 @@
     
     - name: Send artifact to slack
       ansible.builtin.set_stats:
-        artifact:
-          msg: "EC2 Instance successfully deployed!!"
-          ip: "{{ ansible_host }}"
-          host: "{{ survey_name }}"
-          image_id: "{{ image_id }}"
-          instance_id: "{{ instance_id }}"
+        data:
+          artifact:
+            msg: "EC2 Instance successfully deployed!!"
+            ip: "{{ ansible_host }}"
+            host: "{{ survey_name }}"
+            image_id: "{{ image_id }}"
+            instance_id: "{{ instance_id }}"
 
