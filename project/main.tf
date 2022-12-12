@@ -1,7 +1,6 @@
 variable "ami" {}
 variable "instance_type" {}
 variable "name" {}
-variable "security_group" {}
 
 terraform {
   required_providers {
@@ -20,7 +19,7 @@ resource "aws_instance" "web" {
   provider      = aws.west
   ami           = var.ami
   instance_type = var.instance_type
-  security_groups = [ var.security_group ]
+  security_groups = [ "sg-00d8298aff171d8d0" ]
   tags = {
     Name = var.name
   }
