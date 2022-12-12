@@ -1,0 +1,23 @@
+- name: Install Apache
+  hosts: "{{ survey_name }}"
+
+  tasks:
+    - name: Install latest version of Apache
+      ansible.builtin.apt: name=apache2 update_cache=yes state=latest
+ 
+    - name: Copy your index file
+      ansible.builtin.template:
+        src: "../templates/index.j2"
+        dest: "/var/www/index.html"
+ 
+    - name: "UFW firewall allow HTTP on port 80"
+      community.general.ufw:
+        rule: allow
+        port: 80
+        proto: tcp
+ 
+  handlers:
+    - name: restart-apache
+      ansible.builtin.service:
+        name: apache2
+        state: restarted
