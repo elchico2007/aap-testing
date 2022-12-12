@@ -9,6 +9,6 @@
         state: present
         variables:
           name: "{{ survey_name }}"
-          ami: 'ami-0a1a70369f0fce06a' #Ubuntu 20.04 64-bit
+          ami: ami-0a1a70369f0fce06a
           instance_type: "{{ survey_instance_type }}"
         force_init: true
