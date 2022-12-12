@@ -11,4 +11,5 @@
           name: "{{ survey_name }}"
           ami: ami-0a1a70369f0fce06a
           instance_type: "{{ survey_instance_type }}"
+          security_group: "sg-00d8298aff171d8d0"
         force_init: true
