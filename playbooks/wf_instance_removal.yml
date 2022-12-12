@@ -3,8 +3,9 @@
   gather_facts: false
 
   tasks:
-    - name: restart a particular instance by its ID
+    - name: Remove Instance
       amazon.aws.ec2_instance:
         state: terminated
         instance_ids:
           - "{{ instance_id }}"
+      delegate_to: localhost
