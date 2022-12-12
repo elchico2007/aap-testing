@@ -6,6 +6,7 @@
     - name: Remove Instance
       amazon.aws.ec2_instance:
         state: terminated
+        region: "us-west-1"
         instance_ids:
           - "{{ instance_id }}"
       delegate_to: localhost
