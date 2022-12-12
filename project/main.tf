@@ -19,6 +19,7 @@ resource "aws_instance" "web" {
   provider      = aws.west
   ami           = var.ami
   instance_type = var.instance_type
+  key_name      = "aap-ssh-key"
   security_groups = [ "MyTestSecurityGroup" ]
   tags = {
     Name = var.name
