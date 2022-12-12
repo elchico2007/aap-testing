@@ -1,9 +1,6 @@
-- name: test infoblox user
-  hosts: localhost
+- name: test
+  hosts: "{{ survey_name }}"
 
   tasks:
     - debug:
-        var: infoblox_username
-    - debug:
-        var: infoblox_password
-    - command: env
+        var: inventory_hostname

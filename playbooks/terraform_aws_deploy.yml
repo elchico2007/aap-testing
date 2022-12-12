@@ -3,7 +3,7 @@
   gather_facts: false
 
   tasks:
-    - name: Complex variables example
+    - name: Using Custom Variables
       community.general.terraform:
         project_path: '../project'
         state: present
