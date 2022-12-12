@@ -1,0 +1,9 @@
+- name: Remove EC2 instance if failure
+  hosts: "{{ survey_name }}"
+
+  tasks:
+    - name: restart a particular instance by its ID
+      amazon.aws.ec2_instance:
+        state: terminated
+        instance_ids:
+          - "{{ instance_id }}"
