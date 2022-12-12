@@ -1,3 +1,7 @@
+variable "ami" {}
+variable "instance_type" {}
+variable "name" {}
+
 terraform {
   required_providers {
     aws = {
@@ -6,9 +10,9 @@ terraform {
   }
 }
 resource "aws_instance" "web" {
-  ami           = ami
-  instance_type = instance_type
+  ami           = var.ami
+  instance_type = var.instance_type
   tags = {
-    Name = name
+    Name = var.name
   }
 }
