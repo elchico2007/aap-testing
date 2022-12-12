@@ -19,7 +19,7 @@ resource "aws_instance" "web" {
   provider      = aws.west
   ami           = var.ami
   instance_type = var.instance_type
-  security_groups = [ "sg-00d8298aff171d8d0" ]
+  security_groups = [ "MyTestSecurityGroup" ]
   tags = {
     Name = var.name
   }
