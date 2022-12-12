@@ -8,7 +8,7 @@
     - name: Copy your index file
       ansible.builtin.template:
         src: "../templates/index.j2"
-        dest: "/var/www/index.html"
+        dest: "/var/www/html/index.html"
  
     - name: "UFW firewall allow HTTP on port 80"
       community.general.ufw:

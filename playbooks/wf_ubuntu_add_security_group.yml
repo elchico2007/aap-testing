@@ -8,10 +8,11 @@
         comment: John Doe
         uid: 1040
         group: admin
-
-    - name: Add the user 'james' with a bash shell, appending the group 'admins' and 'developers' to the user's groups
+    
+    - name: Add the user 'jamesd' with a specific uid and a primary group of 'admin'
       ansible.builtin.user:
-        name: james
-        shell: /bin/bash
-        groups: admins,developers
-        append: yes
+        name: jamesd
+        comment: James Dow
+        uid: 1041
+        group: admin
+
