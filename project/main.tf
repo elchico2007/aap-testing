@@ -6,9 +6,9 @@ terraform {
   }
 }
 resource "aws_instance" "web" {
-  ami           = var.ami
-  instance_type = var.instance_type
+  ami           = ami
+  instance_type = instance_type
   tags = {
-    Name = var.name
+    Name = name
   }
 }
