@@ -3,4 +3,4 @@
 
   tasks:
     - debug:
-        var: inventory_hostname
+        var: awx_user_name
