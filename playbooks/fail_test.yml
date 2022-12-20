@@ -1,4 +1,4 @@
-- name: Only show seccessful hosts
+- name: Only show failed hosts
   hosts: "{{ failed_hosts }}"
   gather_facts: false
 

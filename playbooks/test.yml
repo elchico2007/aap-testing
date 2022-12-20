@@ -1,5 +1,7 @@
 - name: test
-  hosts: localhost
+  hosts:
+    - rhel-9-server
+    - rhel-9-catalog
   gather_facts: false
 
   tasks:
