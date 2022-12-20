@@ -6,7 +6,7 @@
 
   tasks:
     - block:
-        - name: fail for certain hosts
+        - name: Fail for certain hosts
           ansible.builtin.assert:
             that:
               - my_param == 1
@@ -22,3 +22,4 @@
           ansible.builtin.set_stats:
             data:
               failed_hosts: "{{ failed_hosts | default([])  + [inventory_hostname] }}"
+        - ansible.builtin.fail:
