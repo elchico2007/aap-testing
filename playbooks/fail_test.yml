@@ -1,0 +1,17 @@
+- name: Only show seccessful hosts
+  hosts: "{{ failed_hosts }}"
+  gather_facts: false
+
+  tasks:
+    - name: Show only failed host
+      ansible.builtin.debug:
+        var: inventory_hostname
+
+- name: Only show seccessful hosts
+  hosts: "{{ successful_hosts }}"
+  gather_facts: false
+
+  tasks:
+    - name: Show only successful host
+      ansible.builtin.debug:
+        var: inventory_hostname

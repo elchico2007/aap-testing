@@ -1,6 +1,21 @@
 - name: test
-  hosts: "{{ survey_name }}"
+  hosts: all
 
   tasks:
-    - debug:
-        var: awx_user_name
+    block:
+      - name: fail for certain hosts
+        ansible.builtin.assert:
+          that:
+            - my_param == 1
+          fail_msg: "'my_param' is not 1"
+          success_msg: "'my_param' is 1"
+      
+      - name: Pass to artifact
+        ansible.builtin.set_stats:
+          data:
+            successful_hosts: "{{ successful_hosts | default([])  + [inventory_hostname] }}"
+    rescue:
+      - name: Pass to artifact
+        ansible.builtin.set_stats:
+          data:
+            failed_hosts: "{{ failed_hosts | default([])  + [inventory_hostname] }}"
