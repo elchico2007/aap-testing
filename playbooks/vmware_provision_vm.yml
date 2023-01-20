@@ -25,5 +25,5 @@
 
     - name: Wait for host to come up
       ansible.builtin.wait_for:
-        timeout: 90
+        timeout: 150
       delegate_to: localhost
