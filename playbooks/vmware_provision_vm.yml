@@ -1,0 +1,25 @@
+---
+- name: Create a Simple VM provision
+  gather_facts: false
+  hosts: localhost
+
+  tasks:
+    - name: Clone a virtual machine from Linux template and customize
+      community.vmware.vmware_guest:
+        datacenter: "Datacenter"
+        folder: /aap-testing
+        state: poweredon
+        template: "ubuntu-test-template"
+        validate_certs: false
+        name: "{{ survey_name }}"
+        networks:
+          - name: VM Network
+            ip: 192.168.0.190
+            netmask: 255.255.255.0
+            connected: true
+            start_connected: true
+        wait_for_ip_address: true
+        customization:
+          domain: "lab.test"
+          dns_servers:
+            - 192.168.0.20
