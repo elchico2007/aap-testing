@@ -22,3 +22,8 @@
           domain: "lab.test"
           dns_servers:
             - 192.168.0.20
+
+    - name: Wait for host to come up
+      ansible.builtin.wait_for:
+        timeout: 90
+      delegate_to: localhost
