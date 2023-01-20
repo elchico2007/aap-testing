@@ -14,7 +14,7 @@
         name: "{{ survey_name }}"
         networks:
           - name: VM Network
-            ip: 192.168.0.190
+            ip: 192.168.0.57
             netmask: 255.255.255.0
             connected: true
             start_connected: true
