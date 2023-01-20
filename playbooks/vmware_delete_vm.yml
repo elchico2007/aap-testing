@@ -9,4 +9,5 @@
         datacenter: "Datacenter"
         state: absent
         name: "{{ survey_name }}"
+        force: true
         validate_certs: false
