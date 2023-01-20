@@ -1,0 +1,12 @@
+---
+- name: Remove VM
+  gather_facts: false
+  hosts: localhost
+
+  tasks:
+    - name: Remove VM from Datacenter
+      community.vmware.vmware_guest:
+        datacenter: "Datacenter"
+        state: absent
+        name: "{{ survey_name }}"
+        validate_certs: false
