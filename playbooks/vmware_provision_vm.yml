@@ -8,13 +8,13 @@
       ansible.builtin.set_fact:
         num_cpus: 1
         memory_mb: 2048
-      when: "small" in survey_size | default('small')
+      when: '"small" in survey_size | default("small")'
 
     - name: Recording VM size for medium
       ansible.builtin.set_fact:
         num_cpus: 2
         memory_mb: 4024
-      when: "medium" in survey_size | default('small')
+      when: '"medium" in survey_size | default("small")'
 
     - name: Clone a virtual machine from Linux template and customize
       community.vmware.vmware_guest:
