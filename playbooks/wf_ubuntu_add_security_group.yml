@@ -2,6 +2,11 @@
   hosts: "{{ survey_name }}"
 
   tasks:
+    - name: Create admin group
+      ansible.builtin.group:
+        name: admin
+        state: present
+
     - name: Add the user 'johnd' with a specific uid and a primary group of 'admin'
       ansible.builtin.user:
         name: johnd
