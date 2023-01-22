@@ -10,7 +10,7 @@
       ansible.builtin.set_stats:
         data:
           artifact:
-            msg: "EC2 Instance successfully deployed!!"
+            msg: "Instance successfully deployed!"
             ip: "{{ ansible_host }}"
             host: "{{ survey_name }}"
 
