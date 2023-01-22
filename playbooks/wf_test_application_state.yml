@@ -13,6 +13,4 @@
             msg: "EC2 Instance successfully deployed!!"
             ip: "{{ ansible_host }}"
             host: "{{ survey_name }}"
-            image_id: "{{ image_id }}"
-            instance_id: "{{ instance_id }}"
 
