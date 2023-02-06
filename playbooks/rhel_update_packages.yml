@@ -41,17 +41,6 @@
       register: reg_upgrade_ok
       when: ev_security_only == "no" and reg_dnf_output_all is defined
     
-    - name: Patch packages
-      become: yes
-      ansible.builtin.dnf:
-        name: '*'
-        security: yes
-        state: present
-        update_cache: yes
-        update_only: no
-      register: reg_upgrade_ok
-      when: ev_security_only == "yes" and reg_dnf_output_secu is defined
-    
     - name: Print errors if upgrade failed
       ansible.builtin.debug:
         msg: "Packages upgrade failed"
