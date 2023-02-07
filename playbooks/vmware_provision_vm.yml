@@ -18,9 +18,6 @@
 
     - name: Clone a virtual machine from Linux template and customize
       community.vmware.vmware_guest:
-        hostname: "vcenter.lab.test"
-        username: "administrator@lab.test"
-        password: "Luis093096@"
         datacenter: "Datacenter"
         folder: /aap-testing
         state: poweredon
