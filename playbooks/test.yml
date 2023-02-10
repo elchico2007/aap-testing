@@ -1,24 +1,22 @@
 - name: test
-  hosts:
-    - rhel-9-server
-    - rhel-9-catalog
+  hosts: localhost
+  connection: local
   gather_facts: false
+  collections:
+     - azure.azcollection
+     - community.general
+     - community.general.random_pet
+     - community.general.random_string
+     - community.general.random_words
 
   tasks:
-    - block:
-        - name: fail for certain hosts
-          ansible.builtin.assert:
-            that:
-              - my_param == 1
-            fail_msg: "'my_param' is not 1"
-            success_msg: "'my_param' is 1"
-        
-        - name: Pass to artifact
-          ansible.builtin.set_stats:
-            data:
-              successful_hosts: "{{ successful_hosts | default([])  + [inventory_hostname] }}"
-      rescue:
-        - name: Pass to artifact
-          ansible.builtin.set_stats:
-            data:
-              failed_hosts: "{{ failed_hosts | default([])  + [inventory_hostname] }}"
+######################################## Create RG #########################################
+
+   - name: Generate pet name no word number
+     tags: pet
+     set_fact:
+       az_rg: "{{ lookup('community.general.random_pet') }}"
+
+   - name: Print
+     debug:
+        msg: '{{ az_rg }}'
