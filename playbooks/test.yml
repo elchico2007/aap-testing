@@ -1,22 +1,9 @@
-- name: test
-  hosts: localhost
-  connection: local
+- name: Test
+  hosts: all
   gather_facts: false
-  collections:
-     - azure.azcollection
-     - community.general
-     - community.general.random_pet
-     - community.general.random_string
-     - community.general.random_words
 
   tasks:
-######################################## Create RG #########################################
-
-   - name: Generate pet name no word number
-     tags: pet
-     set_fact:
-       az_rg: "{{ lookup('community.general.random_pet') }}"
-
-   - name: Print
-     debug:
-        msg: '{{ az_rg }}'
+  - name: Print all host vars
+    ansible.builtin.debug:
+      var: hostvars[inventory_hostname]
+     
