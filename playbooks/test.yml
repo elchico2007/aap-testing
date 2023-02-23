@@ -5,5 +5,4 @@
   tasks:
   - name: Print all host vars
     ansible.builtin.debug:
-      var: hostvars[inventory_hostname]
-     
+      msg: "{{ infoblox_username }}: {{ infoblox_password }}"
