@@ -1,0 +1,28 @@
+- name: Use ChatGPT
+  hosts: cisco1.lab.test
+  gather_facts: false
+
+  tasks:
+  - name: Gather config from cisco
+    cisco.ios.ios_command:
+      commands:
+        - show running-config
+    register: ios_config
+
+  - name: Use chatgpt to perform an action
+    luvalle.chatgpt.gpt3:
+      model: "text-davinci-003"
+      input: "Based on this output: {{ ios_config['stdout'] }},only give me the commands that i need to give all my interfaces a description of testDescription"
+      api_key: "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"
+    register: gpt
+    delegate_to: localhost
+  
+  - name: Format output
+    ansible.builtin.copy:
+      content: "{{ gpt['output']['choices'][0]['text'] }}"
+      dest: "ios_config.cfg"
+
+  - name: Push new configuration
+    cisco.ios.ios_config:
+      src: "../ios_config.cfg"
+      multiline_delimiter: "!"
