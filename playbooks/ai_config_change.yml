@@ -13,7 +13,7 @@
     luvalle.chatgpt.gpt3:
       model: "text-davinci-003"
       input: "Based on this output: {{ ios_config['stdout'] }},only give me the commands that i need to give all my interfaces a description of testDescription"
-      api_key: "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"
+      api_key: "{{ api_key }}"
     register: gpt
     delegate_to: localhost
   
