@@ -13,11 +13,15 @@ arista1.lab.test
 [exos]
 exos.lab.test
 
+[panos]
+palo1.lab.test
+
 [networking:children]
 junos
 ios
 eos
 aoscx
+panos
 
 [ubuntu]
 ubuntu1.lab.test
