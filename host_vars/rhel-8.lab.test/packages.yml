@@ -1,0 +1,7 @@
+compliant_packages:
+    - name: 'python36'
+      version: 3.6.8
+    - name: 'firewalld'
+      version: 0.9.3
+    - name: 'firefox'
+      version: 91.13.0

@@ -1,0 +1,5 @@
+---
+dns_domain: "lab.test"
+dns_servers:
+    - '192.168.0.20'
+    - '192.168.0.22'
