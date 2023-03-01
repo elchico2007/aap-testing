@@ -4,3 +4,5 @@ collections:
   - name: junipernetworks.junos
   - name: arista.eos
   - name: arubanetworks.aoscx
+  - name: community.network
+  - name: paloaltonetworks.panos
