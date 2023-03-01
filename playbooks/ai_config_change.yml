@@ -1,5 +1,5 @@
 - name: Use ChatGPT
-  hosts: cisco1.lab.test
+  hosts: all
   gather_facts: false
 
   tasks:
