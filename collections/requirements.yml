@@ -3,8 +3,5 @@
 # # Perform more testing to figure out why certain downloads are happenning
 collections:
   - name: community.general
-    source: https://galaxy.ansible.com
   - name: zjpeterson.aci
-    source: https://galaxy.ansible.com
   - name: elchico2007.chatgpt
-    source: https://galaxy.ansible.com
