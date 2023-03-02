@@ -3,8 +3,8 @@
 # Perform more testing to figure out why certain downloads are happenning
 collections:
   - name: community.general
-    source: "https://rhel-9-server.lab.test/api/galaxy/content/community/"
+    source: https://galaxy.ansible.com
   - name: zjpeterson.aci
-    source: "https://rhel-9-server.lab.test/api/galaxy/content/community/"
+    source: https://galaxy.ansible.com
   - name: elchico2007.chatgpt
-    source: "https://rhel-9-server.lab.test/api/galaxy/content/community/"
+    source: https://galaxy.ansible.com
