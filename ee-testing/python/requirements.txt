@@ -4,3 +4,17 @@ paramiko
 requests
 pyaoscx>=2.3.1
 openai
+bcrypt
+boto3
+botocore
+cffi
+cryptography
+jmespath
+pan-os-python
+pan-python
+pycparser
+python-dateutil
+s3transfer
+six
+urllib3
+pynacl

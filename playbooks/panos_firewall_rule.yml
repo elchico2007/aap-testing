@@ -1,0 +1,42 @@
+- name: Configuring security rule
+  hosts: all
+  connection: local
+
+  vars:
+    device:
+      ip_address: "{{ inventory_hostname | default('palo1.lab.test') }}"
+      username: '{{ panos_username }}'
+      password: '{{ panos_password }}'
+
+    # survey_rule_name: 'Survey Rule'
+    # survey_tags:
+    #   - dev
+    # survey_desc: 'test'
+    # survey_source_zone: 'trust'
+    # survey_source_ip: 'any'
+    # survey_dest_zone: 'untrust'
+    # survey_dest_ip: 'any'
+    # survey_action: 'allow'
+    # survey_application:
+    #   - 'any'
+
+  tasks:
+    - name: Create a device group security rule
+      paloaltonetworks.panos.panos_security_rule:
+        provider: '{{ device }}'
+        state: 'present'
+        device_group: 'DC Firewalls'
+        rule_name: 'SSH Permissions'
+
+    - name: Add custom rule from survey
+      paloaltonetworks.panos.panos_security_rule:
+        provider: '{{ device }}'
+        device_group: 'DC Firewalls'
+        rule_name: '{{ survey_rule_name }}'
+        description: '{{ survey_desc }}'
+        source_zone: '{{ survey_source_zone }}'
+        source_ip: '{{ survey_source_ip }}'
+        destination_zone: '{{ survey_dest_zone }}'
+        destination_ip: '{{ survey_dest_ip }}'
+        application: '{{ survey_application }}'
+        action: '{{ survey_action }}'
