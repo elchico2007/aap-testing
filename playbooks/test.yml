@@ -1,8 +1,61 @@
 - name: Test
-  hosts: all
+  hosts: test
   gather_facts: false
 
+  vars:
+    user_1: 'admin_one'
+    user_1_pass: 'admin_one@'
+    user_2: 'admin_two'
+    user_2_pass: 'admin_two@'
+    user_3: 'admin_three'
+    user_3_pass: 'admin_three@'
+
   tasks:
-  - name: Print all host vars
-    ansible.builtin.debug:
-      msg: "{{ infoblox_username }}: {{ infoblox_password }}"
+  - name: Create Block
+    block:
+      - name: Connect using the first user pass combination
+        ansible.builtin.raw: "sshpass -p '{{ user_1_pass }}' ssh '{{ user_1 }}'@'{{ inventory_hostname }}' -T -o 'StrictHostKeyChecking no'"
+        register: user_1
+        ignore_errors: true
+      
+      - name: User 1 devices
+        ansible.builtin.lineinfile:
+          path: "user_1_devices.txt"
+          line: "{{ inventory_hostname }}"
+          create: true
+        when: user_1.rc == 0
+
+      - name: Connect using the second user pass combination
+        ansible.builtin.raw: "sshpass -p '{{ user_2_pass }}' ssh '{{ user_2 }}'@'{{ inventory_hostname }}' -T -o 'StrictHostKeyChecking no'"
+        register: user_2
+        ignore_errors: true
+      
+      - name: User 2 devices
+        ansible.builtin.lineinfile:
+          path: "user_2_devices.txt"
+          line: "{{ inventory_hostname }}"
+          create: true
+        when: user_2.rc == 0
+
+      - name: Connect using the second user pass combination
+        ansible.builtin.raw: "sshpass -p '{{ user_3_pass }}' ssh '{{ user_3 }}'@'{{ inventory_hostname }}' -T -o 'StrictHostKeyChecking no'"
+        register: user_3
+        ignore_errors: true
+
+      - name: User 3 devices
+        ansible.builtin.lineinfile:
+          path: "user_3_devices.txt"
+          line: "{{ inventory_hostname }}"
+          create: true
+        when: user_3.rc == 0
+      
+      - name: Export list of failed devices
+        ansible.builtin.lineinfile:
+          path: "no_user_devices.txt"
+          line: "{{ inventory_hostname }}"
+          create: true
+        when:
+          - user_1.rc != 0
+          - user_2.rc != 0
+          - user_3.rc != 0
+    delegate_to: localhost
