@@ -5,14 +5,17 @@
 
   tasks:
     - name: Create a change request
-      servicenow.servicenow.snow_record:
-        state: present
-        table: change_request
-        data:
-          severity: 4
-          priority: 1
-          short_description: "Provisioning VM"
-          description: "Provisioning {{ survey_name | default('UBUNTU-VM')}} for user {{ awx_user_name | default('Bob The Builder') }}"
+      servicenow.itsm.change_request:
+        type: standard
+        state: new
+        requested_by: "service.ansible"
+        short_description: "Provisioning VM {{ survey_name | default('UBUNTU-VM') }}"
+        description: "Provisioning {{ survey_name | default('UBUNTU-VM')}} for user {{ awx_user_name | default('Bob The Builder') }}"
+        priority: moderate
+        risk: low
+        impact: low
+        other:
+          expected_start: 2021-02-12
       register: itsm_change
 
     - ansible.builtin.debug: 

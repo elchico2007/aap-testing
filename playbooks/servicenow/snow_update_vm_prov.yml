@@ -3,19 +3,11 @@
   hosts: localhost
   gather_facts: no
 
-  tasks:
-    - name: Update a change
-      servicenow.servicenow.snow_record:
-        table: change_request
-        state: present
-        number: "{{ itsm_change['record']['number'] }}"
-        data:
-          work_notes : "VM has been provisioned to Infrastructure"
-    
-    - name: Update a change
-      servicenow.servicenow.snow_record:
-        table: change_request
-        state: present
-        number: "{{ itsm_change['record']['number'] }}"
-        data:
-          work_notes : "Finally Done!"
+  tasks:  
+    - name: Close change_request
+      servicenow.itsm.change_request:
+        state: closed
+        close_code: "successful"
+        close_notes: "VM has been provisioned to Infrastructure"
+        assignment_group: "Hardware"
+        number: "{{ change_request['record']['number'] }}"
