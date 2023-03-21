@@ -1,0 +1,24 @@
+---
+- name: Create ticket with notes
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+    - name: Create a change request
+      servicenow.servicenow.snow_record:
+        state: present
+        table: change_request
+        data:
+          severity: 4
+          priority: 1
+          short_description: "Provisioning VM"
+          description: "Provisioning {{ survey_name | default('UBUNTU-VM')}} for user {{ awx_user_name | default('Bob The Builder') }}"
+      register: itsm_change
+
+    - ansible.builtin.debug: 
+        var: itsm_change
+    
+    - name: Pass on Change request artifact
+      ansible.builtin.set_stats:
+        data:
+          change_request: "{{ itsm_change }}"

@@ -1,0 +1,17 @@
+- name: create disk and format
+  hosts: all
+  gather_facts: false
+  # roles:
+  #  - RhelCreateStripeFS
+  #   #- RegisterToSatellite
+  tasks:
+  - name: add epiclv
+    ansible.builtin.import_role:
+      name: RHELCreateStripeFS
+    vars:
+      VolumeGroupName: prdvg
+      PhysicalDiskList: "/dev/sdb,/dev/sdc"
+      LvName: prd_lv
+      LvSize: 2G
+      NoOfDisksOnStripe: 2
+      mountpoint: /epic/prod/test
