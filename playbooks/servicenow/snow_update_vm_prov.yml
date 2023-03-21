@@ -11,3 +11,4 @@
         close_notes: "{{ hostvars[survey_name] | to_nice_yaml }}"
         assignment_group: "Hardware"
         number: "{{ change_request['record']['number'] }}"
+      delegate_to: localhost
