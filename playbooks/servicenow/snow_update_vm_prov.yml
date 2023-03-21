@@ -1,6 +1,7 @@
 ---
 - name: Update Change ticket
   hosts: "{{ survey_name | default('localhost') }}"
+  gather_facts: false
 
   tasks:  
     - name: Close change_request
