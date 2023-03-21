@@ -32,11 +32,11 @@
       paloaltonetworks.panos.panos_security_rule:
         provider: '{{ device }}'
         device_group: 'DC Firewalls'
-        rule_name: '{{ survey_rule_name }}'
+        rule_name: '{{ survey_rule_name | default(artifact['host'] + " HTTPS rule") }}'
         description: '{{ survey_desc }}'
         source_zone: '{{ survey_source_zone }}'
         source_ip: '{{ survey_source_ip }}'
         destination_zone: '{{ survey_dest_zone }}'
-        destination_ip: '{{ survey_dest_ip }}'
+        destination_ip: '{{ survey_dest_ip | default(artifact['ip'])}}'
         application: '{{ survey_application }}'
         action: '{{ survey_action }}'
