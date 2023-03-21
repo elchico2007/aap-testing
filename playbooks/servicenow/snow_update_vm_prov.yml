@@ -1,13 +1,12 @@
 ---
 - name: Update Change ticket
-  hosts: localhost
-  gather_facts: no
+  hosts: "{{ survey_name | default('localhost') }}"
 
   tasks:  
     - name: Close change_request
       servicenow.itsm.change_request:
         state: closed
         close_code: "successful"
-        close_notes: "VM has been provisioned to Infrastructure"
+        close_notes: "{{ hostvars['survey_name'] | to_nice_yaml }}"
         assignment_group: "Hardware"
         number: "{{ change_request['record']['number'] }}"
