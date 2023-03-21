@@ -38,5 +38,5 @@
         source_ip: '{{ survey_source_ip }}'
         destination_zone: '{{ survey_dest_zone }}'
         destination_ip: '{{ survey_dest_ip | default(artifact['ip'])}}'
-        application: '{{ survey_application }}'
+        application: '{{ survey_application | default("apache-solr") }}'
         action: '{{ survey_action }}'
