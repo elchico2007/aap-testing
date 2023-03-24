@@ -1,5 +1,5 @@
 - name: Configuring security rule
-  hosts: all
+  hosts: palo1.lab.test
   connection: local
 
   vars:
