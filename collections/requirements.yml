@@ -1,5 +1,5 @@
 # ---
 # # var/lib/awx/venv/awx/lib/python3.9/site-packages/awx/playbooks/project_update.yml
 # # Perform more testing to figure out why certain downloads are happenning
-collections:
-  - name: ibm.power_hmc
+#collections:
+#  - name: ibm.power_hmc
