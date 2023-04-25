@@ -1,7 +1,6 @@
 ---
 - name: Configure Basic interface configuration
-  hosts: {{ survey_name | default("all") }}
-
+  hosts: "{{ survey_name | default('all') }}"
   tasks:
     - name: Configure basic ios interface configuration
       cisco.ios.ios_interfaces:
