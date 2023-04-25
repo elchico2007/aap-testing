@@ -5,11 +5,12 @@
 
 - name: PUT interfaces
   ansible.builtin.uri:
-    url: http://localhost/api/v2/hosts/3/variable_data/
+    url: https://rhel-9.lab.test:443/api/v2/hosts/3/variable_data/
     user: admin
     password: "{{ aap_password }}"
     method: PUT
     body: "{{ ansible_facts['net_interfaces'] }}"
     force_basic_auth: yes
     status_code: 200
+    validate_certs: false
     body_format: json
