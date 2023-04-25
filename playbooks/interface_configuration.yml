@@ -17,4 +17,4 @@
 
   handlers:
     - name: Upload Interfaces
-      ansible.builtin.include_tasks: handlers/parse_interfaces.yml
+      ansible.builtin.include_tasks: ../handlers/parse_interfaces.yml
