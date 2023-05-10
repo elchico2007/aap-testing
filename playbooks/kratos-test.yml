@@ -21,21 +21,8 @@
         state: present
 
     - name: Install helm
-      get_url:
-        url: https://get.helm.sh/helm-v3.7.1-linux-amd64.tar.gz
-        dest: /tmp/helm.tar.gz
-
-    - name: Extract helm tarball
-      unarchive:
-        src: /tmp/helm.tar.gz
-        dest: /usr/local/bin
-        copy: no
-        creates: /usr/local/bin/helm
-
-    - name: Set helm permissions
-      file:
-        path: /usr/local/bin/helm
-        mode: 0755
+      shell:
+        cmd: curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 
     - name: Set environment variables
       shell:
