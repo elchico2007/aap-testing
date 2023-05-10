@@ -6,6 +6,37 @@
     BOOSTRAP_PWD: Changeme123!
     RANCHER_VERSION: 2.6.8
   tasks:
+    - name: Add Kubernetes repository
+      yum_repository:
+        name: kubernetes
+        description: Kubernetes repo
+        baseurl: https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+        gpgcheck: yes
+        enabled: yes
+        gpgkey: https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+
+    - name: Install kubectl
+      yum:
+        name: kubectl
+        state: present
+
+    - name: Install helm
+      get_url:
+        url: https://get.helm.sh/helm-v3.7.1-linux-amd64.tar.gz
+        dest: /tmp/helm.tar.gz
+
+    - name: Extract helm tarball
+      unarchive:
+        src: /tmp/helm.tar.gz
+        dest: /usr/local/bin
+        copy: no
+        creates: /usr/local/bin/helm
+
+    - name: Set helm permissions
+      file:
+        path: /usr/local/bin/helm
+        mode: 0755
+
     - name: Set environment variables
       shell:
         cmd: |
