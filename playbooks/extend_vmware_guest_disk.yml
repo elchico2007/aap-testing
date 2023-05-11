@@ -23,16 +23,16 @@
       set_fact: 
         new_size: "{{ split[0] | int + 2 }}000"
 
-    # - name: Connect to VMWare and resize disk on Guest VM
-    #   community.vmware.vmware_guest_disk:
-    #     datacenter: "{{ datacenter_name }}"
-    #     validate_certs: no
-    #     name: "{{ inventory_hostname }}"
-    #     disk:
-    #       - size_mb: 50000
-    #         state: present
-    #         unit_number: 0
-    #         scsi_controller: 0
-    #         scsi_type: 'lsilogicsas'
-    #   delegate_to: localhost
-    #   register: disk_facts
+    - name: Connect to VMWare and resize disk on Guest VM
+      community.vmware.vmware_guest_disk:
+        datacenter: "{{ datacenter_name }}"
+        validate_certs: no
+        name: "{{ inventory_hostname }}"
+        disk:
+          - size_mb: "{{ new_size | int }}"
+            state: present
+            unit_number: 0
+            scsi_controller: 0
+            scsi_type: 'lsilogicsas'
+      delegate_to: localhost
+      register: disk_facts
