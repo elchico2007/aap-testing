@@ -16,7 +16,7 @@
       register: disk_info
     
     - debug:
-        var: disk_info
+        var: disk_info.guest_disk_info.0.capacity_in_kb | human_readable(unit="M")
 
     # - name: Connect to VMWare and resize disk on Guest VM
     #   community.vmware.vmware_guest_disk:
