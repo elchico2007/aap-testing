@@ -15,7 +15,7 @@
         disk:
           - size_mb: 10000
             state: present
-            unit_number: 1
+            unit_number: 0
             scsi_controller: 0
             scsi_type: 'lsilogicsas'
       delegate_to: localhost
