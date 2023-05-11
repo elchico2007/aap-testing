@@ -12,9 +12,11 @@
         delay: 15
         timeout: 300
 
-    - name: Extend Partition
-      win_partition:
-        disk_number: 0
-        partition_number: 1
-        size: "{{ disk_info.partitions[1].size_max }}"
-        extend: yes
+    - name: Connect to windows host and expand the drive
+      ansible.windows.win_powershell:
+        script: |
+          # Variable specifying the drive you want to extend
+          $drive_letter = "C"
+          # Script to get the partition sizes and then resize the volume
+          $size = (Get-PartitionSupportedSize -DriveLetter $drive_letter)
+          Resize-Partition -DriveLetter $drive_letter -Size $size.SizeMax
