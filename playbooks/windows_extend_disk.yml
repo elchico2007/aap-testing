@@ -1,0 +1,22 @@
+---
+- name: Extend Windows Disk
+  hosts: "{{ host | default('all') }}"
+  gather_facts: false
+
+  vars:
+    datacenter_name: Datacenter
+  
+  tasks:
+    - name: Wait 300 seconds, but only start checking after 15 seconds
+      wait_for_connection:
+        delay: 15
+        timeout: 300
+
+    - name: Connect to windows host and expand the drive
+      ansible.windows.win_powershell:
+        script: |
+          # Variable specifying the drive you want to extend
+          $drive_letter = "C"
+          # Script to get the partition sizes and then resize the volume
+          $size = (Get-PartitionSupportedSize -DriveLetter $drive_letter)
+          Resize-Partition -DriveLetter $drive_letter -Size $size.SizeMax
