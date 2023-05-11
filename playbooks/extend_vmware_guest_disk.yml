@@ -7,16 +7,27 @@
     datacenter_name: Datacenter
 
   tasks:
-    - name: Connect to VMWare and resize disk on Guest VM
-      community.vmware.vmware_guest_disk:
+    - name: Gather disk info from virtual machine using name
+      community.vmware.vmware_guest_disk_info:
         datacenter: "{{ datacenter_name }}"
         validate_certs: no
         name: "{{ inventory_hostname }}"
-        disk:
-          - size_mb: 50000
-            state: present
-            unit_number: 0
-            scsi_controller: 0
-            scsi_type: 'lsilogicsas'
       delegate_to: localhost
-      register: disk_facts
+      register: disk_info
+    
+    - debug:
+        var: disk_info
+
+    # - name: Connect to VMWare and resize disk on Guest VM
+    #   community.vmware.vmware_guest_disk:
+    #     datacenter: "{{ datacenter_name }}"
+    #     validate_certs: no
+    #     name: "{{ inventory_hostname }}"
+    #     disk:
+    #       - size_mb: 50000
+    #         state: present
+    #         unit_number: 0
+    #         scsi_controller: 0
+    #         scsi_type: 'lsilogicsas'
+    #   delegate_to: localhost
+    #   register: disk_facts
