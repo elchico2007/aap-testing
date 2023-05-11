@@ -1,6 +1,6 @@
 ---
 - name: Extend Windows Disk
-  hosts: "{{ host | default('all') }}"
+  hosts: "{{ host + '.lab.test' | default('all') }}"
   gather_facts: false
 
   vars:
