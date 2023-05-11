@@ -12,14 +12,9 @@
         delay: 15
         timeout: 300
 
-    - name: Get Disk Information
-      win_partition:
-        disk_number: 0
-      register: disk_info
-
     - name: Extend Partition
       win_partition:
         disk_number: 0
-        partition_number: 2
+        partition_number: 1
         size: "{{ disk_info.partitions[1].size_max }}"
         extend: yes
