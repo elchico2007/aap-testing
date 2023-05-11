@@ -21,7 +21,7 @@
         
     - name: New size
       set_fact: 
-        new_size: "{{ split[0] + 2 }}000"
+        new_size: "{{ (split[0] | int + 2) | str + '000' }}"
 
     # - name: Connect to VMWare and resize disk on Guest VM
     #   community.vmware.vmware_guest_disk:
