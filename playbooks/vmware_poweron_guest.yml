@@ -1,0 +1,16 @@
+---
+- name: Power on VM
+  hosts: "{{ host | default('all') }}"
+  gather_facts: false
+
+  vars:
+    datacenter_name: Datacenter
+  
+  tasks:
+    - name: Connect to VMWare and boot up guest
+      community.vmware.vmware_guest:
+        datacenter: "{{ datacenter_name }}"
+        validate_certs: no
+        name: "{{ inventory_hostname }}"
+        state: poweredon
+      delegate_to: localhost
