@@ -15,6 +15,11 @@
       delegate_to: localhost
       register: disk_info
     
+    - name: Wait for Guest to power down
+      wait_for:
+        timeout: 15
+      delegate_to: localhost  
+    
     - name: Split data
       set_fact: 
         split: "{{ disk_info['guest_disk_info']['0']['summary'] | split(',') }}"
