@@ -1,0 +1,18 @@
+---
+- name: Shutdown Guest
+  hosts: "{{ host | default('all') }}"
+  gather_facts: false
+
+  vars:
+    datacenter_name: Datacenter
+
+  tasks:
+  - name: Connect to VMWare and shutdown guest
+    community.vmware.vmware_guest:
+      datacenter: "{{ datacenter_name }}"
+      validate_certs: no
+      name: "{{ inventory_hostname }}"
+      state: shutdownguest
+    delegate_to: localhost
+    failed_when: vm_shutdown.instance.hw_power_status != 'poweredOff' and vm_shutdown.changed == false
+    register: vm_shutdown
