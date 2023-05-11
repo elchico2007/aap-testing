@@ -13,7 +13,7 @@
         validate_certs: no
         name: "{{ inventory_hostname }}"
         disk:
-          - size_mb: 10000
+          - size_mb: 50000
             state: present
             unit_number: 0
             scsi_controller: 0
