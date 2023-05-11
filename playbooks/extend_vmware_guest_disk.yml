@@ -15,8 +15,9 @@
       delegate_to: localhost
       register: disk_info
     
-    - debug:
-        msg: "{{ disk_info['guest_disk_info']['0']['capacity_in_kb'] | human_readable(unit='K') }}"
+    - name: Add to current disk
+      set_fact: 
+        new_size: "{{ disk_info['guest_disk_info']['0']['summary'] | split(',')[0] | int + 2 }}000"
 
     # - name: Connect to VMWare and resize disk on Guest VM
     #   community.vmware.vmware_guest_disk:
