@@ -1,0 +1,22 @@
+---
+- name: Extend VM guest disk
+  hosts: "{{ host | default('all') }}"
+  gather_facts: false
+
+  vars:
+    datacenter_name: Datacenter
+
+  tasks:
+    - name: Connect to VMWare and resize disk on Guest VM
+      community.vmware.vmware_guest_disk:
+        datacenter: "{{ datacenter_name }}"
+        validate_certs: no
+        name: "{{ inventory_hostname }}"
+        disk:
+          - size_mb: 10000
+            state: present
+            unit_number: 1
+            scsi_controller: 0
+            scsi_type: 'lsilogicsas'
+      delegate_to: localhost
+      register: disk_facts
