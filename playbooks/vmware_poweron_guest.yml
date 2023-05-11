@@ -8,9 +8,9 @@
   
   tasks:
     - name: Connect to VMWare and boot up guest
-      community.vmware.vmware_guest:
+      community.vmware.vmware_guest_powerstate:
         datacenter: "{{ datacenter_name }}"
         validate_certs: no
         name: "{{ inventory_hostname }}"
-        state: poweredon
+        state: powered-on
       delegate_to: localhost
