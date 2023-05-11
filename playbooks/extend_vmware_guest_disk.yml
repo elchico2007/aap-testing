@@ -17,7 +17,7 @@
     
     - name: Add to current disk
       set_fact: 
-        new_size: "{{ disk_info['guest_disk_info']['0']['summary'] | split(',').0 | int + 2 }}"
+        new_size: "{{ disk_info['guest_disk_info']['0']['summary'] | split(',') }}"
 
     # - name: Connect to VMWare and resize disk on Guest VM
     #   community.vmware.vmware_guest_disk:
