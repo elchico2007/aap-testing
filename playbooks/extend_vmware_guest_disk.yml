@@ -15,9 +15,10 @@
       delegate_to: localhost
       register: disk_info
     
-    - name: Add to current disk
+    - name: Split data
       set_fact: 
-        new_size: "{{ disk_info['guest_disk_info']['0']['summary'] | split(',') }}"
+        split: "{{ disk_info['guest_disk_info']['0']['summary'] | split(',') }}"
+        new_size: "{{ split[0] + 2 }}000"
 
     # - name: Connect to VMWare and resize disk on Guest VM
     #   community.vmware.vmware_guest_disk:
