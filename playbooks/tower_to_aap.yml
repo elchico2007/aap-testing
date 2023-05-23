@@ -1,0 +1,30 @@
+- name: Export Ansible Tower Resources to AAP
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Export Tower Resources
+      ansible.controller.tower_export:
+        controller_host: "<tower host>"
+        controller_username: "admin"
+        controller_password: "password"
+        validate_certs: false
+        workflow_job_templates: 'all'
+        users: 'all'
+        teams: 'all'
+        projects: 'all'
+        organizations: 'all'
+        notification_templates: 'all'
+        job_templates: 'all'
+        inventory_sources: 'all'
+        inventory: 'all'
+        credentials: 'all'
+        credential_types: 'all'
+      register: tower
+
+    - name: Import Tower Resources to AAP
+      ansible.controller.import:
+        controller_host: "<controller host>"
+        controller_username: "admin"
+        controller_password: "password"
+        validate_certs: false
+        assets: "{{ tower.assets }}"
