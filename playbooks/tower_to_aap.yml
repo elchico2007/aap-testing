@@ -1,30 +1,200 @@
-- name: Export Ansible Tower Resources to AAP
-  hosts: localhost
+---
+- hosts: localhost
   gather_facts: false
+
   tasks:
-    - name: Export Tower Resources
+    - name: Export Tower Organizations
       ansible.controller.tower_export:
-        controller_host: "<tower host>"
+        controller_host: "tower_host"
+        controller_username: "admin"
+        controller_password: "password"
+        validate_certs: false
+        organizations: 'all'
+      register: tower_organizations
+
+    - name: Import Tower Organizations
+      ansible.controller.import:
+        controller_host: "controller_host"
+        controller_username: "admin"
+        controller_password: "password"
+        validate_certs: false
+        assets: "{{ tower_organizations.assets }}"
+
+    - name: Export Tower Users
+      ansible.controller.tower_export:
+        controller_host: "tower_host"
+        controller_username: "admin"
+        controller_password: "password"
+        validate_certs: false
+        users: 'all'
+      register: tower_users
+
+    - name: Import Tower Users
+      ansible.controller.import:
+        controller_host: "controller_host"
+        controller_username: "admin"
+        controller_password: "password"
+        validate_certs: false
+        assets: "{{ tower_users.assets }}"
+
+    - name: Export Tower Teams
+      ansible.controller.tower_export:
+        controller_host: "tower_host"
+        controller_username: "admin"
+        controller_password: "password"
+        validate_certs: false
+        teams: 'all'
+      register: tower_teams
+
+    - name: Import Tower Teams
+      ansible.controller.import:
+        controller_host: "controller_host"
+        controller_username: "admin"
+        controller_password: "password"
+        validate_certs: false
+        assets: "{{ tower_teams.assets }}"
+
+    - name: Export Tower Credential Types
+      ansible.controller.tower_export:
+        controller_host: "tower_host"
+        controller_username: "admin"
+        controller_password: "password"
+        validate_certs: false
+        credential_types: 'all'
+      register: tower_credential_types
+
+    - name: Import Tower Credential Types
+      ansible.controller.import:
+        controller_host: "controller_host"
+        controller_username: "admin"
+        controller_password: "password"
+        validate_certs: false
+        assets: "{{ tower_credential_types.assets }}"
+
+    - name: Export Tower Credentials
+      ansible.controller.tower_export:
+        controller_host: "tower_host"
+        controller_username: "admin"
+        controller_password: "password"
+        validate_certs: false
+        credentials: 'all'
+      register: tower_credentials
+
+    - name: Import Tower Credentials
+      ansible.controller.import:
+        controller_host: "controller_host"
+        controller_username: "admin"
+        controller_password: "password"
+        validate_certs: false
+        assets: "{{ tower_credentials.assets }}"
+    
+- name: Export Tower Projects
+      ansible.controller.tower_export:
+        controller_host: "tower_host"
+        controller_username: "admin"
+        controller_password: "password"
+        validate_certs: false
+        projects: 'all'
+      register: tower_projects
+
+    - name: Export Tower Inventory
+      ansible.controller.tower_export:
+        controller_host: "tower_host"
+        controller_username: "admin"
+        controller_password: "password"
+        validate_certs: false
+        inventory: 'all'
+      register: tower_inventory
+
+    - name: Export Tower Inventory Sources
+      ansible.controller.tower_export:
+        controller_host: "tower_host"
+        controller_username: "admin"
+        controller_password: "password"
+        validate_certs: false
+        inventory_sources: 'all'
+      register: tower_inventory_sources
+
+    - name: Export Tower Job Templates
+      ansible.controller.tower_export:
+        controller_host: "tower_host"
+        controller_username: "admin"
+        controller_password: "password"
+        validate_certs: false
+        job_templates: 'all'
+      register: tower_job_templates
+
+    - name: Export Tower Notification Templates
+      ansible.controller.tower_export:
+        controller_host: "tower_host"
+        controller_username: "admin"
+        controller_password: "password"
+        validate_certs: false
+        notification_templates: 'all'
+      register: tower_notification_templates
+
+    - name: Export Tower Workflow Job Templates
+      ansible.controller.tower_export:
+        controller_host: "tower_host"
         controller_username: "admin"
         controller_password: "password"
         validate_certs: false
         workflow_job_templates: 'all'
-        users: 'all'
-        teams: 'all'
-        projects: 'all'
-        organizations: 'all'
-        notification_templates: 'all'
-        job_templates: 'all'
-        inventory_sources: 'all'
-        inventory: 'all'
-        credentials: 'all'
-        credential_types: 'all'
-      register: tower
+      register: tower_workflow_job_templates
 
-    - name: Import Tower Resources to AAP
+    - name: Import Tower Projects
       ansible.controller.import:
-        controller_host: "<controller host>"
+        controller_host: "controller_host"
         controller_username: "admin"
         controller_password: "password"
         validate_certs: false
-        assets: "{{ tower.assets }}"
+        assets: "{{ tower_projects.assets }}"
+
+    - name: Import Tower Inventory
+      ansible.controller.import:
+        controller_host: "controller_host"
+        controller_username: "admin"
+        controller_password: "password"
+        validate_certs: false
+        assets: "{{ tower_inventory.assets }}"
+
+    - name: Import Tower Inventory Sources
+      ansible.controller.import:
+        controller_host: "controller_host"
+        controller_username: "admin"
+        controller_password: "password"
+        validate_certs: false
+        assets: "{{ tower_inventory_sources.assets }}"
+
+    - name: Import Tower Job Templates
+      ansible.controller.import:
+        controller_host: "controller_host"
+        controller_username: "admin"
+        controller_password: "password"
+        validate_certs: false
+        assets: "{{ tower_job_templates.assets }}"
+
+    - name: Import Tower Notification Templates
+      ansible.controller.import:
+        controller_host: "controller_host"
+        controller_username: "admin"
+        controller_password: "password"
+        validate_certs: false
+        assets: "{{ tower_notification_templates.assets }}"
+
+    - name: Export Tower workflow_job_templates
+      ansible.controller.tower_export:
+        controller_host: "tower_host"
+        controller_username: "admin"
+        controller_password: "password"
+        validate_certs: false
+        workflow_job_templates: 'all'
+      register: tower_workflow_job_templates
+
+    - name: Import Tower workflow_job_templates
+      ansible.controller.import:
+        controller_host: "controller_host"
+        controller_username: "admin"
+        controller_password: "password"
+        validate_certs: false
+        assets: "{{ tower_workflow_job_templates.assets }}"
