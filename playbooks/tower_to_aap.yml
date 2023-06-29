@@ -88,7 +88,7 @@
         validate_certs: false
         assets: "{{ tower_credentials.assets }}"
     
-- name: Export Tower Projects
+    - name: Export Tower Projects
       ansible.controller.tower_export:
         controller_host: "tower_host"
         controller_username: "admin"
