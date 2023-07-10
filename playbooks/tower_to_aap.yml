@@ -71,22 +71,23 @@
         validate_certs: false
         assets: "{{ tower_credential_types.assets }}"
 
-    - name: Export Tower Credentials
-      ansible.controller.tower_export:
-        controller_host: "tower_host"
-        controller_username: "admin"
-        controller_password: "password"
-        validate_certs: false
-        credentials: 'all'
-      register: tower_credentials
+    # Unable to export Tower Credentials, needs to be done manually.
+    # - name: Export Tower Credentials
+    #   ansible.controller.tower_export:
+    #     controller_host: "tower_host"
+    #     controller_username: "admin"
+    #     controller_password: "password"
+    #     validate_certs: false
+    #     credentials: 'all'
+    #   register: tower_credentials
 
-    - name: Import Tower Credentials
-      ansible.controller.import:
-        controller_host: "controller_host"
-        controller_username: "admin"
-        controller_password: "password"
-        validate_certs: false
-        assets: "{{ tower_credentials.assets }}"
+    # - name: Import Tower Credentials
+    #   ansible.controller.import:
+    #     controller_host: "controller_host"
+    #     controller_username: "admin"
+    #     controller_password: "password"
+    #     validate_certs: false
+    #     assets: "{{ tower_credentials.assets }}"
     
     - name: Export Tower Projects
       ansible.controller.tower_export:
