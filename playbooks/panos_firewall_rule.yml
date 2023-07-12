@@ -5,8 +5,8 @@
   vars:
     device:
       ip_address: "{{ inventory_hostname | default('palo1.lab.test') }}"
-      username: '{{ panos_username }}'
-      password: '{{ panos_password }}'
+      username: 'admin'
+      password: 'admin'
 
     # survey_rule_name: 'Survey Rule'
     # survey_tags:
