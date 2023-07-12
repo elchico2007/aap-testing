@@ -27,6 +27,7 @@
         state: 'present'
         device_group: 'DC Firewalls'
         rule_name: 'SSH Permissions'
+        port: 80
 
     - name: Add custom rule from survey
       paloaltonetworks.panos.panos_security_rule:
@@ -41,3 +42,4 @@
         destination_ip: '{{ survey_dest_ip | default(artifact["ip"])}}'
         application: '{{ survey_application | default("apache-solr") }}'
         action: '{{ survey_action }}'
+        port: 80
