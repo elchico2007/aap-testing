@@ -7,6 +7,7 @@
       ip_address: "{{ inventory_hostname | default('palo1.lab.test') }}"
       username: '{{ panos_username }}'
       password: '{{ panos_password }}'
+      port: 80
 
     # survey_rule_name: 'Survey Rule'
     # survey_tags:
@@ -27,7 +28,6 @@
         state: 'present'
         device_group: 'DC Firewalls'
         rule_name: 'SSH Permissions'
-        port: 80
 
     - name: Add custom rule from survey
       paloaltonetworks.panos.panos_security_rule:
@@ -42,4 +42,3 @@
         destination_ip: '{{ survey_dest_ip | default(artifact["ip"])}}'
         application: '{{ survey_application | default("apache-solr") }}'
         action: '{{ survey_action }}'
-        port: 80
