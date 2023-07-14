@@ -10,28 +10,28 @@
       delegate_to: localhost
 
     - name: Gather IOS configuration
-      cisco.ios.ios_ansible.builtin.command:
+      cisco.ios.ios_command:
         commands:
           - show running-config
       register: ios_config
       when: "'ios' in group_names"
 
     - name: Gather Aruba configuration
-      community.network.aruba_ansible.builtin.command:
+      community.network.aruba_command:
         commands:
           - show running-config
       register: aruba_config
       when: "'aoscx' in group_names"
 
     - name: Gather Arista configuration
-      arista.eos.eos_ansible.builtin.command:
+      arista.eos.eos_command:
         commands:
           - show running-config
       register: arista_config
       when: "'eos' in group_names"
 
     - name: Gather Juniper configuration
-      junipernetworks.junos.junos_ansible.builtin.command:
+      junipernetworks.junos.junos_command:
         commands:
           - show configuration
       register: juniper_config
