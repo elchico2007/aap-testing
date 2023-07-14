@@ -82,11 +82,11 @@
         # - name: git reset
         #   ansible.builtin.command: "chdir='../' git stash"
         
-        - name: git clean
-          ansible.builtin.command: "chdir='../' git clean -f -d"
+        # - name: git clean
+        #   ansible.builtin.command: "chdir='../' git clean -f -d"
 
         - name: Fetch updates
-          ansible.builtin.command: "chdir='../' git pull origin main"
+          ansible.builtin.command: "chdir='../' git pull origin main -f"
         
         # - name: Fetch updates
         #   ansible.builtin.command: "chdir='../' git branch --set-upstream-to=origin/master master"
