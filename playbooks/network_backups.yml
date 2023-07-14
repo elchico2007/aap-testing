@@ -80,10 +80,10 @@
           ansible.builtin.command: "chdir='../' git remote add origin https://github.com/elchico2007/aap-testing.git"
               
         - name: Fetch updates
-          ansible.builtin.command: "chdir='../' git pull origin master"
+          ansible.builtin.command: "chdir='../' git pull origin main"
         
-        - name: Fetch updates
-          ansible.builtin.command: "chdir='../' git branch --set-upstream-to=origin/master master"
+        # - name: Fetch updates
+        #   ansible.builtin.command: "chdir='../' git branch --set-upstream-to=origin/master master"
         
         - name: Fetch updates
           ansible.builtin.command: "chdir='../' git pull"
