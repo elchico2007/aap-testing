@@ -1,0 +1,88 @@
+- name: Network backups
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Ensure the backup directory exists
+      file:
+        path: "../host_vars/{{ inventory_hostname }}"
+        state: directory
+      delegate_to: localhost
+
+    - name: Gather IOS configuration
+      cisco.ios.ios_command:
+        commands:
+          - show running-config
+      register: ios_config
+      when: "'ios' in group_names"
+
+    - name: Gather Aruba configuration
+      community.network.aruba_command:
+        commands:
+          - show running-config
+      register: aruba_config
+      when: "'aoscx' in group_names"
+
+    - name: Gather Arista configuration
+      arista.eos.eos_command:
+        commands:
+          - show running-config
+      register: arista_config
+      when: "'eos' in group_names"
+
+    - name: Gather Juniper configuration
+      junipernetworks.junos.junos_command:
+        commands:
+          - show configuration
+      register: juniper_config
+      when: "'junos' in group_names"
+
+    - name: Save IOS configuration to file
+      ansible.builtin.copy:
+        content: "{{ ios_config.stdout[0] }}"
+        dest: "../host_vars/{{ inventory_hostname }}/config.cfg"
+      delegate_to: localhost
+      when: "'ios' in group_names"
+
+    - name: Save Aruba configuration to file
+      ansible.builtin.copy:
+        content: "{{ aruba_config.stdout[0] }}"
+        dest: "../host_vars/{{ inventory_hostname }}/config.cfg"
+      delegate_to: localhost
+      when: "'aoscx' in group_names"
+
+    - name: Save Arista configuration to file
+      ansible.builtin.copy:
+        content: "{{ arista_config.stdout[0] }}"
+        dest: "../host_vars/{{ inventory_hostname }}/config.cfg"
+      delegate_to: localhost
+      when: "'eos' in group_names"
+
+    - name: Save Juniper configuration to file
+      ansible.builtin.copy:
+        content: "{{ juniper_config.stdout[0] }}"
+        dest: "../host_vars/{{ inventory_hostname }}/config.cfg"
+      delegate_to: localhost
+      when: "'junos' in group_names"
+    
+    - name: Run Git commands
+      block:
+        - name: Add in git config global email
+          command: "git config --global user.email controller@lab.test"
+
+        - name: Add in git config global user
+          command: "git config --global user.name 'Ansible Controller'"
+
+        - name: Add in git config global user
+          command: "git status"
+
+        - name: Add new files to staging
+          command: "git add ../host_vars/*"
+
+        - name: Commit changes
+          command: "git commit -m 'Network Backups'"
+
+        - name: Push changes to main repo
+          command: "git push"
+      delegate_to: localhost
+      run_once: true
