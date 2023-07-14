@@ -10,28 +10,28 @@
       delegate_to: localhost
 
     - name: Gather IOS configuration
-      cisco.ios.ios_command:
+      cisco.ios.ios_ansible.builtin.command:
         commands:
           - show running-config
       register: ios_config
       when: "'ios' in group_names"
 
     - name: Gather Aruba configuration
-      community.network.aruba_command:
+      community.network.aruba_ansible.builtin.command:
         commands:
           - show running-config
       register: aruba_config
       when: "'aoscx' in group_names"
 
     - name: Gather Arista configuration
-      arista.eos.eos_command:
+      arista.eos.eos_ansible.builtin.command:
         commands:
           - show running-config
       register: arista_config
       when: "'eos' in group_names"
 
     - name: Gather Juniper configuration
-      junipernetworks.junos.junos_command:
+      junipernetworks.junos.junos_ansible.builtin.command:
         commands:
           - show configuration
       register: juniper_config
@@ -68,33 +68,51 @@
     - name: Run Git commands
       block:
         - name: Add in git config global email
-          command: "git config --global user.email controller@lab.test"
+          ansible.builtin.command: 
+            args:
+              chdir: "../"
+            cmd: "git config --global user.email controller@lab.test"
 
         - name: Add in git config global user
-          command: "git config --global user.name 'Ansible Controller'"
+          ansible.builtin.command: 
+            args:
+              chdir: "../"
+            cmd: "git config --global user.name 'Ansible Controller'"
 
         - name: Initialize git
-          command: "git init"
+          ansible.builtin.command: 
+            args:
+              chdir: "../"
+            cmd: "git init"
         
         - name: Add in remote origin
-          command: "git remote add origin https://github.com/elchico2007/aap-testing.git"
+          ansible.builtin.command: 
+            args:
+              chdir: "../"
+            cmd: "git remote add origin https://github.com/elchico2007/aap-testing.git"
         
-        - name: test1
-          command: "ls -laR"
-        
-        - name: test1
-          command: "ls ../ -laR"
-
         - name: Get status
-          command: "git status"
+          ansible.builtin.command: 
+            args:
+              chdir: "../"
+            cmd: "git status"
 
-        # - name: Add new files to staging
-        #   command: "git add ../host_vars/*"
+        - name: Add new files to staging
+          ansible.builtin.command: 
+            args:
+              chdir: "../"
+            cmd: "git add ../host_vars/*"
 
-        # - name: Commit changes
-        #   command: "git commit -m 'Network Backups'"
+        - name: Commit changes
+          ansible.builtin.command: 
+            args:
+              chdir: "../"
+            cmd: "git commit -m 'Network Backups'"
 
         - name: Push changes to main repo
-          command: "git push"
+          ansible.builtin.command: 
+            args:
+              chdir: "../"
+            cmd: "git push"
       delegate_to: localhost
       run_once: true
