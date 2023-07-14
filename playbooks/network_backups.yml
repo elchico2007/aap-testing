@@ -86,7 +86,7 @@
         #   ansible.builtin.command: "chdir='../' git clean -f -d"
 
         - name: Fetch updates
-          ansible.builtin.command: "chdir='../' git pull origin main -f"
+          ansible.builtin.command: "chdir='../' git pull origin main --rebase=merge --allow-unrelated-histories"
         
         # - name: Fetch updates
         #   ansible.builtin.command: "chdir='../' git branch --set-upstream-to=origin/master master"
