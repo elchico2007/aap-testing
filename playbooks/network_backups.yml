@@ -79,6 +79,12 @@
         - name: Add in remote origin
           ansible.builtin.command: "chdir='../' git remote add origin https://github.com/elchico2007/aap-testing.git"
               
+        - name: git reset
+          ansible.builtin.command: "chdir='../' git reset --hard HEAD"
+        
+        - name: git clean
+          ansible.builtin.command: "chdir='../' git clean -f -d"
+
         - name: Fetch updates
           ansible.builtin.command: "chdir='../' git pull origin main"
         
