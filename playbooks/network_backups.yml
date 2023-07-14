@@ -74,6 +74,12 @@
           command: "git config --global user.name 'Ansible Controller'"
 
         - name: Add in git config global user
+          command: "git init"
+        
+        - name: Add in git config global user
+          command: "git remote add origin https://github.com/elchico2007/aap-testing.git"
+
+        - name: Add in git config global user
           command: "git status"
 
         - name: Add new files to staging
