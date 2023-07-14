@@ -79,11 +79,14 @@
         - name: Add in remote origin
           ansible.builtin.command: "chdir='../' git remote add origin https://github.com/elchico2007/aap-testing.git"
         
+        - name: Fetch updates
+          ansible.builtin.command: "chdir='../' git fetch"
+        
         - name: Get status
           ansible.builtin.command: "chdir='../' git status"
 
         - name: Add new files to staging
-          ansible.builtin.command: "chdir='../' git add ../host_vars/*"
+          ansible.builtin.command: "chdir='../' git add host_vars/*"
 
         - name: Commit changes
           ansible.builtin.command: "chdir='../' git commit -m 'Network Backups'"
