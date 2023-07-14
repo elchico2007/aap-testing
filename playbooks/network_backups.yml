@@ -82,11 +82,20 @@
         - name: Fetch updates
           ansible.builtin.command: "chdir='../' git fetch"
         
+        - name: Fetch updates
+          ansible.builtin.command: "chdir='../' git pull origin master"
+        
+        - name: Fetch updates
+          ansible.builtin.command: "chdir='../' git branch --set-upstream-to=origin/master master"
+        
+        - name: Fetch updates
+          ansible.builtin.command: "chdir='../' git pull"
+        
         - name: Get status
           ansible.builtin.command: "chdir='../' git status"
 
         - name: Add new files to staging
-          ansible.builtin.command: "chdir='../' git add host_vars/*"
+          ansible.builtin.command: "chdir='../' git add host_vars/*/config.cfg"
 
         - name: Commit changes
           ansible.builtin.command: "chdir='../' git commit -m 'Network Backups'"
