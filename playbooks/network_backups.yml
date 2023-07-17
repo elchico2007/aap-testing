@@ -34,7 +34,15 @@
     - name: Set artifact
       ansible.builtin.set_stats:
         data:
-          ios_config: "{{ ios_config }}"
-          aruba_config: "{{ aruba_config }}"
-          arista_config: "{{ arista_config }}"
-          juniper_config: "{{ juniper_config }}"
+          ios:
+            name: "{{ inventory_hostname }}"
+            ios_config: "{{ ios_config }}"
+          aruba:
+            name: "{{ inventory_hostname }}"
+            aruba_config: "{{ aruba_config }}"
+          arista:
+            name: "{{ inventory_hostname }}"
+            arista_config: "{{ arista_config }}"
+          juniper:
+            name: "{{ inventory_hostname }}"
+            juniper_config: "{{ juniper_config }}"
