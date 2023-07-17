@@ -6,6 +6,12 @@
     - name: Fetch updates
       ansible.builtin.command: "chdir='~/aap-testing' git pull"
 
+    - name: Ensure directory is present
+      ansible.builtin.file:
+        path: "~/aap-testing/{{ item['name'] }}"
+        state: directory
+      loop: [ 'ios', 'aruba', 'arista', 'juniper' ]
+
     - name: Save IOS configuration to file
       ansible.builtin.copy:
         content: "{{ ios.ios_config.stdout[0] }}"
