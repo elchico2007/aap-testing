@@ -1,0 +1,42 @@
+- name: Export backups to Git
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Fetch updates
+      ansible.builtin.command: "chdir='~/aap-testing' git pull"
+
+    - name: Save IOS configuration to file
+      ansible.builtin.copy:
+        content: "{{ ios.ios_config.stdout[0] }}"
+        dest: "~/aap-testing/host_vars/{{ ios['name'] }}/config.cfg"
+
+    - name: Save Aruba configuration to file
+      ansible.builtin.copy:
+        content: "{{ aruba.aruba_config.stdout[0] }}"
+        dest: "~/aap-testing/host_vars/{{ aruba['name'] }}/config.cfg"
+
+    - name: Save Arista configuration to file
+      ansible.builtin.copy:
+        content: "{{ arista_config.stdout[0] }}"
+        dest: "~/aap-testing/host_vars/{{ arista['name'] }}/config.cfg"
+
+    - name: Save Juniper configuration to file
+      ansible.builtin.copy:
+        content: "{{ juniper_config.stdout[0] }}"
+        dest: "~/aap-testing/host_vars/{{ juniper['name'] }}/config.cfg"
+
+    - name: Add in git config global email
+      ansible.builtin.command: "chdir='~/aap-testing' git config --global user.email controller@lab.test"
+
+    - name: Add in git config global user
+      ansible.builtin.command: "chdir='~/aap-testing' git config --global user.name 'Ansible Controller'"
+
+    - name: Add new files to staging
+      ansible.builtin.command: "chdir='~/aap-testing' git add host_vars/*/config.cfg"
+
+    - name: Commit changes
+      ansible.builtin.command: "chdir='~/aap-testing' git commit -m 'Network Backups'"
+
+    - name: Push changes to main repo
+      ansible.builtin.command: "chdir='~/aap-testing' git push"
