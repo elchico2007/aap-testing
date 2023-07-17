@@ -57,6 +57,8 @@
 
     - name: Commit changes
       ansible.builtin.command: "chdir='~/aap-testing' git commit -m 'Network Backups'"
+      ignore_errors: true
 
     - name: Push changes to main repo
       ansible.builtin.command: "chdir='~/aap-testing' git push"
+      ignore_errors: true
