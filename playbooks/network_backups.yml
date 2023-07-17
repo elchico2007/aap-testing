@@ -38,4 +38,3 @@
           aruba_config: "{{ aruba_config }}"
           arista_config: "{{ arista_config }}"
           juniper_config: "{{ juniper_config }}"
-        per_host: true
