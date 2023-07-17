@@ -8,22 +8,22 @@
 
     - name: Ensure directory is present IOS
       ansible.builtin.file:
-        path: "~/aap-testing/{{ ios['name'] }}"
+        path: "~/aap-testing/host_vars/{{ ios['name'] }}"
         state: directory
     
     - name: Ensure directory is present Aruba
       ansible.builtin.file:
-        path: "~/aap-testing/{{ aruba['name'] }}"
+        path: "~/aap-testing/host_vars/{{ aruba['name'] }}"
         state: directory
     
     - name: Ensure directory is present Arista
       ansible.builtin.file:
-        path: "~/aap-testing/{{ arista['name'] }}"
+        path: "~/aap-testing/host_vars/{{ arista['name'] }}"
         state: directory
     
     - name: Ensure directory is present Juniper
       ansible.builtin.file:
-        path: "~/aap-testing/{{ juniper['name'] }}"
+        path: "~/aap-testing/host_vars/{{ juniper['name'] }}"
         state: directory
 
     - name: Save IOS configuration to file
