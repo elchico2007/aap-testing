@@ -37,12 +37,28 @@
           ios:
             name: "{{ inventory_hostname }}"
             ios_config: "{{ ios_config }}"
+      when: "'ios' in group_names"
+    
+    - name: Set artifact
+      ansible.builtin.set_stats:
+        data:
           aruba:
             name: "{{ inventory_hostname }}"
             aruba_config: "{{ aruba_config }}"
+      when: "'aoscx' in group_names"
+    
+    - name: Set artifact
+      ansible.builtin.set_stats:
+        data:
           arista:
             name: "{{ inventory_hostname }}"
             arista_config: "{{ arista_config }}"
+      when: "'eos' in group_names"
+    
+    - name: Set artifact
+      ansible.builtin.set_stats:
+        data:
           juniper:
             name: "{{ inventory_hostname }}"
             juniper_config: "{{ juniper_config }}"
+      when: "'junos' in group_names"
