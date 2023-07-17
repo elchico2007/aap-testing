@@ -3,12 +3,6 @@
   gather_facts: false
 
   tasks:
-    - name: Ensure the backup directory exists
-      file:
-        path: "../host_vars/{{ inventory_hostname }}"
-        state: directory
-      delegate_to: localhost
-
     - name: Gather IOS configuration
       cisco.ios.ios_command:
         commands:
@@ -37,73 +31,11 @@
       register: juniper_config
       when: "'junos' in group_names"
 
-    - name: Save IOS configuration to file
-      ansible.builtin.copy:
-        content: "{{ ios_config.stdout[0] }}"
-        dest: "../host_vars/{{ inventory_hostname }}/config.cfg"
-      delegate_to: localhost
-      when: "'ios' in group_names"
-
-    - name: Save Aruba configuration to file
-      ansible.builtin.copy:
-        content: "{{ aruba_config.stdout[0] }}"
-        dest: "../host_vars/{{ inventory_hostname }}/config.cfg"
-      delegate_to: localhost
-      when: "'aoscx' in group_names"
-
-    - name: Save Arista configuration to file
-      ansible.builtin.copy:
-        content: "{{ arista_config.stdout[0] }}"
-        dest: "../host_vars/{{ inventory_hostname }}/config.cfg"
-      delegate_to: localhost
-      when: "'eos' in group_names"
-
-    - name: Save Juniper configuration to file
-      ansible.builtin.copy:
-        content: "{{ juniper_config.stdout[0] }}"
-        dest: "../host_vars/{{ inventory_hostname }}/config.cfg"
-      delegate_to: localhost
-      when: "'junos' in group_names"
-    
-    - name: Run Git commands
-      block:
-        - name: Add in git config global email
-          ansible.builtin.command: "chdir='../' git config --global user.email controller@lab.test"
-
-        - name: Add in git config global user
-          ansible.builtin.command: "chdir='../' git config --global user.name 'Ansible Controller'"
-
-        - name: Initialize git
-          ansible.builtin.command: "chdir='../' git init"
-        
-        - name: Add in remote origin
-          ansible.builtin.command: "chdir='../' git remote add origin https://github.com/elchico2007/aap-testing.git"
-              
-        # - name: git reset
-        #   ansible.builtin.command: "chdir='../' git stash"
-        
-        # - name: git clean
-        #   ansible.builtin.command: "chdir='../' git clean -f -d"
-
-        - name: Fetch updates
-          ansible.builtin.command: "chdir='../' git pull origin main --rebase=merge --allow-unrelated-histories"
-        
-        # - name: Fetch updates
-        #   ansible.builtin.command: "chdir='../' git branch --set-upstream-to=origin/master master"
-        
-        - name: Fetch updates
-          ansible.builtin.command: "chdir='../' git pull"
-        
-        - name: Get status
-          ansible.builtin.command: "chdir='../' git status"
-
-        - name: Add new files to staging
-          ansible.builtin.command: "chdir='../' git add host_vars/*/config.cfg"
-
-        - name: Commit changes
-          ansible.builtin.command: "chdir='../' git commit -m 'Network Backups'"
-
-        - name: Push changes to main repo
-          ansible.builtin.command: "chdir='../' git push"
-      delegate_to: localhost
-      run_once: true
+    - name: Set artifact
+      ansible.builtin.set_stats:
+        data:
+          ios_config: "{{ ios_config }}"
+          aruba_config: "{{ aruba_config }}"
+          arista_config: "{{ arista_config }}"
+          juniper_config: "{{ juniper_config }}"
+        per_host: true
