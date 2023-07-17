@@ -38,12 +38,12 @@
 
     - name: Save Arista configuration to file
       ansible.builtin.copy:
-        content: "{{ arista_config.stdout[0] }}"
+        content: "{{ arista.arista_config.stdout[0] }}"
         dest: "~/aap-testing/host_vars/{{ arista['name'] }}/config.cfg"
 
     - name: Save Juniper configuration to file
       ansible.builtin.copy:
-        content: "{{ juniper_config.stdout[0] }}"
+        content: "{{ juniper.juniper_config.stdout[0] }}"
         dest: "~/aap-testing/host_vars/{{ juniper['name'] }}/config.cfg"
 
     - name: Add in git config global email
