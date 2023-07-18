@@ -3,75 +3,8 @@
   gather_facts: false
 
   tasks:
-    - name: Export Tower Organizations
-      ansible.controller.tower_export:
-        controller_host: "tower_host"
-        controller_username: "admin"
-        controller_password: "password"
-        validate_certs: false
-        organizations: 'all'
-      register: tower_organizations
 
-    - name: Import Tower Organizations
-      ansible.controller.import:
-        controller_host: "controller_host"
-        controller_username: "admin"
-        controller_password: "password"
-        validate_certs: false
-        assets: "{{ tower_organizations.assets }}"
-
-    - name: Export Tower Users
-      ansible.controller.tower_export:
-        controller_host: "tower_host"
-        controller_username: "admin"
-        controller_password: "password"
-        validate_certs: false
-        users: 'all'
-      register: tower_users
-
-    - name: Import Tower Users
-      ansible.controller.import:
-        controller_host: "controller_host"
-        controller_username: "admin"
-        controller_password: "password"
-        validate_certs: false
-        assets: "{{ tower_users.assets }}"
-
-    - name: Export Tower Teams
-      ansible.controller.tower_export:
-        controller_host: "tower_host"
-        controller_username: "admin"
-        controller_password: "password"
-        validate_certs: false
-        teams: 'all'
-      register: tower_teams
-
-    - name: Import Tower Teams
-      ansible.controller.import:
-        controller_host: "controller_host"
-        controller_username: "admin"
-        controller_password: "password"
-        validate_certs: false
-        assets: "{{ tower_teams.assets }}"
-
-    - name: Export Tower Credential Types
-      ansible.controller.tower_export:
-        controller_host: "tower_host"
-        controller_username: "admin"
-        controller_password: "password"
-        validate_certs: false
-        credential_types: 'all'
-      register: tower_credential_types
-
-    - name: Import Tower Credential Types
-      ansible.controller.import:
-        controller_host: "controller_host"
-        controller_username: "admin"
-        controller_password: "password"
-        validate_certs: false
-        assets: "{{ tower_credential_types.assets }}"
-
-    # Unable to export Tower Credentials, needs to be done manually.
+    # Unable to export Tower Credentials, needs to be done manually. Creds need to be the exact same name as before in order for the import to work.
     # - name: Export Tower Credentials
     #   ansible.controller.tower_export:
     #     controller_host: "tower_host"
