@@ -8,4 +8,4 @@
       community.general.slack:
         channel: '#controller-notification'
         token: '{{ slack_token }}'
-        msg: '{{ artifact | to_nice_yaml }}'
+        msg: '{{ artifact | to_nice_yaml | default("Servers Patched") }}'
