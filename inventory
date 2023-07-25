@@ -33,6 +33,7 @@ windows-server-2022.lab.test
 rhel-9-server.lab.test
 rhel-9-catalog.lab.test
 rhel-9.lab.test
+rhel-9-test.lab.test
 rhel-8.lab.test
 
 [infoblox]
