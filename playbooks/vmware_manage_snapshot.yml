@@ -8,7 +8,7 @@
         validate_certs: no
         datacenter: "Datacenter"
         folder: "/Datacenter/vm/"
-        state: "absent"
+        state: "{{ state }}"
         name: "{{ inventory_hostname | replace('.lab.test', '') }}"
         snapshot_name: "Pre-Controller-Patching"
         description: "Ansible Controller Patching"
