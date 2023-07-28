@@ -9,4 +9,4 @@
         state: closed
         number: "{{ incident_request }}"
         close_code: "Closed/Resolved by Caller"
-        close_notes: "Web App was auto remediated by Ansible EDA"
+        close_notes: "{{ close_notes | default('Web App was auto remediated by Ansible EDA') }}"
