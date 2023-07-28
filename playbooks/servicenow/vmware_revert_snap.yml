@@ -1,0 +1,15 @@
+---
+- name: Revert Snapshot
+  hosts: "{{ survey_name }}"
+  gather_facts: false
+
+  tasks:
+    - name: Revert vCenter Snapshot
+      community.vmware.vmware_guest_snapshot:
+        validate_certs: false
+        datacenter: "Datacenter"
+        folder: "/Datacenter/vm/"
+        state: "revert"
+        name: "{{ inventory_hostname | replace('.lab.test', '') }}"
+        snapshot_name: "{{ snapshot_name }}"
+      delegate_to: localhost
