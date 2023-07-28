@@ -1,11 +1,12 @@
 ---
 - name: Create vCenter Snapshot
   hosts: all
-  gather_facts: no
+  gather_facts: false
+
   tasks:
     - name: Create vCenter Snapshot
       community.vmware.vmware_guest_snapshot:
-        validate_certs: no
+        validate_certs: false
         datacenter: "Datacenter"
         folder: "/Datacenter/vm/"
         state: "{{ state }}"
