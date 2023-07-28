@@ -1,0 +1,12 @@
+---
+- name: Resolve incident Ticket
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+    - name: Resolve a incident ticket
+      servicenow.itsm.incident:
+        state: closed
+        number: "{{ incident_request }}"
+        close_code: "Closed/Resolved by Caller"
+        close_notes: "Web App was auto remediated by Ansible EDA"
