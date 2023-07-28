@@ -10,9 +10,8 @@
         caller: "service.ansible"
         short_description: "{{ incident_short_desc | default('Web app returned a 500 error') }}"
         description: "{{ incident_descr | default('Web Application Experiencing problems') }}"
-        priority: moderate
-        risk: low
-        impact: low
+        impact: high
+        urgency: high
       register: itsm_incident
 
     - ansible.builtin.debug: 
