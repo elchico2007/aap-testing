@@ -2,14 +2,21 @@
   hosts: localhost
   gather_facts: false
 
+  vars:
+    ansible_password: 2322384
+
   tasks:
     - name: Test
       opengear_con:
         opengear_host: "ubuntu1.lab.test"
-        opengear_user: ""
-        opengear_password: ""
+        opengear_user: "user"
+        opengear_password: "pass"
         port: 10
         network_user: "admin"
         network_password: "password"
         commands:
-          - 'show version'
+          - 'hostname router1'
+          - 'interface loopback 1'
+          - 'ip address 10.10.10.1 255.255.255.0'
+          - 'exit'
+          - 'ip route 0.0.0.0 0.0.0.0 null 0'
