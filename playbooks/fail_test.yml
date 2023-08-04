@@ -2,9 +2,6 @@
   hosts: localhost
   gather_facts: false
 
-  vars:
-    ansible_password: 2322384
-
   tasks:
     - name: Test
       opengear_con:
