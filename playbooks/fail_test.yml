@@ -1,17 +1,15 @@
-- name: Only show failed hosts
-  hosts: "{{ failed_hosts }}"
+- name: Connect to terminal server
+  hosts: localhost
   gather_facts: false
 
   tasks:
-    - name: Show only failed host
-      ansible.builtin.debug:
-        var: inventory_hostname
-
-- name: Only show seccessful hosts
-  hosts: "{{ successful_hosts }}"
-  gather_facts: false
-
-  tasks:
-    - name: Show only successful host
-      ansible.builtin.debug:
-        var: inventory_hostname
+    - name: Test
+      opengear_con:
+        opengear_host: "ubuntu1.lab.test"
+        opengear_user: ""
+        opengear_password: ""
+        port: 10
+        network_user: "admin"
+        network_password: "password"
+        commands:
+          - 'show version'

@@ -6,8 +6,8 @@ from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 
 from ansible.module_utils.basic import AnsibleModule
-import paramiko
-import time
+from pexpect import pxssh
+import re
 
 def run_module():
     # define available arguments/parameters a user can pass to the module
@@ -34,30 +34,36 @@ def run_module():
     # if module.params['new']:
     #     result['changed'] = True
 
+    try:
+        client = pxssh.pxssh(options={"StrictHostKeyChecking": "no"})
+        client.login(module.params['opengear_host'], module.params['opengear_user'], module.params['opengear_password'])
 
-    client = paramiko.client.SSHClient()
-    client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    client.connect(module.params['opengear_host'], username=module.params['opengear_user'], password=module.params['opengear_password'])
-    
-    # Open a shell
-    shell = client.invoke_shell()
+        client.sendline("./opengear.sh")
+        client.prompt()
+        #client.PROMPT = r'Connect to port>'
+        client.sendline(f"{module.params['port']}")
+        client.prompt()
+        #client.PROMPT = r'Username:'
+        client.sendline(f"{module.params['network_user']}")
+        client.prompt()
+        #client.PROMPT = r'Password:'
+        client.sendline(f"{module.params['network_password']}")
+        client.prompt()
+        #client.PROMPT = r'\w+>'
+        for command in module.params['commands']:
+            client.sendline(command)
+            client.prompt()
+            #client.PROMPT = r'\w+>'
 
-    # Send the command to start the interactive Bash script
-    shell.send("./opengear.sh" + "\n")
+        module.exit_json(msg=client.before.decode().replace("\r", "").split("\n"))
 
-    # Wait for a bit to allow the script to start
-    time.sleep(2)
-  
-    # Interact with the script by sending additional commands
-    while True:
-        user_input = "show version"
-        if user_input.lower() == "exit":
-            break
-        shell.send(user_input + "\n")
-        while shell.recv_ready():
-            output = shell.recv(1024).decode("utf-8")
-            shell.send(user_input + "\n")
-            module.exit_json(msg=output)
+
+    except pxssh.ExceptionPxssh as e:
+        module.fail_json(e)
+
+    # client = paramiko.client.SSHClient()
+    # client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    # client.connect(module.params['opengear_host'], username=module.params['opengear_user'], password=module.params['opengear_password'])
 
     #_stdin, _stdout,_stderr = client.exec_command("./opengear.sh")
 
