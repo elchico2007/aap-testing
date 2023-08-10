@@ -1,0 +1,34 @@
+- name: Connect to terminal server
+  hosts: all
+  gather_facts: false
+
+  vars:
+    manegement_address: '192.168.0.158'
+    manegement_subnet: '255.255.255.0'
+    gateway: '192.168.0.1'
+    hostname: 'cisco2'
+    manegement_port: 'GigabitEthernet 0/0'
+
+  tasks:
+    - name: Test
+      opengear_con:
+        opengear_host: "ubuntu1.lab.test"
+        opengear_user: ""
+        opengear_password: ""
+        port: 10
+        network_user: "admin"
+        network_password: "password123"
+        commands:
+          - 'hostname {{ hostname }}'
+          - 'interface {{ manegement_port }}'
+          - 'ip address {{ manegement_address }} {{ manegement_subnet }}'
+          - 'exit'
+          - 'ip route 0.0.0.0 0.0.0.0 {{ gateway }}'
+          - 'do wr'
+      when: inventory_hostname == 'ubuntu1.lab.test'
+      connection: local
+    
+    - name: Add newly deployed host
+      ansible.builtin.add_host:
+        name: "{{ hostname }}.lab.test"
+        groups: ios
