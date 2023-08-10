@@ -1,0 +1,23 @@
+- name: Start Service
+  hosts: "{{ survey_name | default('all') }}"
+
+  vars:
+    service_name: ""
+
+  tasks:
+    - name: Gather Services
+      ansible.windows.win_service_info:
+        name: "{{ service_name }}"
+      register: services
+
+    - name: Check if agent is installed
+      ansible.builtin.assert:
+        that:
+          - services.exists
+        fail_msg: "The {{ service_name }} service is not running or installed"
+        success_msg: "{{ service_name }} found on system"
+
+    - name: Start Service
+      ansible.windows.win_service:
+        name: "{{ service_name }}"
+        state: started
