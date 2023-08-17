@@ -6,7 +6,7 @@
     manegement_address: ''
     manegement_subnet: ''
     gateway: ''
-    hostname: ''
+    device_hostname: ''
     manegement_port: ''
     dns_domain: ''
 
@@ -18,7 +18,7 @@
         opengear_password: ""
         port: 10
         commands:
-          - 'hostname {{ hostname }}'
+          - 'hostname {{ device_hostname }}'
           - 'interface {{ manegement_port }}'
           - 'ip address {{ manegement_address }} {{ manegement_subnet }}'
           - 'exit'

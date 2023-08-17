@@ -1,0 +1,10 @@
+- name: Add host to inventory
+  hosts: localhost
+
+  tasks:
+    - name: Add host
+      ansible.controller.host:
+        name: "{{ device_hostname }}"
+        description: "Added via ZTP"
+        inventory: "Home Lab Inventory"
+        state: present
