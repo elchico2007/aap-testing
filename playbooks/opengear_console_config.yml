@@ -3,11 +3,12 @@
   gather_facts: false
 
   vars:
-    manegement_address: '192.168.0.158'
-    manegement_subnet: '255.255.255.0'
-    gateway: '192.168.0.1'
-    hostname: 'cisco2'
-    manegement_port: 'GigabitEthernet 0/0'
+    manegement_address: ''
+    manegement_subnet: ''
+    gateway: ''
+    hostname: ''
+    manegement_port: ''
+    dns_domain: ''
 
   tasks:
     - name: Test
@@ -16,19 +17,20 @@
         opengear_user: ""
         opengear_password: ""
         port: 10
-        network_user: "admin"
-        network_password: "password123"
         commands:
           - 'hostname {{ hostname }}'
           - 'interface {{ manegement_port }}'
           - 'ip address {{ manegement_address }} {{ manegement_subnet }}'
           - 'exit'
           - 'ip route 0.0.0.0 0.0.0.0 {{ gateway }}'
+          - 'ip domain-name {{ dns_domain }}'
+          - 'username {{ network_user }} secret {{ network_password }}'
+          - 'enable secret {{ network_password }}'
+          - 'line vty 0 15'
+          - 'login local'
+          - 'transport input ssh'
+          - 'exit'
+          - 'crypto key generate rsa modulus 4096'
           - 'do wr'
       when: inventory_hostname == 'ubuntu1.lab.test'
       connection: local
-    
-    - name: Add newly deployed host
-      ansible.builtin.add_host:
-        name: "{{ hostname }}.lab.test"
-        groups: ios

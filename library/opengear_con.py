@@ -16,8 +16,6 @@ def run_module():
         opengear_user=dict(type='str', required=True),
         opengear_password=dict(type='str', required=True, no_log=True),
         port=dict(type='int', required=True),
-        network_user=dict(type='str', required=True),
-        network_password=dict(type='str', required=True, no_log=True),
         commands=dict(type='list', required=True)
     )
 
@@ -34,25 +32,23 @@ def run_module():
         client = pxssh.pxssh(options={"StrictHostKeyChecking": "no"})
         client.login(module.params['opengear_host'], module.params['opengear_user'], module.params['opengear_password'])
 
-        client.sendline("pmshell")
+        client.sendline("./pmshell.sh")
         client.PROMPT = r'Connect to port> '
         client.sendline(f"{module.params['port']}" + "\n")
         time.sleep(3)
-        client.PROMPT = r'Username: '
-        client.sendline(f"{module.params['network_user']}")
-        time.sleep(1)
-        client.PROMPT = r'Password: '
-        client.sendline(f"{module.params['network_password']}" + "\n")
-        time.sleep(2)
-        client.PROMPT = r'\w+>'
-        client.sendline("enable\n"+ "terminal length 0")
         client.PROMPT = r'\w+#'
+        client.sendline("terminal length 0\n")
         client.sendline("configure terminal")
         client.PROMPT = r'\w+(config)#'
         for command in module.params['commands']:
-            client.sendline(command)
-            client.PROMPT = r'\w+(config)#'
-            time.sleep(1)
+            if 'crypto' in command:
+                client.sendline(command)
+                client.PROMPT = r'\w+(config)#'
+                time.sleep(5)
+            else:
+                client.sendline(command)
+                client.PROMPT = r'\w+(config)#'
+                time.sleep(1)
         time.sleep(3)
         client.sendline("exit")
         client.PROMPT = r'\w+#'
