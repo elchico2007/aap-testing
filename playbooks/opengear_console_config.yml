@@ -21,6 +21,7 @@
           - 'hostname {{ device_hostname }}'
           - 'interface {{ manegement_port }}'
           - 'ip address {{ manegement_address }} {{ manegement_subnet }}'
+          - 'no shutdown'
           - 'exit'
           - 'ip route 0.0.0.0 0.0.0.0 {{ gateway }}'
           - 'ip domain-name {{ dns_domain }}'
