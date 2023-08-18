@@ -1,10 +1,22 @@
 - name: Add host to inventory
   hosts: localhost
+  gather_facts: false
+
+  vars:
+    device_hostname: "cisco2"
 
   tasks:
-    - name: Add host
-      ansible.controller.host:
-        name: "{{ device_hostname }}"
-        description: "Added via ZTP"
-        inventory: "Home Lab Inventory"
-        state: present
+    - name: Hit api with uri module
+      ansible.builtin.uri:
+        url: https://rhel-9.lab.test/api/v2/groups/2/hosts/
+        user: admin
+        password: '2322384'
+        validate_certs: false
+        force_basic_auth: true
+        body_format: json
+        status_code: 201
+        headers:
+          Content-Type: application/json
+        method: POST
+        body: {"name": "{{ device_hostname }}.lab.test","description": "Added via ZTP", "enabled": true}
+              
