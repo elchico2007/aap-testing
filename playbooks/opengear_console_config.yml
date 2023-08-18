@@ -13,7 +13,7 @@
   tasks:
     - name: Test
       opengear_con:
-        opengear_host: "ubuntu1.lab.test"
+        opengear_host: "{{ inventory_hostname }}"
         opengear_user: ""
         opengear_password: ""
         port: 10
