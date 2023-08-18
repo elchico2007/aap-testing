@@ -3,7 +3,7 @@
   gather_facts: false
 
   vars:
-    device_hostname: "cisco2"
+    device_hostname: ""
 
   tasks:
     - name: Hit api with uri module
