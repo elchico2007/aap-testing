@@ -1,7 +1,7 @@
 ---
 - name: Get Facts
   gather_facts: false
-  hosts: all
+  hosts: "{{ survey_name | default('all') }}"
 
   tasks:
     - name: Get aoscx Facts
