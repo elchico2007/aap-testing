@@ -14,8 +14,8 @@
     - name: Test
       opengear_con:
         opengear_host: "{{ inventory_hostname }}"
-        opengear_user: ""
-        opengear_password: ""
+        opengear_user: "{{ ansible_user }}"
+        opengear_password: "{{ ansible_password }}"
         port: 10
         commands:
           - 'hostname {{ device_hostname }}'
