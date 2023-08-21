@@ -8,7 +8,6 @@
     gateway: ''
     device_hostname: ''
     manegement_port: ''
-    dns_domain: ''
 
   tasks:
     - name: Test
