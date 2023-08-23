@@ -1,7 +1,7 @@
 ---
 - name: Get Facts
   gather_facts: false
-  hosts: "{{ device_hostname + '.lab.test' | default('all') }}"
+  hosts: "all"
 
   tasks:
     - name: Get aoscx Facts
