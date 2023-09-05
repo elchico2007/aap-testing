@@ -32,7 +32,7 @@ def run_module():
         client = pxssh.pxssh(options={"StrictHostKeyChecking": "no"})
         client.login(module.params['opengear_host'], module.params['opengear_user'], module.params['opengear_password'])
 
-        client.sendline("./pmshell.sh")
+        client.sendline("pmshell")
         client.PROMPT = r'Connect to port> '
         client.sendline(f"{module.params['port']}" + "\n")
         time.sleep(3)
