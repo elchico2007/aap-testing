@@ -7,8 +7,6 @@
       ip_address: "{{ inventory_hostname | default('palo1.lab.test') }}"
       username: '{{ panos_username }}'
       password: '{{ panos_password }}'
-    artifact:
-      ip: "192.168.0.10"
 
     # survey_rule_name: 'Survey Rule'
     # survey_tags:
