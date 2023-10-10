@@ -9,16 +9,6 @@
           - show ip bgp summary
       register: bgp_summary
 
-    - name: Show BGP configuration
-      cisco.ios.ios_command:
-        commands:
-          - show run | include router bgp
-      register: bgp_config
-
     - name: Display BGP Neighbor Status
       debug:
         var: bgp_summary.stdout_lines
-
-    - name: Display BGP Configuration
-      debug:
-        var: bgp_config.stdout_lines
