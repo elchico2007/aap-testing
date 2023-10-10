@@ -43,9 +43,6 @@ def run_module():
         client.sendline("configure terminal")
         client.PROMPT = r'\w+(config)#'
         for command in module.params['commands']:
-            client.sendline(command)
-            client.PROMPT = r'\w+(config)#'
-            time.sleep(1)
             if 'crypto' in command:
                 client.sendline(command)
                 client.PROMPT = r'\w+(config)#'
