@@ -32,15 +32,20 @@ def run_module():
         client = pxssh.pxssh(options={"StrictHostKeyChecking": "no"})
         client.login(module.params['opengear_host'], module.params['opengear_user'], module.params['opengear_password'])
 
-        client.sendline("pmshell.sh")
+        client.sendline("pmshell")
         client.PROMPT = r'Connect to port> '
         client.sendline(f"{module.params['port']}" + "\n")
-        time.sleep(3)
+        time.sleep(2)
+        client.PROMPT = r'\w+>'
+        client.sendline("enable\n"+ "terminal length 0")
         client.PROMPT = r'\w+#'
         client.sendline("terminal length 0\n")
         client.sendline("configure terminal")
         client.PROMPT = r'\w+(config)#'
         for command in module.params['commands']:
+            client.sendline(command)
+            client.PROMPT = r'\w+(config)#'
+            time.sleep(1)
             if 'crypto' in command:
                 client.sendline(command)
                 client.PROMPT = r'\w+(config)#'
@@ -54,17 +59,11 @@ def run_module():
         client.PROMPT = r'\w+#'
         client.sendline("exit")
         client.close()
-
         result['changed'] = True
-
     except pxssh.ExceptionPxssh as e:
         module.fail_json(msg=e)
-
     module.exit_json(**result)
-
-
 def main():
     run_module()
-
 if __name__ == '__main__':
     main()
