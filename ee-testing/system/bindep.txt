@@ -1,1 +1,1 @@
-python38-devel [platform:rpm compile]
+iputils [platform:rpm]

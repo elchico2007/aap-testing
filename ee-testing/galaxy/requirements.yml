@@ -6,4 +6,3 @@ collections:
   - name: arubanetworks.aoscx
   - name: community.network
   - name: paloaltonetworks.panos
-  - name: elchico2007.chatgpt
