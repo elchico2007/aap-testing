@@ -1,7 +1,7 @@
----
 - name: Troubleshoot BGP on Cisco Device
   hosts: "{{ survey_name | default('all') }}"
-  gather_facts: no
+  gather_facts: false
+
   tasks:
     - name: Show BGP neighbors
       cisco.ios.ios_command:
@@ -10,5 +10,25 @@
       register: bgp_summary
 
     - name: Display BGP Neighbor Status
-      debug:
+      ansible.builtin.debug:
         var: bgp_summary.stdout_lines
+
+    - name: Show BGP neighbor details
+      cisco.ios.ios_command:
+        commands:
+          - show ip bgp neighbors
+      register: bgp_neighbors_details
+
+    - name: Display BGP Neighbor Details
+      ansible.builtin.debug:
+        var: bgp_neighbors_details.stdout_lines
+
+    - name: Show interface status for the interface connecting to BGP neighbor
+      cisco.ios.ios_command:
+        commands:
+          - show interface gigabitethernet0/0 status
+      register: interface_status
+
+    - name: Display Interface Status
+      ansible.builtin.debug:
+        var: interface_status.stdout_lines
