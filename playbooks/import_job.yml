@@ -1,0 +1,10 @@
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Import Tower workflow_job_templates
+      ansible.controller.import:
+        controller_host: "rhel-9.lab.test"
+        controller_username: "admin"
+        controller_password: "2322384"
+        validate_certs: false
+        assets: "{{ lookup('file', '/home/luvalle/aap-testing/playbooks/job_info.json') | from_json() }}"

@@ -1,0 +1,130 @@
+{
+    "job_templates": [
+        {
+            "allow_simultaneous": false,
+            "ask_credential_on_launch": false,
+            "ask_diff_mode_on_launch": false,
+            "ask_execution_environment_on_launch": false,
+            "ask_forks_on_launch": false,
+            "ask_instance_groups_on_launch": false,
+            "ask_inventory_on_launch": false,
+            "ask_job_slice_count_on_launch": false,
+            "ask_job_type_on_launch": false,
+            "ask_labels_on_launch": false,
+            "ask_limit_on_launch": false,
+            "ask_scm_branch_on_launch": false,
+            "ask_skip_tags_on_launch": false,
+            "ask_tags_on_launch": false,
+            "ask_timeout_on_launch": false,
+            "ask_variables_on_launch": false,
+            "ask_verbosity_on_launch": false,
+            "become_enabled": false,
+            "description": "",
+            "diff_mode": false,
+            "execution_environment": {
+                "name": "Home Lab - Cloud-EE - PAH",
+                "type": "execution_environment"
+            },
+            "extra_vars": "---",
+            "force_handlers": false,
+            "forks": 0,
+            "host_config_key": "",
+            "inventory": {
+                "name": "Home Lab - vmware ESXi 8.0",
+                "organization": {
+                    "name": "Enterprise",
+                    "type": "organization"
+                },
+                "type": "inventory"
+            },
+            "job_slice_count": 1,
+            "job_tags": "",
+            "job_type": "run",
+            "limit": "",
+            "name": "Ansible - VMware - Provision VM123",
+            "natural_key": {
+                "name": "Ansible - VMware - Provision VM123",
+                "organization": {
+                    "name": "Default",
+                    "type": "organization"
+                },
+                "type": "job_template"
+            },
+            "playbook": "playbooks/vmware_provision_vm.yml",
+            "prevent_instance_group_fallback": false,
+            "project": {
+                "name": "Home Lab",
+                "organization": {
+                    "name": "Default",
+                    "type": "organization"
+                },
+                "type": "project"
+            },
+            "related": {
+                "credentials": [
+                    {
+                        "credential_type": {
+                            "kind": "cloud",
+                            "name": "VMware vCenter",
+                            "type": "credential_type"
+                        },
+                        "name": "vcenter-nuc",
+                        "organization": null,
+                        "type": "credential"
+                    }
+                ],
+                "labels": [],
+                "notification_templates_error": [],
+                "notification_templates_started": [],
+                "notification_templates_success": [],
+                "schedules": [],
+                "survey_spec": {
+                    "description": "",
+                    "name": "",
+                    "spec": [
+                        {
+                            "choices": "",
+                            "default": "",
+                            "formattedChoices": [
+                                {
+                                    "choice": "",
+                                    "id": 0,
+                                    "isDefault": false
+                                }
+                            ],
+                            "max": 1024,
+                            "min": 0,
+                            "new_question": false,
+                            "question_description": "",
+                            "question_name": "What name will the VM have?",
+                            "required": true,
+                            "type": "text",
+                            "variable": "survey_name"
+                        },
+                        {
+                            "choices": "small (1xCPU/2 GIB Memory)\nmedium (2xCPU/4 GIB Memory)\nlarge (4xCPU/8 GIB Memory)",
+                            "default": "small (1xCPU/2 GIB Memory)",
+                            "max": 1024,
+                            "min": 0,
+                            "new_question": true,
+                            "question_description": "",
+                            "question_name": "What size will the vm be?",
+                            "required": true,
+                            "type": "multiplechoice",
+                            "variable": "survey_size"
+                        }
+                    ]
+                }
+            },
+            "scm_branch": "",
+            "skip_tags": "",
+            "start_at_task": "",
+            "survey_enabled": true,
+            "timeout": 0,
+            "use_fact_cache": false,
+            "verbosity": 0,
+            "webhook_credential": null,
+            "webhook_service": ""
+        }
+    ]
+}
