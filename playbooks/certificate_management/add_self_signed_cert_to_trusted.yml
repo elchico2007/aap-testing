@@ -1,0 +1,31 @@
+---
+- name: Add self-signed certificate to trusted certificates
+  hosts: rhel
+  gather_facts: false
+  become: yes
+  vars:
+    target_url: "satellite.lab.test:443"
+    cert_file_path: /tmp/satellite_signed_cert.crt
+    ca_trust_path: /etc/pki/ca-trust/source/anchors/
+  tasks:
+    - name: Retrieve self-signed certificate
+      ansible.builtin.shell: openssl s_client -connect "{{ target_url }}" <<<'' | openssl x509 -out "{{ cert_file_path }}"
+      register: cert_retrieval_result
+
+    - name: Copy self-signed certificate to CA trust directory
+      ansible.builtin.copy:
+        remote_src: true
+        src: "{{ cert_file_path }}"
+        dest: "{{ ca_trust_path }}"
+        mode: 0644
+      when: cert_retrieval_result is succeeded
+
+    - name: Enable and extract CA trust
+      ansible.builtin.shell: update-ca-trust enable; update-ca-trust extract
+      args:
+        chdir: /etc/pki/ca-trust/source/anchors/
+      when: cert_retrieval_result is succeeded
+
+    - name: Reboot rhel servers
+      ansible.builtin.reboot:
+    
