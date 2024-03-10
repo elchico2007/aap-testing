@@ -30,11 +30,12 @@ ubuntu1.lab.test
 windows-server-2022.lab.test
 
 [rhel]
-rhel-9-server.lab.test
-rhel-9-catalog.lab.test
-rhel-9.lab.test
-rhel-9-test.lab.test
-rhel-8.lab.test
+rhel-9-server.lab.test # hub
+#rhel-9-catalog.lab.test
+rhel-9.lab.test # controller
+rhel-9-test.lab.test #rhel 9 test
+rhel-8.lab.test # rhel 8 test
+rhel-9-eda.lab.test # eda controller
 
 [infoblox]
 infoblox-db.lab.test
