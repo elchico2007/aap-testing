@@ -11,11 +11,7 @@
         msg: "System is subscribed"
     
     - name: Enable a RHSM repository
-      community.general.rhsm_repository:
-        name: "{{ item }}"
-      loop:
-        - rhel-8-for-x86_64-baseos-rpms
-        - rhel-8-for-x86_64-appstream-rpms
+      ansible.builtin.shell: subscription-manager repos --enable=rhel-8-for-x86_64-baseos-rpms --enable=rhel-8-for-x86_64-appstream-rpms
 
     - ansible.builtin.debug:
         msg: "Repositories are enabled"
