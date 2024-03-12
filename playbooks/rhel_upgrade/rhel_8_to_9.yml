@@ -1,0 +1,78 @@
+---
+- name: Upgrade RHEL 8 to RHEL 9
+  hosts: all
+  become: true
+  tasks:
+    - name: Confirm Red Hat subscription status
+      ansible.builtin.shell: subscription-manager list --installed
+      register: subscription_status
+
+    - ansible.builtin.debug:
+        msg: "System is subscribed"
+    
+    - name: Enable a RHSM repository
+      community.general.rhsm_repository:
+        name: "{{ item }}"
+      loop:
+        - rhel-8-for-x86_64-baseos-rpms
+        - rhel-8-for-x86_64-appstream-rpms
+
+    - ansible.builtin.debug:
+        msg: "Repositories are enabled"
+
+    - name: Lock system to version 8.9
+      ansible.builtin.shell: subscription-manager release --set 8.9
+      register: release_status
+
+    - name: Update repositories
+      ansible.builtin.package:
+        name: '*'
+        state: latest
+
+    - name: Install latest kernel package
+      ansible.builtin.package:
+        name: kernel
+        state: latest
+
+    - name: Install Leapp
+      ansible.builtin.package:
+        name: leapp-upgrade
+        state: present
+
+    - ansible.builtin.debug:
+        msg: "Leapp installed successfully"
+
+    - name: Disable zone drifting in the firewall
+      ansible.builtin.lineinfile:
+        path: /etc/firewalld/firewalld.conf
+        regexp: '^AllowZoneDrifting='
+        line: 'AllowZoneDrifting=no'
+
+    - name: Pre-upgrade check with Leapp
+      ansible.builtin.shell: leapp preupgrade --target 9.3
+      register: preupgrade_check
+
+    - ansible.builtin.debug:
+        msg: "Pre-upgrade check passed"
+
+    - name: Upgrade to RHEL 9 with Leapp
+      ansible.builtin.shell: leapp upgrade --target 9.3
+      register: rhel9_upgrade
+
+    - ansible.builtin.debug:
+        msg: "Upgrade to RHEL 9 completed successfully"
+
+    - name: Confirm post-upgrade status
+      ansible.builtin.shell: cat /etc/redhat-release
+      register: redhat_release
+
+    - name: Confirm kernel version
+      ansible.builtin.shell: uname -r
+      register: kernel_version
+
+    - name: Confirm subscription status post-upgrade
+      ansible.builtin.shell: subscription-manager list --installed
+      register: subscription_status_post_upgrade
+
+    - ansible.builtin.debug:
+        msg: "Upgrade to RHEL 9 completed successfully"
