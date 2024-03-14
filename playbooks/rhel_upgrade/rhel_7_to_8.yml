@@ -38,6 +38,12 @@
       ansible.builtin.package:
         name: leapp-upgrade
         state: present
+    
+    - name: Remove packages
+      ansible.builtin.shell: "{{ item }}"
+      loop:
+        - "rmmod floppy pata_acpi"
+        - "modprobe -r floppy pata_acpi"
 
     - ansible.builtin.debug:
         msg: "Leapp installed successfully"

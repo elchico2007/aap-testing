@@ -2,5 +2,6 @@
   hosts: all
 
   tasks:
-    - name: Reboot non Windows
+    - name: Reboot Device
       ansible.builtin.reboot:
+        reboot_timeout: 3600
