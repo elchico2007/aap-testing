@@ -13,7 +13,7 @@
           - (subscription_status.stdout | regex_search('(Status:)\\s+(\\w+)')).split()[1] != "Unknown"
         success_msg: "System is subscribed"
         fail_msg: "System is not subscribed, got Status Unknown"
-    
+
     - name: Enable a RHSM repository
       ansible.builtin.shell: subscription-manager repos --enable=rhel-7-server-rpms --enable=rhel-7-server-extras-rpms
 
@@ -28,7 +28,7 @@
       ansible.builtin.package:
         name: '*'
         state: latest
-    
+
     - name: Install latest kernel package
       ansible.builtin.package:
         name: kernel
@@ -38,12 +38,9 @@
       ansible.builtin.package:
         name: leapp-upgrade
         state: present
-    
+
     - name: Remove packages
-      ansible.builtin.shell: "{{ item }}"
-      loop:
-        - "rmmod floppy pata_acpi"
-        - "modprobe -r floppy pata_acpi"
+      ansible.builtin.shell: "modprobe -r floppy pata_acpi"
 
     - ansible.builtin.debug:
         msg: "Leapp installed successfully"
