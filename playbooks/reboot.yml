@@ -4,8 +4,3 @@
   tasks:
     - name: Reboot non Windows
       ansible.builtin.reboot:
-      when: "'Windows' not in ansible_facts['ansible_distribution']"
-
-    - name: Reboot Windows
-      ansible.windows.win_reboot:
-      when: "'Windows' in ansible_facts['ansible_distribution']"
