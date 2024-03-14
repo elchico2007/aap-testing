@@ -1,5 +1,5 @@
 ---
-- name: Upgrade RHEL 8 to RHEL 9
+- name: Upgrade RHEL 7 to RHEL 8
   hosts: all
   become: true
   tasks:
@@ -7,24 +7,28 @@
       ansible.builtin.shell: subscription-manager list --installed
       register: subscription_status
 
-    - ansible.builtin.debug:
-        msg: "System is subscribed"
+    - name: Assert that system is subscribed
+      ansible.builtin.assert:
+        that:
+          - (subscription_status.stdout | regex_search('(Status:)\\s+(\\w+)')).split()[1] != "Unknown"
+        success_msg: "System is subscribed"
+        fail_msg: "System is not subscribed, got Status Unknown"
     
     - name: Enable a RHSM repository
-      ansible.builtin.shell: subscription-manager repos --enable=rhel-8-for-x86_64-baseos-rpms --enable=rhel-8-for-x86_64-appstream-rpms
+      ansible.builtin.shell: subscription-manager repos --enable=rhel-7-server-rpms --enable=rhel-7-server-extras-rpms
 
     - ansible.builtin.debug:
         msg: "Repositories are enabled"
 
-    - name: Lock system to version 8.9
-      ansible.builtin.shell: subscription-manager release --set 8.9
+    - name: Set the Red Hat Subscription Manager to use the latest RHEL 7 content
+      ansible.builtin.shell: subscription-manager release --unset
       register: release_status
 
     - name: Update repositories
       ansible.builtin.package:
         name: '*'
         state: latest
-
+    
     - name: Install latest kernel package
       ansible.builtin.package:
         name: kernel
@@ -38,19 +42,12 @@
     - ansible.builtin.debug:
         msg: "Leapp installed successfully"
 
-    - name: Disable zone drifting in the firewall
-      ansible.builtin.lineinfile:
-        path: /etc/firewalld/firewalld.conf
-        regexp: '^AllowZoneDrifting='
-        line: 'AllowZoneDrifting=no'
-
     - name: Pre-upgrade check with Leapp
-      ansible.builtin.shell: leapp preupgrade --target 9.3
+      ansible.builtin.shell: leapp preupgrade --target 8.9
       register: preupgrade_check
 
     - ansible.builtin.debug:
         msg: "Pre-upgrade check passed"
 
-    - name: Upgrade to RHEL 9 with Leapp
-      ansible.builtin.shell: leapp upgrade --target 9.3
-      register: rhel9_upgrade
+    - name: Upgrade to RHEL 8.9 with Leapp
+      ansible.builtin.shell: leapp upgrade --target 8.9

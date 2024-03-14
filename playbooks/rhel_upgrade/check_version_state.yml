@@ -1,0 +1,14 @@
+- name: Check Version State for RHEL
+  hosts: all
+
+  # vars:
+  #   upgraded_version: "8"
+
+  tasks:
+    - name: Assert that upgrade successfully worked
+      ansible.builtin.assert:
+        that:
+          - ansible_facts['distribution_major_version'] == "{{ upgraded_version }}"
+        success_msg: "Major version is the same"
+        fail_msg: "The major versions are not the same, what the device has \
+          '{{ ansible_facts['distribution_major_version'] }}'"
