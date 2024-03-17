@@ -3,9 +3,12 @@
   hosts: localhost
   gather_facts: false
 
+  # vars:
+  #   channel: ""
+
   tasks:
     - name: Send notification message via Slack
       community.general.slack:
-        channel: '#controller-notification'
+        channel: '#{{ channel | default(controller-notification) }}'
         token: '{{ slack_token }}'
         msg: '{{ artifact | default("Servers Patched") | to_nice_yaml }}'

@@ -1,8 +1,8 @@
 - name: Start Service
   hosts: "{{ survey_name | default('all') }}"
 
-  vars:
-    service_name: ""
+  # vars:
+  #   service_name: ""
 
   tasks:
     - name: Gather Services
