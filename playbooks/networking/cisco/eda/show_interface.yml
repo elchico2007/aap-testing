@@ -1,0 +1,8 @@
+- name: Cisco Uplink Remediation - Troubleshooting
+  hosts: all
+
+  tasks:
+    - name: Show Uplink interface stats
+      cisco.ios.ios_command:
+        commands: "show interfaces {{ interface }}"
+  

@@ -1,0 +1,11 @@
+- name: Cisco Uplink Remediation - Troubleshooting
+  hosts: all
+
+  tasks:
+    - name: Configure Uplink
+      cisco.ios.ios_interfaces:
+        config:
+          - name: "{{ interface }}"
+            description: "UPLINK - SACR001"
+            enabled: true
+      
