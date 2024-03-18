@@ -11,8 +11,8 @@
               - address: "{{ ipv4_address }}"
         state: replaced
       when: ipv4_address != ""
-      notify:
-        - Upload Interfaces
+      # notify:
+      #   - Upload Interfaces
     
     - name: Configure ipv6 configuration
       arista.eos.eos_l3_interfaces:
@@ -21,11 +21,11 @@
             ipv6:
               - address: "{{ ipv6_address }}"
         state: replaced
-      when: ipv6_address != ""
-      notify:
-        - Upload Interfaces
+      # when: ipv6_address != ""
+      # notify:
+  #       - Upload Interfaces
 
-  handlers:
-    - name: Upload Interfaces
-      ansible.builtin.include_tasks: parse_interfaces.yml
+  # handlers:
+  #   - name: Upload Interfaces
+  #     ansible.builtin.include_tasks: parse_interfaces.yml
        
