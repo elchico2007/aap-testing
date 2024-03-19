@@ -17,4 +17,5 @@
       cisco.ios.ios_interfaces:
         config: 
           - "{{ matched_interface }}"
+        state: replaced
       
