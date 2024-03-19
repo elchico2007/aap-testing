@@ -2,27 +2,6 @@
   hosts: all
   gather_facts: false
 
-  vars:
-    interface: "Gi3"
-    interfaces:
-      - name: GigabitEthernet1
-        description: "MGMT connection"
-        ipv4:
-          - address: 192.168.0.53/24
-        enabled: true
-
-      - name: GigabitEthernet2
-        description: "BGP Point-To-Point"
-        ipv4:
-          - address: 192.168.1.10/32
-        speed: "10000"
-        enabled: false
-
-      - name: GigabitEthernet3
-        description: "UPLINK-SACR2001"
-        speed: "1000"
-        enabled: true
-
   tasks:
     - name: Format Incoming Interface
       ansible.builtin.set_fact:
