@@ -1,0 +1,6 @@
+---
+# handlers file for ztp
+- name: Restart dhcp
+  ansible.builtin.service:
+    service: dhcpd
+    state: restarted

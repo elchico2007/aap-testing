@@ -1,0 +1,14 @@
+! boot system flash:/vEOS-lab.swi
+!
+hostname {{ arista_name }}
+!
+enable password sha512 {{ enable_hash }}
+!
+username admin role network-admin secret sha512 {{ admin_hash }}
+!
+interface Management1
+   ip address {{ management_address }}
+!
+ip route 0.0.0.0/0 {{ default_gateway }}
+!
+end

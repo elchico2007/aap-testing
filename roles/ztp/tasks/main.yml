@@ -1,0 +1,16 @@
+---
+- name: Generate Custom Name
+  ansible.builtin.set_fact:
+    arista_name: "ztp-config-{{ lookup('community.general.random_pet', words=1) }}"
+
+- name: Generate Custom Config and Send it to HTTP file server
+  ansible.builtin.template:
+    src: ../templates/arista_ztp.j2
+    dest: "/var/www/html/ztp/{{ arista_name }}.cfg"
+
+- name: Generate dhcpd file and send it to DHCP Server
+  ansible.builtin.template:
+    src: ../templates/dhcpd.j2
+    dest: /etc/dhcp/dhcpd.conf
+  notify:
+    - Restart dhcp
