@@ -1,0 +1,12 @@
+---
+- name: Arista ZTP
+  hosts: all
+  become: true
+  gather_facts: false
+  roles:
+    - role: roles/ztp
+      src_mac: "{{ src_mac }}"
+      management_address: "{{ management_address }}"
+      enable_hash: "{{ enable_hash }}"
+      default_gateway: "{{ default_gateway }}"
+      admin_hash: "{{ admin_hash }}"
