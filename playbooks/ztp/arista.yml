@@ -10,3 +10,9 @@
       enable_hash: "{{ enable_hash }}"
       default_gateway: "{{ default_gateway }}"
       admin_hash: "{{ admin_hash }}"
+  tasks:
+    - name: Pass Along Mac and Name
+      ansible.builtin.set_stats:
+        data:
+          arista_name: "{{ arista_name }}"
+          src_mac: "{{ src_mac }}"
