@@ -14,5 +14,5 @@
     - name: Pass Along Mac and Name
       ansible.builtin.set_stats:
         data:
-          arista_name: "{{ arista_name }}"
+          gen_name: "{{ arista_name }}"
           src_mac: "{{ src_mac }}"
