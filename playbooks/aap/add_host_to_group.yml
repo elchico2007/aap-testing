@@ -1,0 +1,10 @@
+- name: Adding Host to Group AAP Controller
+  hosts: localhost
+  tasks:
+    - name: Add host to group
+      group:
+        name: "{{ group }}"
+        description: ""
+        inventory: "{{ inventory }}"
+        hosts:
+          - "{{ gen_name }}"

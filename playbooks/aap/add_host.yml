@@ -1,0 +1,13 @@
+- name: Adding Host to AAP Controller
+  hosts: localhost
+  tasks:
+    - name: Add host
+      host:
+        name: "{{ gen_name }}"
+        description: "{{ host_add_inventory_desc }}"
+        inventory: "{{ inventory }}"
+        state: present
+        validate_certs: false
+        variables:
+          ansible_host: "{{ management_address.split('/')[0] }}"
+          src_mac: "{{ src_mac }}"
