@@ -5,7 +5,7 @@
   tasks:
     - name: Wait for the port to be up
       ansible.builtin.wait_for:
-        port: "{{ port_to_wait }}"
+        port: "{{ port }}"
         host: "{{ inventory_hostname }}"
         delay: 5  # Wait for 5 seconds before starting checks
         timeout: 300  # Timeout after 300 seconds (5 minutes)
