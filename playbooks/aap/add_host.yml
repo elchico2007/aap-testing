@@ -5,7 +5,8 @@
       host:
         name: "{{ gen_name }}"
         description: "{{ host_add_inventory_desc }}"
-        inventory: "{{ inventory }}"
+        # awx_inventory_name is provided at runtime when running from AAP
+        inventory: "{{ awx_inventory_name }}"
         state: present
         validate_certs: false
         variables:
