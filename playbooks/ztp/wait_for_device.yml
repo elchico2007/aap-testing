@@ -1,0 +1,13 @@
+- name: Check when device is up
+  hosts: "{{ gen_name + '.lab.test' | default('all') }}"
+  gather_facts: false
+
+  tasks:
+    - name: Wait for the port to be up
+      ansible.builtin.wait_for:
+        port: "{{ port_to_wait }}"
+        host: "{{ inventory_hostname }}"
+        delay: 5  # Wait for 5 seconds before starting checks
+        timeout: 300  # Timeout after 300 seconds (5 minutes)
+        state: started  # Ensure the port is started
+      delegate_to: localhost
