@@ -11,6 +11,7 @@
         inventory: "{{ awx_inventory_name }}"
         state: present
         validate_certs: false
+        enabled: true
         variables:
           ansible_host: "{{ management_address.split('/')[0] }}"
           src_mac: "{{ src_mac }}"
