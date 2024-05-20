@@ -2,7 +2,7 @@
   hosts: localhost
   tasks:
     - name: Add host
-      host:
+      ansible.controller.host:
         name: "{{ gen_name + '.lab.test'}}"
         description: "{{ host_add_inventory_desc }}"
         # awx_inventory_name is provided at runtime when running from AAP
