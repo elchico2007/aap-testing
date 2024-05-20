@@ -16,3 +16,4 @@
         data:
           gen_name: "{{ arista_name }}"
           src_mac: "{{ src_mac }}"
+          management_address: "{{ management_address }}"
