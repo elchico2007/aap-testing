@@ -5,6 +5,8 @@
       ansible.controller.host:
         name: "{{ gen_name + '.lab.test'}}"
         description: "{{ host_add_inventory_desc }}"
+        controller_host: "rhel-9.lab.test"
+        controller_oauthtoken: "{{ controller_token }}"
         # awx_inventory_name is provided at runtime when running from AAP
         inventory: "{{ awx_inventory_name }}"
         state: present
