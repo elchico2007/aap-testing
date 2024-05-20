@@ -1,0 +1,17 @@
+---
+- name: Configure port security on Arista switch
+  hosts: "{{ gen_name + 'lab.test' | default('all') }}"
+  gather_facts: false
+  tasks:
+    - name: Enable port security on interfaces
+      arista.eos.eos_config:
+        lines:
+          - switchport mode access
+          - switchport port-security
+          - switchport port-security maximum 2
+          - switchport port-security violation protect
+        parents: "interface Ethernet1-12"
+
+    - name: Save running config to startup config
+      arista.eos.eos_config:
+        save_when: always
