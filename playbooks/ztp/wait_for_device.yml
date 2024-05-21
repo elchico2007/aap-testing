@@ -7,7 +7,7 @@
       ansible.builtin.wait_for:
         port: "{{ port }}"
         host: "{{ survey_name }}"
-        delay: 5  # Wait for 5 seconds before starting checks
+        delay: 60  # Wait for 60 seconds before starting checks
         timeout: 300  # Timeout after 300 seconds (5 minutes)
         state: started  # Ensure the port is started
       delegate_to: localhost
