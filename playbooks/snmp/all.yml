@@ -4,7 +4,3 @@
   gather_facts: false
   roles:
     - role: roles/networking-snmp
-      snmp:
-        host: "{{ snmp.host }}"
-        community: "{{ snmp.community }}"
-        community_string: "{{ snmp.community_string }}"
