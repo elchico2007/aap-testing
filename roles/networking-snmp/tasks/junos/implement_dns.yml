@@ -1,0 +1,11 @@
+- name: Set SNMP community
+  junipernetworks.junos.junos_config:
+    lines:
+      - "set snmp community {{ snmp.community }} authorization read-write"
+
+- name: Set SNMP trap host
+  junipernetworks.junos.junos_config:
+    lines:
+      - "set snmp trap-group {{ snmp.community }} targets {{ snmp.host }}"
+      - "set snmp trap-group {{ snmp.community }} version v2"
+      - "set snmp trap-group {{ snmp.community }} categories link"

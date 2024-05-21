@@ -1,0 +1,4 @@
+---
+# tasks file for roles/networking-snmp
+- name: Implementation
+  ansible.builtin.include_tasks: "{{ group_names.0 }}/implement_snmp.yml"

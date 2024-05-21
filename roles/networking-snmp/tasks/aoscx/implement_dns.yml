@@ -1,0 +1,9 @@
+- name: Set SNMP community
+  arubanetworks.aoscx.aoscx_config:
+    lines:
+      - "snmp-server community {{ snmp.community }}"
+    
+- name: Set SNMP trap
+  arubanetworks.aoscx.aoscx_config:    
+    lines:
+      - "snmp-server host {{ snmp.host }} trap version v2c community {{ snmp.community_string }}"
