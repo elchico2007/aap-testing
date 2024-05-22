@@ -1,6 +1,6 @@
 ---
 - name: Configure SNMP
-  hosts: "{{ gen_name | default('all') }}"
+  hosts: "{{ gen_name + '.lab.test' | default('all') }}"
   gather_facts: false
   roles:
     - role: roles/networking-snmp

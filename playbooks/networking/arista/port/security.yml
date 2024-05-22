@@ -1,6 +1,6 @@
 ---
 - name: Configure port security
-  hosts: "{{ gen_name + 'lab.test' | default('all') }}"
+  hosts: "{{ gen_name + '.lab.test' | default('all') }}"
   gather_facts: false
   tasks:
     - name: Port security configuration block for Arista
