@@ -11,4 +11,4 @@
       community.general.slack:
         channel: '#{{ channel | default("controller-notification") }}'
         token: '{{ slack_token }}'
-        msg: '{{ artifact | default("Servers Patched") | to_nice_yaml }}'
+        msg: '{{ artifact.MSG | default("Servers Patched") | to_nice_yaml }}'

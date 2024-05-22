@@ -11,4 +11,4 @@
       community.general.slack:
         channel: '#{{ channel | default("controller-notification") }}'
         token: '{{ slack_token }}'
-        msg: '{{ success_MSG | default("Failed") | to_nice_yaml }}'
+        msg: '{{ artifact.success_MSG | default("Failed") | to_nice_yaml }}'
