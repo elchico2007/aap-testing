@@ -1,0 +1,14 @@
+---
+- name: Send Slack Notification
+  hosts: localhost
+  gather_facts: false
+
+  # vars:
+  #   channel: ""
+
+  tasks:
+    - name: Send notification message via Slack
+      community.general.slack:
+        channel: '#{{ channel | default("controller-notification") }}'
+        token: '{{ slack_token }}'
+        msg: '{{ success_MSG | default("Failed") | to_nice_yaml }}'
