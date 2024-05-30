@@ -10,7 +10,8 @@
       ansible.builtin.set_stats:
         data:
           artifact:
-            msg: "Instance successfully deployed!"
-            ip: "{{ ansible_host }}"
-            host: "{{ survey_name }}"
+            MSG: 
+              msg: "Instance successfully deployed!"
+              ip: "{{ ansible_host }}"
+              host: "{{ survey_name }}"
 
