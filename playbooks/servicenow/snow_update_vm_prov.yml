@@ -3,10 +3,9 @@
   hosts: localhost
 
   tasks:  
-    - name: Close change_request
+    - name: Change change_request
       servicenow.itsm.change_request:
-        state: closed
-        close_code: "successful"
+        state: assess
         close_notes: "{{ hostvars[inventory_hostname] | to_nice_yaml }}"
         assignment_group: "Hardware"
         number: "{{ change_request['record']['number'] }}"
