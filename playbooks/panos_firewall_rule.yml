@@ -1,6 +1,7 @@
 - name: Configuring security rule
   hosts: palo1.lab.test
   connection: local
+  gather_facts: false
 
   vars:
     device:
@@ -21,23 +22,46 @@
     #   - 'any'
 
   tasks:
-    - name: Create a device group security rule
-      paloaltonetworks.panos.panos_security_rule:
-        provider: '{{ device }}'
-        state: 'present'
-        device_group: 'DC Firewalls'
-        rule_name: 'SSH Permissions'
+    - block:
+        - name: Create a device group security rule
+          paloaltonetworks.panos.panos_security_rule:
+            provider: '{{ device }}'
+            state: 'present'
+            device_group: 'DC Firewalls'
+            rule_name: 'SSH Permissions'
 
-    - name: Add custom rule from survey
-      paloaltonetworks.panos.panos_security_rule:
-        provider: '{{ device }}'
-        device_group: 'DC Firewalls'
-        rule_name: '{{ survey_rule_name | default(artifact["host"] + " HTTPS rule") }}'
-        #rule_name: "{{ survey_rule_name }}"
-        description: '{{ survey_desc }}'
-        source_zone: '{{ survey_source_zone }}'
-        source_ip: '{{ survey_source_ip }}'
-        destination_zone: '{{ survey_dest_zone }}'
-        destination_ip: '{{ survey_dest_ip | default(artifact["ip"])}}'
-        application: '{{ survey_application | default("apache-solr") }}'
-        action: '{{ survey_action }}'
+        - name: Add custom rule from survey
+          paloaltonetworks.panos.panos_security_rule:
+            provider: '{{ device }}'
+            device_group: 'DC Firewalls'
+            rule_name: '{{ survey_rule_name | default(artifact["host"] + " HTTPS rule") }}'
+            description: '{{ survey_desc }}'
+            source_zone: '{{ survey_source_zone }}'
+            source_ip: '{{ survey_source_ip }}'
+            destination_zone: '{{ survey_dest_zone }}'
+            destination_ip: '{{ survey_dest_ip | default(artifact["ip"])}}'
+            application: '{{ survey_application | default("apache-solr") }}'
+            action: '{{ survey_action }}'
+
+      rescue:
+        - name: Retry Create a device group security rule on port 80
+          paloaltonetworks.panos.panos_security_rule:
+            provider: '{{ device }}'
+            state: 'present'
+            device_group: 'DC Firewalls'
+            rule_name: 'SSH Permissions'
+            port: 80
+
+        - name: Retry Add custom rule from survey on port 80
+          paloaltonetworks.panos.panos_security_rule:
+            provider: '{{ device }}'
+            device_group: 'DC Firewalls'
+            rule_name: '{{ survey_rule_name | default(artifact["host"] + " HTTPS rule") }}'
+            description: '{{ survey_desc }}'
+            source_zone: '{{ survey_source_zone }}'
+            source_ip: '{{ survey_source_ip }}'
+            destination_zone: '{{ survey_dest_zone }}'
+            destination_ip: '{{ survey_dest_ip | default(artifact["ip"])}}'
+            application: '{{ survey_application | default("apache-solr") }}'
+            action: '{{ survey_action }}'
+            port: 80
