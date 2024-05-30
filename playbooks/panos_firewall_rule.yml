@@ -46,15 +46,14 @@
       rescue:
         - name: Retry Create a device group security rule on port 80
           paloaltonetworks.panos.panos_security_rule:
-            provider: '{{ device }}'
+            provider: '{{ device + {"port": 80 }}}'
             state: 'present'
             device_group: 'DC Firewalls'
             rule_name: 'SSH Permissions'
-            port: 80
 
         - name: Retry Add custom rule from survey on port 80
           paloaltonetworks.panos.panos_security_rule:
-            provider: '{{ device }}'
+            provider: '{{ device + {"port": 80 }}}'
             device_group: 'DC Firewalls'
             rule_name: '{{ survey_rule_name | default(artifact["host"] + " HTTPS rule") }}'
             description: '{{ survey_desc }}'
@@ -64,4 +63,3 @@
             destination_ip: '{{ survey_dest_ip | default(artifact["ip"])}}'
             application: '{{ survey_application | default("apache-solr") }}'
             action: '{{ survey_action }}'
-            port: 80
