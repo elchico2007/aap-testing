@@ -11,6 +11,6 @@ subnet 192.168.0.0 netmask 255.255.255.0 {
         option dhcp-client-identifier {{ src_mac }};
         fixed-address {{ management_address.split('/')[0] }};
         hardware ethernet {{ src_mac }};
-        option bootfile-name "http://192.168.0.11/ztp/{{ arista_name }}.cfg";
+        option bootfile-name "http://192.168.0.14/ztp/{{ arista_name }}.cfg";
     }
 }
