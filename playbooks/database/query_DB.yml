@@ -1,0 +1,16 @@
+- name: Test DB connection
+  hosts: sql-qa-server-gns3.lab.test
+  gather_facts: false
+
+  vars:
+    mssql_login_user: SA
+    mssql_login_password: ""
+
+  tasks:
+    - name: Test DB connection
+      community.general.mssql_script:
+        login_user: "{{ mssql_login_user }}"
+        login_password: "{{ mssql_login_password }}"
+        login_host: "{{ inventory_hostname }}"
+        db: SampleDB
+        script: "SELECT 1"
