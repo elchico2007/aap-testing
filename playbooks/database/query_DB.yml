@@ -1,16 +1,43 @@
-- name: Test DB connection
-  hosts: sql-qa-server-gns3.lab.test
+---
+- name: Query Database
+  hosts: localhost
   gather_facts: false
-
   vars:
-    mssql_login_user: SA
+    mssql_login_user: ""
     mssql_login_password: ""
+    qa_host: ""
+    mssql_port: 1433
+    db: ""
 
   tasks:
-    - name: Test DB connection
+    - name: Query with parameter
       community.general.mssql_script:
         login_user: "{{ mssql_login_user }}"
         login_password: "{{ mssql_login_password }}"
-        login_host: "{{ inventory_hostname }}"
+        login_host: "{{ qa_host }}"
+        login_port: "{{ mssql_port }}"
+        db: "{{ db }}"
+        script: |
+          SELECT Name, Position FROM Employees WHERE Name = %(employee_name)s
+        params:
+          employee_name: 'Alice Smith'
+      register: user_query
+
+    - name: Display user Query
+      ansible.builtin.debug:
+        var: user_query
+
+    - name: Query Database
+      community.general.mssql_script:
+        login_user: "{{ mssql_login_user }}"
+        login_password: "{{ mssql_login_password }}"
+        login_host: "{{ qa_host }}"
+        login_port: "{{ mssql_port }}"
         db: SampleDB
-        script: "SELECT 1"
+        script: |
+          SELECT Name, Position FROM Employees
+      register: db_query
+
+    - name: Display All
+      ansible.builtin.debug:
+        var: db_query
