@@ -2,12 +2,11 @@
 - name: Query Database
   hosts: localhost
   gather_facts: false
-  vars:
-    mssql_login_user: ""
-    mssql_login_password: ""
-    qa_host: ""
-    mssql_port: 1433
-    db: ""
+  # vars:
+  #   mssql_login_user: ""
+  #   mssql_login_password: ""
+  #   qa_host: ""
+  #   db: ""
 
   tasks:
     - name: Query with parameter
@@ -15,29 +14,33 @@
         login_user: "{{ mssql_login_user }}"
         login_password: "{{ mssql_login_password }}"
         login_host: "{{ qa_host }}"
-        login_port: "{{ mssql_port }}"
+        login_port: 1433
         db: "{{ db }}"
         script: |
           SELECT Name, Position FROM Employees WHERE Name = %(employee_name)s
         params:
           employee_name: 'Alice Smith'
       register: user_query
+      delegate_to: "{{ qa_host }}"
 
     - name: Display user Query
       ansible.builtin.debug:
         var: user_query
+      delegate_to: "{{ qa_host }}"
 
     - name: Query Database
       community.general.mssql_script:
         login_user: "{{ mssql_login_user }}"
         login_password: "{{ mssql_login_password }}"
         login_host: "{{ qa_host }}"
-        login_port: "{{ mssql_port }}"
+        login_port: 1433
         db: SampleDB
         script: |
           SELECT Name, Position FROM Employees
       register: db_query
+      delegate_to: "{{ qa_host }}"
 
     - name: Display All
       ansible.builtin.debug:
         var: db_query
+      delegate_to: "{{ qa_host }}"
