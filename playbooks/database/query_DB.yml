@@ -21,12 +21,10 @@
         params:
           employee_name: 'Alice Smith'
       register: user_query
-      delegate_to: "{{ qa_host }}"
 
     - name: Display user Query
       ansible.builtin.debug:
         var: user_query
-      delegate_to: "{{ qa_host }}"
 
     - name: Query Database
       community.general.mssql_script:
@@ -38,9 +36,7 @@
         script: |
           SELECT Name, Position FROM Employees
       register: db_query
-      delegate_to: "{{ qa_host }}"
 
     - name: Display All
       ansible.builtin.debug:
         var: db_query
-      delegate_to: "{{ qa_host }}"
