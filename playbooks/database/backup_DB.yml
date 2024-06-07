@@ -20,6 +20,10 @@
         script: |
           BACKUP DATABASE [{{ db }}] TO DISK = '/tmp/{{ db }}.bak'
     
+    - name: Wait for backup
+      ansible.builtin.wait:
+        timeout: 5
+    
     - name: Add read permissions to file
       ansible.builtin.file:
         path: "/tmp/{{ db }}.bak"
