@@ -14,8 +14,8 @@
       community.general.mssql_script:
         login_user: "{{ mssql_login_user }}"
         login_password: "{{ mssql_login_password }}"
-        login_host: "{{ mssql_host }}"
-        login_port: "{{ mssql_port }}"
+        login_host: "{{ qa_host }}"
+        login_port: 1433
         db: "{{ db }}"
         script: |
           RESTORE DATABASE [{{ db }}] FROM DISK = "/tmp/{{ db }}.bak" WITH REPLACE
