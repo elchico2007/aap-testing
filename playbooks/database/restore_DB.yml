@@ -1,0 +1,21 @@
+---
+- name: Restore DB
+  hosts: localhost
+  gather_facts: false
+  # vars:
+  #   mssql_login_user: "sa"
+  #   mssql_login_password: ""
+  #   mssql_host: "sql-qa-server-gns3.lab.test"
+  #   mssql_port: 1433
+  #   db: SampleDB
+
+  tasks:
+    - name: Restore Database
+      community.general.mssql_script:
+        login_user: "{{ mssql_login_user }}"
+        login_password: "{{ mssql_login_password }}"
+        login_host: "{{ mssql_host }}"
+        login_port: "{{ mssql_port }}"
+        db: "{{ db }}"
+        script: |
+          RESTORE DATABASE [{{ db }}] FROM DISK = "/tmp/{{ db }}.bak" WITH REPLACE
