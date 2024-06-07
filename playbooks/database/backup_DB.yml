@@ -19,3 +19,9 @@
         db: "{{ db }}"
         script: |
           BACKUP DATABASE [{{ db }}] TO DISK = '/tmp/{{ db }}.bak'
+    
+    - name: Add read permissions to file
+      ansible.builtin.file:
+        path: "/tmp/{{ db }}.bak"
+        mode: '0644'
+      become: true
