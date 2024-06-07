@@ -17,8 +17,8 @@
         login_host: "{{ prod_host }}"
         login_port: 1433
         script: |
-          RESTORE DATABASE [{{ db }}] FROM DISK = "/tmp/{{ db }}.bak"
+          RESTORE DATABASE [{{ db }}] FROM DISK = '/tmp/{{ db }}.bak'
           WITH 
-          MOVE "{{ db }}" TO "/var/opt/mssql/data/{{ db }}.mdf",
-          MOVE "{{ db }}_log" TO "/var/opt/mssql/data/{{ db }}_log.ldf",
+          MOVE '{{ db }}' TO '/var/opt/mssql/data/{{ db }}.mdf',
+          MOVE '{{ db }}_log' TO '/var/opt/mssql/data/{{ db }}_log.ldf',
           RECOVERY, REPLACE
