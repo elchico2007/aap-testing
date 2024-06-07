@@ -16,7 +16,7 @@
         login_password: "{{ mssql_login_password }}"
         login_host: "{{ prod_host }}"
         login_port: 1433
-        db: "{{ db }}"
+        db: master
         script: |
           RESTORE DATABASE [{{ db }}] FROM DISK = "/tmp/{{ db }}.bak"
           WITH 
