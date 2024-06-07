@@ -1,6 +1,6 @@
 ---
 - name: Create Backup of DB
-  hosts: localhost
+  hosts: "{{ qa_host | default('all') }}"
   gather_facts: false
   # vars:
   #   mssql_login_user: "sa"
@@ -19,10 +19,7 @@
         db: "{{ db }}"
         script: |
           BACKUP DATABASE [{{ db }}] TO DISK = '/tmp/{{ db }}.bak'
-    
-    - name: Wait for backup
-      ansible.builtin.wait:
-        timeout: 5
+      connection: local
     
     - name: Add read permissions to file
       ansible.builtin.file:
