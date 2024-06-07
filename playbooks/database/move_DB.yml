@@ -1,0 +1,14 @@
+---
+ - name: Copy DB file from host to host
+   hosts:
+    - sql-qa-server-gns3.lab.test
+    - sql-prod-server-gns3.lab.test
+   tasks:
+     - name: Fetch the file from the qa to master
+       run_once: yes
+       fetch: src=/tmp/SampleDB.bak dest=buffer/ flat=yes
+       when: inventory_hostname == 'sql-qa-server-gns3.lab.test'
+
+     - name: Copy the file from master to prod
+       copy: src=buffer/SampleDB.bak dest=/tmp/
+       when: inventory_hostname == 'sql-prod-server-gns3.lab.test'
