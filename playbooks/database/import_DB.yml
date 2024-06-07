@@ -1,0 +1,27 @@
+---
+- name: Import DB DB
+  hosts: "{{ prod_host | default('all') }}"
+  gather_facts: false
+  # vars:
+  #   mssql_login_user: "sa"
+  #   mssql_login_password: ""
+  #   mssql_host: "sql-prod-server-gns3.lab.test"
+  #   mssql_port: 1433
+  #   db: SampleDB
+
+  tasks:
+    - name: Import DB
+      community.general.mssql_script:
+        login_user: "{{ mssql_login_user }}"
+        login_password: "{{ mssql_login_password }}"
+        login_host: "{{ prod_host }}"
+        login_port: 1433
+        db: "{{ db }}"
+        script: |
+          RESTORE DATABASE [{{ db }}] FROM DISK = "/tmp/{{ db }}.bak"
+          WITH 
+          MOVE "{{ db }}" TO "/var/opt/mssql/data/{{ db }}.mdf",
+          MOVE "{{ db }}_log" TO "/var/opt/mssql/data/{{ db }}_log.ldf",
+          RECOVERY, REPLACE
+      connection: local
+      delegate_to: localhost

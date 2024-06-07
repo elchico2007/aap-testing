@@ -1,0 +1,42 @@
+---
+- name: Query Database
+  hosts: localhost
+  gather_facts: false
+  # vars:
+  #   mssql_login_user: ""
+  #   mssql_login_password: ""
+  #   prod_host: ""
+  #   db: ""
+
+  tasks:
+    - name: Query with parameter
+      community.general.mssql_script:
+        login_user: "{{ mssql_login_user }}"
+        login_password: "{{ mssql_login_password }}"
+        login_host: "{{ prod_host }}"
+        login_port: 1433
+        db: "{{ db }}"
+        script: |
+          SELECT Name, Position FROM Employees WHERE Name = %(employee_name)s
+        params:
+          employee_name: 'Alice Smith'
+      register: user_query
+
+    - name: Display user Query
+      ansible.builtin.debug:
+        var: user_query
+
+    - name: Query Database
+      community.general.mssql_script:
+        login_user: "{{ mssql_login_user }}"
+        login_password: "{{ mssql_login_password }}"
+        login_host: "{{ prod_host }}"
+        login_port: 1433
+        db: SampleDB
+        script: |
+          SELECT Name, Position FROM Employees
+      register: db_query
+
+    - name: Display All
+      ansible.builtin.debug:
+        var: db_query
