@@ -20,6 +20,7 @@
         script: |
           BACKUP DATABASE [{{ db }}] TO DISK = '/tmp/{{ db }}.bak'
       connection: local
+      delegate_to: localhost
     
     - name: Add read permissions to file
       ansible.builtin.file:
