@@ -1,6 +1,6 @@
 ---
-- name: Import DB DB
-  hosts: "{{ prod_host | default('all') }}"
+- name: Import DB
+  hosts: localhost
   gather_facts: false
   # vars:
   #   mssql_login_user: "sa"
@@ -23,5 +23,3 @@
           MOVE "{{ db }}" TO "/var/opt/mssql/data/{{ db }}.mdf",
           MOVE "{{ db }}_log" TO "/var/opt/mssql/data/{{ db }}_log.ldf",
           RECOVERY, REPLACE
-      connection: local
-      delegate_to: localhost
