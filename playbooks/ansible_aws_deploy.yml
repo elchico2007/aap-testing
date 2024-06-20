@@ -8,7 +8,7 @@
         name: "{{ survey_name }}"
         image_id: "ami-08012c0a9ee8e21c4"
         instance_type: "{{ survey_instance_type }}"
-        region: us-east-1
+        region: us-west-1
         wait: true
         count: 1
         state: present
