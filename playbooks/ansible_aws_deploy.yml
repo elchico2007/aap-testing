@@ -11,6 +11,5 @@
         region: us-west-1
         wait: true
         count: 1
-        state: running
+        state: started
         key_name: "aap-ssh-key"
-
