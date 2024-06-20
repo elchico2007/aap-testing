@@ -1,5 +1,6 @@
 - name: Add Administrator group to manage system
   hosts: "{{ survey_name }}"
+  gather_facts: false
 
   tasks:
     - name: Wait for port 22 to become available

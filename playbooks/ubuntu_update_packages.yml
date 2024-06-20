@@ -1,7 +1,7 @@
 ---
 - name: Ansible apt update all packages on Ubuntu/Debian
   hosts: all
-  tasks:
+  tasks:  
     - name: Update apt repo and cache on all Debian/Ubuntu boxes
       ansible.builtin.apt: 
         update_cache: yes
