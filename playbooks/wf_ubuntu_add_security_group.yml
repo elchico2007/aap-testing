@@ -7,7 +7,7 @@
       ansible.builtin.wait_for:
         port: 22
         host: '{{ survey_name }}'
-        timeout: 600
+        timeout: 1500
     - name: Create admin group
       ansible.builtin.group:
         name: admin
