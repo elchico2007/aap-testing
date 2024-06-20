@@ -12,3 +12,4 @@
         wait: true
         count: 1
         state: present
+        access_key: "aap-ssh-key"
