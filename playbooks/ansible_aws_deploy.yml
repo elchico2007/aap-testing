@@ -1,0 +1,14 @@
+- name: Deploy EC2 instance using Ansible
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: Launch EC2 instance
+      amazon.aws.ec2_instance:
+        name: "{{ survey_name }}"
+        image_id: ami-0a1a70369f0fce06a
+        instance_type: "{{ survey_instance_type }}"
+        region: us-east-1
+        wait: true
+        count: 1
+        state: present
