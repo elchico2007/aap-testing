@@ -10,8 +10,7 @@
         instance_type: "{{ survey_instance_type }}"
         region: us-west-1
         wait: true
-        wait_timeout: 600  # Timeout in seconds for the instance to become fully operational
         count: 1
-        state: present
+        state: running
         key_name: "aap-ssh-key"
-  
+
