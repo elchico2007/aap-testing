@@ -1,0 +1,11 @@
+- name: Test Web Application
+  hosts: localhost
+  vars:
+    test_host: "ubuntu2.lab.test"
+    test_port: "5000"
+
+  tasks:
+    - name: Check that you can connect (GET) to the dad joke API and it returns a status 200
+      ansible.builtin.uri:
+        url: "http://{{ test_host }}:{{ test_port }}"
+        status_code: 200
