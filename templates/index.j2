@@ -1,8 +1,58 @@
 <html>
 <body>
 
-  <p align=center><img src='https://getvectorlogo.com/wp-content/uploads/2019/01/red-hat-ansible-vector-logo.png' align=center width='920'>
-  <h1 align=center>{{ inventory_hostname }} --- {{ webserver_msg | default("Welcome to the Webserver") }}</h1>
+  <p align=center><img src='AAP_logo.png' align=center width='920'>
+  <h1 align=center>{{ inventory_hostname }} --- {{ webserver_msg | default("Welcome to the DadJokeGenerator1000 v1.1") }}</h1>
+  
+  <!-- Button to trigger the joke fetching -->
+  <button id="fetchJoke">Tell me a Dad joke!</button>
+  <p id="jokeOutput"></p> <!-- Placeholder for the joke -->
+
+  <style>
+    #fetchJoke {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      display: block;
+      margin: 20px auto;
+    }
+    #jokeOutput {
+      text-align: center;
+      font-family: 'Comic Sans MS', 'Comic Sans', cursive; /* Cool font */
+      font-size: 24px; /* Larger font size */
+    }
+    .loading {
+      background: url('loading.gif') center no-repeat;
+      height: 50px; /* Adjust based on the size of the gif */
+    }
+  </style>
+  <script>
+    document.getElementById('fetchJoke').addEventListener('click', function() {
+      const jokeOutput = document.getElementById('jokeOutput');
+      jokeOutput.className = 'loading'; // Show loading gif
+      jokeOutput.innerText = ''; // Clear previous joke or error message
+
+      fetch('https://icanhazdadjoke.com/', {
+        headers: {
+          'Accept': 'text/plain'
+        }
+      })
+      .then(response => response.text())
+      .then(data => {
+        jokeOutput.className = ''; // Remove loading gif
+        jokeOutput.innerText = data;
+      })
+      .catch(error => {
+        console.error('Error fetching joke:', error);
+        jokeOutput.className = ''; // Remove loading gif
+        jokeOutput.innerText = 'Failed to fetch a joke!';
+      });
+    });
+  </script>
 
 </body>
 </html>
