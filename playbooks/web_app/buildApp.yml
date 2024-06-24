@@ -31,7 +31,7 @@
 
     - name: Deploy Flask application
       ansible.builtin.copy:
-        src: playbooks/web_app/app.py
+        src: app.py
         dest: /var/www/flaskapp/app.py
         mode: '0644'
       notify:
@@ -49,7 +49,7 @@
 
     - name: Copy base index file for Flask app without rendering
       ansible.builtin.copy:
-        src: templates/index.j2
+        src: index.j2
         dest: /var/www/flaskapp/templates/index.j2
         mode: '0644'
       notify:
@@ -76,7 +76,7 @@
 
     - name: Copy AAP logo to Flask app static directory
       ansible.builtin.copy:
-        src: templates/AAP_logo.png
+        src: AAP_logo.png
         dest: /var/www/flaskapp/static/images/AAP_logo.png
         mode: '0644'
       notify:
