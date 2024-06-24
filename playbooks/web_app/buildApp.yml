@@ -32,6 +32,9 @@
         src: ~/aap-testing/playbooks/web_app/app.py
         dest: /var/www/flaskapp/app.py
         mode: '0644'
+      notify:
+        - Restart flaskapp
+        - Reload systemd
     
     - name: Ensure /var/www/flaskapp/templates directory exists
       ansible.builtin.file:
