@@ -31,7 +31,7 @@
 
     - name: Deploy Flask application
       ansible.builtin.copy:
-        src: ~/aap-testing/playbooks/web_app/app.py
+        src: playbooks/web_app/app.py
         dest: /var/www/flaskapp/app.py
         mode: '0644'
       notify:
