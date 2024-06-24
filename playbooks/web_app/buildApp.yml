@@ -1,47 +1,93 @@
-- name: Deploy a simple web server with a cool index HTML page
+- name: Deploy a simple Flask application
   hosts: all
   become: true
   tasks:
-    - name: Install nginx
+    - name: Install Python and pip
       ansible.builtin.package:
-        name: nginx
-        state: present
+        name: "{{ item }}"
+        state: latest
+      loop:
+        - python3
+        - python3-pip
+        - python3.10-venv
 
-    - name: Start nginx service
-      ansible.builtin.service:
-        name: nginx
-        state: started
-        enabled: true
+    - name: Create a virtual environment for Flask app
+      ansible.builtin.command:
+        cmd: python3 -m venv /var/www/flaskapp/venv
+      args:
+        creates: /var/www/flaskapp/venv
 
-    - name: Create a base index file
+    - name: Install requests in the virtual environment
+      ansible.builtin.pip:
+        name: requests
+        virtualenv: /var/www/flaskapp/venv
+
+    - name: Install Flask in the virtual environment
+      ansible.builtin.pip:
+        name: Flask
+        virtualenv: /var/www/flaskapp/venv
+
+    - name: Deploy Flask application
+      ansible.builtin.copy:
+        src: ~/aap-testing/playbooks/web_app/app.py
+        dest: /var/www/flaskapp/app.py
+        mode: '0644'
+    
+    - name: Ensure /var/www/flaskapp/templates directory exists
+      ansible.builtin.file:
+        path: /var/www/flaskapp/templates
+        state: directory
+        mode: '0755'
+
+    - name: Copy base index file for Flask app without rendering
       ansible.builtin.template:
         src: ~/aap-testing/templates/index.j2
-        dest: /usr/share/nginx/html/index.html
+        dest: /var/www/flaskapp/templates/index.html
         mode: '0644'
+      notify:
+        - Restart flaskapp
+        - Reload systemd
 
-    - name: Copy AAP logo to nginx directory
+    - name: Copy AAP logo to Flask app static directory
       ansible.builtin.copy:
         src: ~/aap-testing/templates/AAP_logo.png
-        dest: /usr/share/nginx/html/AAP_logo.png
+        dest: /var/www/flaskapp/templates/AAP_logo.png
+        mode: '0644'
+      notify:
+        - Restart flaskapp
+        - Reload systemd
+
+    - name: Create systemd service file for Flask app
+      ansible.builtin.copy:
+        content: |
+          [Unit]
+          Description=Flask Application
+          After=network.target
+
+          [Service]
+          User=www-data
+          WorkingDirectory=/var/www/flaskapp
+          ExecStart=/var/www/flaskapp/venv/bin/python /var/www/flaskapp/app.py
+          Restart=always
+
+          [Install]
+          WantedBy=multi-user.target
+        dest: /etc/systemd/system/flaskapp.service
         mode: '0644'
 
-    - name: Update Nginx configuration to use custom index.html
-      ansible.builtin.lineinfile:
-        path: /etc/nginx/sites-available/default
-        regexp: '^\s*root\s+'
-        line: '    root /usr/share/nginx/html;'
-        state: present
-        backup: true
+    - name: Ensure Flask app is running
+      ansible.builtin.systemd:
+        name: flaskapp
+        enabled: true
+        state: started
+        daemon_reload: true
 
-    - name: Ensure index directive is set
-      ansible.builtin.lineinfile:
-        path: /etc/nginx/sites-available/default
-        regexp: '^\s*index\s+'
-        line: '    index index.html;'
-        state: present
-        backup: true
+  handlers:
+    - name: Reload systemd
+      ansible.builtin.systemd:
+        daemon_reload: true
 
-    - name: Reload Nginx to apply configuration changes
+    - name: Restart flaskapp
       ansible.builtin.service:
-        name: nginx
-        state: reloaded
+        name: flaskapp
+        state: restarted
