@@ -1,0 +1,41 @@
+- name: Deploy a simple web server with a cool index HTML page
+  hosts: all
+  become: true
+  tasks:
+    - name: Install nginx
+      ansible.builtin.package:
+        name: nginx
+        state: present
+
+    - name: Start nginx service
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: true
+
+    - name: Create a base index file
+      ansible.builtin.template:
+        src: ~/aap-testing/templates/index.j2
+        dest: /usr/share/nginx/html/index.html
+        mode: '0644'
+
+    - name: Update Nginx configuration to use custom index.html
+      ansible.builtin.lineinfile:
+        path: /etc/nginx/sites-available/default
+        regexp: '^\s*root\s+'
+        line: '    root /usr/share/nginx/html;'
+        state: present
+        backup: yes
+
+    - name: Ensure index directive is set
+      ansible.builtin.lineinfile:
+        path: /etc/nginx/sites-available/default
+        regexp: '^\s*index\s+'
+        line: '    index index.html;'
+        state: present
+        backup: yes
+
+    - name: Reload Nginx to apply configuration changes
+      ansible.builtin.service:
+        name: nginx
+        state: reloaded
