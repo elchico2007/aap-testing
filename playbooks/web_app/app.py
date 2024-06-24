@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('index.j2')
 
 @app.route('/api/dadjoke')
 def get_dad_joke():
@@ -17,5 +17,5 @@ def get_dad_joke():
         return jsonify({'error': 'Failed to fetch a joke'}), 500
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000, debug=True)
 

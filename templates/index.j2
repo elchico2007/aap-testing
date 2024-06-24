@@ -1,8 +1,8 @@
 <html>
 <body>
 
-  <p align=center><img src='AAP_logo.png' align=center width='920'>
-  <h1 align=center>{{ inventory_hostname }} --- {{ webserver_msg | default("Welcome to the DadJokeGenerator1000 v1.1") }}</h1>
+  <p align=center><img src="{{ url_for('static', filename='images/AAP_logo.png') }}" align=center width='920'>
+  <h1 align=center>[inventory_hostname] --- [webserver_msg]</h1>
   
   <!-- Button to trigger the joke fetching -->
   <button id="fetchJoke">Tell me a Dad joke!</button>

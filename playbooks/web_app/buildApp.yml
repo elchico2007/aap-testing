@@ -1,6 +1,8 @@
 - name: Deploy a simple Flask application
   hosts: all
   become: true
+  vars:
+    webserver_msg: "Welcome to the DadJokeGenerator1000 v1.1"
   tasks:
     - name: Install Python and pip
       ansible.builtin.package:
@@ -36,17 +38,38 @@
         - Restart flaskapp
         - Reload systemd
     
-    - name: Ensure /var/www/flaskapp/templates directory exists
+    - name: Ensure /var/www/flaskapp/templates and /var/www/flaskapp/static directory exists
       ansible.builtin.file:
-        path: /var/www/flaskapp/templates
+        path: /var/www/flaskapp/{{ item }}
         state: directory
         mode: '0755'
+      loop:
+        - templates
+        - static/images
 
     - name: Copy base index file for Flask app without rendering
-      ansible.builtin.template:
+      ansible.builtin.copy:
         src: ~/aap-testing/templates/index.j2
-        dest: /var/www/flaskapp/templates/index.html
+        dest: /var/www/flaskapp/templates/index.j2
         mode: '0644'
+      notify:
+        - Restart flaskapp
+        - Reload systemd
+    
+    - name: Replace [inventory_hostname] placeholder in index.j2 with variable
+      ansible.builtin.replace:
+        path: /var/www/flaskapp/templates/index.j2
+        regexp: '\[inventory_hostname\]'
+        replace: '{{ inventory_hostname }}'
+      notify:
+        - Restart flaskapp
+        - Reload systemd
+
+    - name: Replace [webserver_msg] placeholder in index.j2 with variable
+      ansible.builtin.replace:
+        path: /var/www/flaskapp/templates/index.j2
+        regexp: '\[webserver_msg\]'
+        replace: '{{ webserver_msg }}'
       notify:
         - Restart flaskapp
         - Reload systemd
@@ -54,7 +77,7 @@
     - name: Copy AAP logo to Flask app static directory
       ansible.builtin.copy:
         src: ~/aap-testing/templates/AAP_logo.png
-        dest: /var/www/flaskapp/templates/AAP_logo.png
+        dest: /var/www/flaskapp/static/images/AAP_logo.png
         mode: '0644'
       notify:
         - Restart flaskapp
