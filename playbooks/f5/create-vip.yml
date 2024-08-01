@@ -6,7 +6,7 @@
     vip_description: ""
     vip_destination: ""
     vip_name: ""
-    vip_pool: ""
+    pool_name: ""
     vip_port: ""
     vip_snat: ""
   tasks:
@@ -20,7 +20,7 @@
         description: "{{ vip_description }}"
         destination: "{{ vip_destination }}"
         name: "{{ vip_name }}"
-        pool: "{{ vip_pool }}"
+        pool: "{{ pool_name }}"
         port: "{{ vip_port }}"
         snat: "{{ vip_snat }}"
         profiles:
