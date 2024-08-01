@@ -1,0 +1,19 @@
+---
+- name: Create pool
+  hosts: localhost
+  gather_facts: false
+  vars:
+    pool_name: ""
+  tasks:
+    - name: Create pool
+      f5networks.f5_modules.bigip_pool:
+        state: present
+        name: "{{ pool_name }}"
+        partition: Common
+        lb_method: least-connections-member
+        slow_ramp_time: 120
+        provider:
+          server: f5-gns3.lab.test
+          user: "{{ ansible_user }}"
+          password: "{{ ansible_password }}"
+          validate_certs: false
