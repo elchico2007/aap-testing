@@ -1,0 +1,28 @@
+---
+- name: Create a VIP
+  hosts: localhost
+  gather_facts: false
+  vars:
+    vip_description: ""
+    vip_destination: ""
+    vip_name: ""
+    vip_pool: ""
+    vip_port: ""
+    vip_snat: ""
+  tasks:
+    - name: Create a VIP
+      f5networks.f5_modules.bigip_virtual_server:
+        provider:
+          server: f5-gns3.lab.test
+          user: "{{ ansible_user }}"
+          password: "{{ ansible_password }}"
+          validate_certs: false
+        description: "{{ vip_description }}"
+        destination: "{{ vip_destination }}"
+        name: "{{ vip_name }}"
+        pool: "{{ vip_pool }}"
+        port: "{{ vip_port }}"
+        snat: "{{ vip_snat }}"
+        profiles:
+          - http
+          - clientssl
