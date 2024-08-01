@@ -1,0 +1,13 @@
+---
+- name: Save F5 Configuration
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Save the running configuration of the BIG-IP
+      f5networks.f5_modules.bigip_config:
+        save: true
+        provider:
+          server: f5-gns3.lab.test
+          user: "{{ ansible_user }}"
+          password: "{{ ansible_password }}"
+          validate_certs: false
