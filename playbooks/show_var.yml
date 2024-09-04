@@ -1,0 +1,7 @@
+- name: Show variable
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Print variable
+      ansible.builtin.debug:
+        var: my_variable
